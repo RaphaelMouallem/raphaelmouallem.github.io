@@ -1,0 +1,25 @@
+# Raphael El Mouallem
+
+> Software Engineer — Full Stack & AI Developer, based in Lebanon.
+
+Raphael builds across the stack — React frontends, Spring Boot backends, and PyTorch models trained from scratch. He works on problems at the intersection of systems, AI, and design.
+
+This site (raphaelmouallem.github.io) is a handbuilt 3D portfolio experience built with React Three Fiber. Visitors scroll through a procedurally generated sky and underwater scene; content is presented in cards along the way.
+
+## Background
+
+- Pursuing a Master's in Web Development (2025–present), preceded by a Master's in Computer Science and a Bachelor's in Computer Science.
+- Languages spoken: Arabic (native), English (fluent), French (proficient).
+
+## Projects
+
+- **Nexus** — Enterprise RAG knowledge system. Hybrid semantic + lexical search, local (Ollama) and cloud (Gemini) inference, Angular web + Flutter mobile, Dockerized.
+- **Custom GPT-2 mini** — Decoder-based LLM built from scratch in PyTorch (12-head self-attention, RoPE), optimized for Apple MPS, quantized for inference.
+- **E-Commerce** — Full-stack app: React + Tailwind frontend, Spring Boot backend, PostgreSQL/Flyway.
+- **Fitness App** — Cross-platform Flutter fitness app with TTS guidance and encrypted local storage.
+- **Finance Tracker** — Angular + Django budget/expense manager with statistical dashboards and XLSX import.
+
+## Contact
+
+- LinkedIn: https://www.linkedin.com/in/raphael-el-mouallem-1qw/
+- GitHub: https://github.com/RaphaelMouallem

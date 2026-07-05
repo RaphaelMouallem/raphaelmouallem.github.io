@@ -1,0 +1,113 @@
+{
+  "intro": {
+    "name": "Raphael El Mouallem",
+    "title": "Software Engineer · Full Stack & AI Developer",
+    "hint": "scroll to fall ↓"
+  },
+
+  "about": {
+    "bio": "I'm a software engineer based in Lebanon, currently pursuing a Master's in Web Development. I build things across the stack — from React frontends and Spring Boot backends to PyTorch models trained from scratch. I like working on problems that sit at the intersection of systems, AI, and good design.",
+    "education": [
+      { "degree": "Master's 2 — Web Development", "period": "2025 - present" },
+      { "degree": "Master's 1 — Computer Science", "period": "2024 - 2026" },
+      { "degree": "Bachelor's — Computer Science", "period": "2021 - 2024" }
+    ],
+    "skills": {
+      "Languages": ["C", "C++", "C#", "Java", "JavaScript", "Python", "SQL"],
+      "Web": ["React", "Next.js", "Angular", "Node.js"],
+      "Backend": ["Spring Boot", "Express", "Django", "Flask", "ASP.NET"],
+      "Databases": ["PostgreSQL", "MySQL", "SQLite", "MongoDB", "Firebase"],
+      "AI & DL": ["PyTorch", "TensorFlow", "LangGraph", "LoRA"],
+      "Mobile": ["Flutter", "Android Studio"],
+      "Tools": ["Git", "Docker", "AWS", "Anaconda"]
+    },
+    "spoken": ["Arabic — native", "English — fluent", "French — proficient"]
+  },
+
+  "pages": {
+    "synthwave": {
+      "site": {
+        "title": "About This Site",
+        "description": "This portfolio is a handbuilt 3D experience in React Three Fiber. You scroll, you fall. The sky is procedurally generated — stars, galaxies, cloud banks, and an underwater scene at the bottom, all in real time. No templates. Just scroll depth, geometry, and physics.",
+        "stack": ["React", "R3F", "Drei", "Framer Motion", "Vite", "GitHub Pages"]
+      }
+    },
+    "about": {
+      "site": {
+        "title": "About This Site",
+        "description": "A lightweight Japandi-aesthetic portfolio page — paper textures, ink tokens, procedural SVG motifs. Pure React, no 3D. Framer Motion for transitions, custom cursor, wind-streak generative art.",
+        "stack": ["React", "Framer Motion", "Vite", "GitHub Pages"]
+      }
+    }
+  },
+
+  "projects": [
+    {
+      "id": "nexus",
+      "title": "Nexus",
+      "subtitle": "Enterprise RAG Knowledge System",
+      "tags": ["RAG", "AI", "Angular", "Flutter", "Docker", "Qdrant", "PostgreSQL"],
+      "description": "A RAG platform for AI-powered search across document repositories. Hybrid pipeline combining semantic vector search and lexical search, with local (Ollama) and cloud (Gemini) inference. Cross-platform — Angular web, Flutter mobile. Containerized with Docker.",
+      "github": null
+    },
+    {
+      "id": "gpt2",
+      "title": "Custom GPT-2 mini",
+      "subtitle": "LLM from scratch in PyTorch",
+      "tags": ["PyTorch", "NLP", "Deep Learning", "MPS", "Quantization"],
+      "description": "Decoder-based LLM rebuilt from scratch — 12 self-attention heads, RoPE positional encoding. Optimised for Apple MPS via matrix fusion and bfloat16. Trained incrementally (6→8→12 heads). Fine-tuned on dialog datasets, quantized (PQT) for inference.",
+      "github": null
+    },
+    {
+      "id": "ecommerce",
+      "title": "E-Commerce",
+      "subtitle": "Full Stack Web App",
+      "tags": ["React", "TailwindCSS", "Spring Boot", "PostgreSQL", "Flyway"],
+      "description": "Full-stack e-commerce with React + Tailwind frontend, Spring Boot backend with auth and clean architecture, PostgreSQL/Flyway database. User profiles, product ratings.",
+      "github": null
+    },
+    {
+      "id": "fitness",
+      "title": "Fitness App",
+      "subtitle": "Cross-Platform Mobile App",
+      "tags": ["Flutter", "SQLite", "Cross-Platform", "TTS"],
+      "description": "Cross-platform fitness app in Flutter (web compatible). Multi-user support, anonymous mode, TTS workout guidance. Encrypted SQLite local storage. Dedicated pages for workouts, nutrition, and statistics.",
+      "github": null
+    },
+    {
+      "id": "finance",
+      "title": "Finance Tracker",
+      "subtitle": "Budget & Expense Manager",
+      "tags": ["Angular", "Django", "PostgreSQL", "XLSX"],
+      "description": "Responsive Angular app for expense tracking and budget categorization. Statistical dashboards, .xlsx transaction import. Django MVC backend, PostgreSQL storage.",
+      "github": null
+    }
+  ],
+
+  "contact": {
+    "heading": "Let's talk.",
+    "subheading": "Open to opportunities, collaborations, and interesting problems.",
+    "linkedin": "https://www.linkedin.com/in/raphael-el-mouallem-1qw/",
+    "github": "https://github.com/RaphaelMouallem"
+  },
+
+  "footer": {
+    "heading": "You made it!",
+    "subheading": "That's everything — thanks for scrolling all the way down.",
+    "sections": [
+      { "label": "Home", "href": "#hero" },
+      { "label": "About", "href": "#about" },
+      { "label": "Projects", "href": "#projects" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "social": [
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/raphael-el-mouallem-1qw/" },
+      { "label": "GitHub", "href": "https://github.com/RaphaelMouallem" }
+    ],
+    "links": [
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/raphael-el-mouallem-1qw/" },
+      { "label": "GitHub", "href": "https://github.com/RaphaelMouallem" }
+    ],
+    "footer": "© 2026 Raphael El Mouallem · Built from scratch · Hosted on GitHub Pages"
+  }
+}

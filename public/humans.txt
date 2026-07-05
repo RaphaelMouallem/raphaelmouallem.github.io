@@ -1,0 +1,16 @@
+/* TEAM */
+Developer: Raphael El Mouallem
+Role: Software Engineer — Full Stack & AI Developer
+Site: https://raphaelmouallem.github.io/
+GitHub: https://github.com/RaphaelMouallem
+LinkedIn: https://www.linkedin.com/in/raphael-el-mouallem-1qw/
+From: Lebanon
+
+/* SITE */
+Last update: 2026/06/14
+Standards: HTML5, ES Modules
+Components: React, React Three Fiber, Drei, Framer Motion
+Software: Vite
+
+/* THANKS */
+You — for scrolling all the way down.

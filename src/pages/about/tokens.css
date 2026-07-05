@@ -1,0 +1,216 @@
+/* Japandi paper-cut design tokens — light/dark */
+
+:root {
+  --paper: #f4efe4;
+  --paper-soft: #e9e1d2;
+  --paper-raised: #ede6d8;
+  --paper-sunken: #ddd5c4;
+  --ink: #1f1d1a;
+  --ink-soft: rgba(31, 29, 26, 0.62);
+  --ink-faint: rgba(31, 29, 26, 0.32);
+  --accent: #c8492f;
+  --accent-soft: rgba(200, 73, 47, 0.12);
+  --border: rgba(31, 29, 26, 0.12);
+  --mullion: rgba(31, 29, 26, 0.08);
+  --shadow: rgba(90, 70, 50, 0.16);
+  --crease: rgba(90, 70, 50, 0.09);
+  --crease-dark: rgba(0, 0, 0, 0.18);
+
+  --font-display: 'Shippori Mincho', serif;
+  --font-body: 'Inter', sans-serif;
+
+  --theme-transition-duration: 0.3s;
+  --theme-transition-ease: ease;
+}
+
+/* System preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #16151a;
+    --paper-soft: #1f1e24;
+    --paper-raised: #1c1b21;
+    --paper-sunken: #111013;
+    --ink: #ece7dd;
+    --ink-soft: rgba(236, 231, 221, 0.65);
+    --ink-faint: rgba(236, 231, 221, 0.32);
+    --accent: #d9613f;
+    --accent-soft: rgba(217, 97, 63, 0.16);
+    --border: rgba(236, 231, 221, 0.1);
+    --mullion: rgba(236, 231, 221, 0.07);
+    --shadow: rgba(0, 0, 0, 0.5);
+    --crease: rgba(255, 255, 255, 0.05);
+    --crease-dark: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.about-page,
+.about-page *:not(svg, svg *) {
+  transition:
+    background-color var(--theme-transition-duration) var(--theme-transition-ease),
+    color var(--theme-transition-duration) var(--theme-transition-ease),
+    border-color var(--theme-transition-duration) var(--theme-transition-ease),
+    box-shadow var(--theme-transition-duration) var(--theme-transition-ease);
+}
+
+.about-page svg,
+.about-page svg * {
+  transition:
+    fill var(--theme-transition-duration) var(--theme-transition-ease),
+    stroke var(--theme-transition-duration) var(--theme-transition-ease);
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Manual overrides — take precedence over system preference */
+html[data-theme='light'] {
+  --paper: #f4efe4;
+  --paper-soft: #e9e1d2;
+  --paper-raised: #ede6d8;
+  --paper-sunken: #ddd5c4;
+  --ink: #1f1d1a;
+  --ink-soft: rgba(31, 29, 26, 0.62);
+  --ink-faint: rgba(31, 29, 26, 0.32);
+  --accent: #c8492f;
+  --accent-soft: rgba(200, 73, 47, 0.12);
+  --border: rgba(31, 29, 26, 0.12);
+  --mullion: rgba(31, 29, 26, 0.08);
+  --shadow: rgba(90, 70, 50, 0.16);
+  --crease: rgba(90, 70, 50, 0.09);
+  --crease-dark: rgba(0, 0, 0, 0.18);
+}
+
+html[data-theme='dark'] {
+  --paper: #16151a;
+  --paper-soft: #1f1e24;
+  --paper-raised: #1c1b21;
+  --paper-sunken: #111013;
+  --ink: #ece7dd;
+  --ink-soft: rgba(236, 231, 221, 0.65);
+  --ink-faint: rgba(236, 231, 221, 0.32);
+  --accent: #d9613f;
+  --accent-soft: rgba(217, 97, 63, 0.16);
+  --border: rgba(236, 231, 221, 0.1);
+  --mullion: rgba(236, 231, 221, 0.07);
+  --shadow: rgba(0, 0, 0, 0.5);
+  --crease: rgba(255, 255, 255, 0.05);
+  --crease-dark: rgba(0, 0, 0, 0.4);
+}
+
+html:has(.about-page) ::-webkit-scrollbar {
+  width: 4px;
+}
+
+html:has(.about-page) ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html:has(.about-page) ::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 0;
+}
+
+/* Paper grain — layered noise for tactile paper feel */
+body {
+  background-color: var(--paper);
+  position: relative;
+}
+
+body::before {
+  mix-blend-mode: multiply;
+  position: fixed;
+  will-change: transform;
+  transform: translateZ(0);
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.25;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.3' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+.about-page ::selection,
+.about-page::selection {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.about-page ::-moz-selection,
+.about-page::-moz-selection {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.footer-link {
+  color: var(--ink-soft);
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0 10px;
+  width: fit-content;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--ink);
+}
+
+.terminal-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 0;
+}
+
+.terminal-input {
+  caret-color: var(--accent);
+}
+
+.terminal-input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@keyframes scanline-drift {
+  from {
+    background-position-y: 0;
+  }
+  to {
+    background-position-y: 10px;
+  }
+}
+
+.pet-screen-flicker {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--ink) 0px,
+    var(--ink) 3px,
+    transparent 3px,
+    transparent 10px
+  );
+  opacity: 0.12;
+  animation: scanline-drift 0.6s linear infinite;
+}
+
+.pet-screen-flicker.intense {
+  opacity: 0.32;
+  animation-duration: 0.15s;
+}

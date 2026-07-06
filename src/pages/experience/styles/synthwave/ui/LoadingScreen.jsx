@@ -35,7 +35,10 @@ export default function LoadingScreen({ progress, fade, ready, showSkip, onSkip,
       <style>{`
         @keyframes scan { 0% { background-position: 0 0; } 100% { background-position: 0 40px; } }
         @keyframes flicker { 0%, 92%, 100% { opacity: 1; } 94% { opacity: 0.4; } 96% { opacity: 0.85; } }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes glowPulse {
+          0%, 100% { box-shadow: 0 0 10px rgba(255,60,142,0.12); }
+          50% { box-shadow: 0 0 18px rgba(255,60,142,0.28); }
+        }
       `}</style>
 
       <div style={styles.scanlines} />
@@ -56,50 +59,55 @@ export default function LoadingScreen({ progress, fade, ready, showSkip, onSkip,
         github
       </a>
 
-      <div style={styles.panel}>
-        <div style={styles.panelHeader}>
-          <span style={styles.dot} />
-          <span style={styles.headerText}>raphaelmouallem.github.io</span>
-          <span style={styles.headerText}>boot sequence</span>
-        </div>
+      <div style={styles.stack}>
+        <div style={styles.panel}>
+          <div style={styles.panelHeader}>
+            <span style={styles.dot} />
+            <span style={styles.domainText}>raphaelmouallem.github.io</span>
+            <span style={styles.bootBadge}>boot sequence</span>
+          </div>
 
-        <div style={styles.body}>
-          {ready ? (
-            <div style={styles.enterRow}>
-              <button
-                style={{ ...styles.enterBtn, ...(enterHover ? styles.enterBtnHover : {}) }}
-                onMouseEnter={() => setEnterHover(true)}
-                onMouseLeave={() => setEnterHover(false)}
-                onClick={onEnter}
-              >
-                enter ↓
-              </button>
+          <div style={styles.body}>
+            {ready ? (
+              <div style={styles.enterRow}>
+                <button
+                  style={{ ...styles.enterBtn, ...(enterHover ? styles.enterBtnHover : {}) }}
+                  onMouseEnter={() => setEnterHover(true)}
+                  onMouseLeave={() => setEnterHover(false)}
+                  onClick={onEnter}
+                >
+                  enter
+                </button>
+              </div>
+            ) : (
+              <div style={styles.loadingBlock}>
+                <div style={styles.pctRow}>
+                  <span style={styles.pct}>{pct}</span>
+                  <span style={styles.pctSign}>%</span>
+                </div>
+
+                <div style={styles.barTrack}>
+                  <div style={{ ...styles.barFill, width: `${Math.min(progress, 100)}%` }} />
+                </div>
+              </div>
+            )}
+
+            <div style={styles.tipRow}>
+              <span style={styles.tipLabel}>{'>'}</span>
+              <span style={{ ...styles.tipText, opacity: tipFade ? 1 : 0 }}>{TIPS[tip]}</span>
             </div>
-          ) : (
-            <>
-              <div style={styles.pctRow}>
-                <span style={styles.pct}>{pct}</span>
-                <span style={styles.pctSign}>%</span>
-              </div>
-
-              <div style={styles.barTrack}>
-                <div style={{ ...styles.barFill, width: `${Math.min(progress, 100)}%` }} />
-              </div>
-            </>
-          )}
-
-          <div style={styles.tipRow}>
-            <span style={styles.tipLabel}>{'>'}</span>
-            <span style={{ ...styles.tipText, opacity: tipFade ? 1 : 0 }}>{TIPS[tip]}</span>
           </div>
         </div>
-      </div>
 
-      {showSkip && (
-        <button style={styles.skipBtn} onClick={onSkip}>
+        <button
+          style={{ ...styles.skipBtn, opacity: showSkip ? 1 : 0, pointerEvents: showSkip ? 'auto' : 'none' }}
+          onClick={onSkip}
+          tabIndex={showSkip ? 0 : -1}
+          aria-hidden={!showSkip}
+        >
           skip intro — use lightweight version
         </button>
-      )}
+      </div>
     </div>
   )
 }
@@ -111,12 +119,16 @@ const styles = {
     zIndex: 1000,
     background: '#0b0617',
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'hidden',
     transition: 'opacity 0.6s ease',
     fontFamily: '"JetBrains Mono", "Space Mono", monospace',
+  },
+  stack: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     gap: '28px',
   },
   scanlines: {
@@ -152,7 +164,7 @@ const styles = {
   panel: {
     position: 'relative',
     zIndex: 1,
-    width: '340px',
+    width: '360px',
     background: 'rgba(20,8,32,0.6)',
     border: '1px solid rgba(255,124,193,0.25)',
     borderRadius: '4px',
@@ -161,7 +173,7 @@ const styles = {
   panelHeader: {
     display: 'flex',
     alignItems: 'center',
-    gap: '8px',
+    gap: '10px',
     padding: '10px 14px',
     borderBottom: '1px solid rgba(255,124,193,0.15)',
   },
@@ -173,19 +185,35 @@ const styles = {
     animation: 'flicker 3s ease-in-out infinite',
     flexShrink: 0,
   },
-  headerText: {
+  domainText: {
     fontSize: '0.65rem',
-    letterSpacing: '0.2em',
-    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
     color: 'rgba(255,255,255,0.35)',
     flex: 1,
+    minWidth: 0,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
+  bootBadge: {
+    fontSize: '0.6rem',
+    letterSpacing: '0.15em',
+    textTransform: 'uppercase',
+    color: 'rgba(255,124,193,0.5)',
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
   },
   body: {
     padding: '24px 20px',
-    minHeight: '108px',
+    height: '160px',
+    boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+  },
+  loadingBlock: {
+    display: 'flex',
+    flexDirection: 'column',
   },
   pctRow: {
     display: 'flex',
@@ -248,16 +276,14 @@ const styles = {
     fontSize: '0.7rem',
     letterSpacing: '0.1em',
     cursor: 'pointer',
-    animation: 'fadeUp 0.4s ease',
     textDecoration: 'underline',
     textDecorationColor: 'rgba(255,255,255,0.15)',
-    transition: 'color 0.2s ease',
+    transition: 'color 0.2s ease, opacity 0.4s ease',
   },
   enterRow: {
     display: 'flex',
     justifyContent: 'center',
     padding: '8px 0',
-    animation: 'fadeUp 0.4s ease',
   },
   enterBtn: {
     background:
@@ -272,11 +298,13 @@ const styles = {
     padding: '10px 28px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
+    animation: 'glowPulse 2.4s ease-in-out infinite',
   },
   enterBtnHover: {
     background:
       'linear-gradient(135deg, rgba(255,122,60,0.22), rgba(255,60,142,0.22), rgba(177,74,255,0.22))',
     border: '1px solid rgba(255,124,193,0.7)',
+    animation: 'none',
     boxShadow: '0 0 16px rgba(255,60,142,0.25)',
   },
 }

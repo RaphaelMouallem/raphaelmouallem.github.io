@@ -239,7 +239,7 @@ const styles = {
   eyebrowMobile: {
     writingMode: 'horizontal-tb',
     transform: 'none',
-    fontSize: '0.75rem',
+    fontSize: '1.5rem',
     letterSpacing: '0.18em',
     paddingTop: 0,
   },

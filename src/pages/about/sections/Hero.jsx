@@ -4,10 +4,14 @@ import { useMouseDrift } from '../hooks/useMouseDrift'
 import HeroLandscape from '../assets/HeroLandscape'
 import ScrollArrow from '../assets/ScrollArrow'
 import { easeOut } from '../motion'
+import ScrambleText from '../components/ScrambleText'
+import InkUnderline from '../components/InkUnderline'
+import { useState } from 'react'
 
 export default function Hero() {
   const { intro } = useContent()
   const drift = useMouseDrift()
+  const [nameSettled, setNameSettled] = useState(false)
 
   return (
     <section id="hero" style={styles.hero}>
@@ -29,6 +33,7 @@ export default function Hero() {
         >
           raphaelmouallem.github.io
         </motion.p>
+        <InkUnderline delay={nameSettled ? 0.1 : 999} />
 
         <motion.h1
           style={styles.name}
@@ -36,7 +41,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: easeOut, delay: 0.1 }}
         >
-          {intro.name}
+          <ScrambleText text={intro.name} onDone={() => setNameSettled(true)} />
         </motion.h1>
 
         <motion.p

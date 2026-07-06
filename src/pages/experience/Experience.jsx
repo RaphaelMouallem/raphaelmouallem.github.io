@@ -4,11 +4,13 @@ import Camera from './scene/Camera'
 import World from './scene/World'
 import LoadingScreen from './ui/LoadingScreen'
 import { SceneReadyTracker } from './scene/SceneReadyTracker'
+import { useNavigate } from 'react-router-dom'
 
 export default function Experience() {
+  const navigate = useNavigate()
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-      <LoadingScreen />
+      <LoadingScreen onSkip={() => navigate('/about')} />
       <Canvas>
         <ambientLight intensity={1} />
         <SceneReadyTracker />

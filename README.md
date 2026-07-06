@@ -11,6 +11,7 @@ Personal portfolio — a scroll-driven freefall through a procedurally generated
 The page opens in a room, looking up. Scrolling drops you into freefall — scroll speed controls fall speed, scroll up to rise back. Portfolio content (about, projects, contact) drifts past as cards while you fall, ending in an underwater scene at the bottom.
 
 Two experiences ship from the same codebase:
+
 - **Desktop** (`/`, `/3d`) — full 3D scene built with React Three Fiber, synthwave-themed
 - **Mobile** (`/`, `/about`) — a lighter Japandi-style static layout, chosen automatically on mobile devices for WebGL reliability
 

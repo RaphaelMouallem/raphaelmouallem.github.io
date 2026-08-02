@@ -38,7 +38,7 @@ export default function UI() {
 
     const about = sections.find((s) => s.label === 'About')
     if (about && o >= about.from && o < about.to)
-      setAboutCard(Math.min(3, Math.floor(norm(o, about.from, about.to) * 4)))
+      setAboutCard(Math.min(4, Math.floor(norm(o, about.from, about.to) * 5)))
   })
 
   return (

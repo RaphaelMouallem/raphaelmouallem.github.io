@@ -59,6 +59,38 @@
     stroke var(--theme-transition-duration) var(--theme-transition-ease);
 }
 
+/* Hero celestial body — sun by default, moon in dark mode */
+.celestial-sun {
+  opacity: 1;
+  transition: opacity var(--theme-transition-duration) var(--theme-transition-ease);
+}
+.celestial-moon {
+  opacity: 0;
+  transition: opacity var(--theme-transition-duration) var(--theme-transition-ease);
+}
+
+@media (prefers-color-scheme: dark) {
+  .celestial-sun {
+    opacity: 0;
+  }
+  .celestial-moon {
+    opacity: 1;
+  }
+}
+
+html[data-theme='light'] .celestial-sun {
+  opacity: 1;
+}
+html[data-theme='light'] .celestial-moon {
+  opacity: 0;
+}
+html[data-theme='dark'] .celestial-sun {
+  opacity: 0;
+}
+html[data-theme='dark'] .celestial-moon {
+  opacity: 1;
+}
+
 @keyframes blink {
   0%,
   100% {

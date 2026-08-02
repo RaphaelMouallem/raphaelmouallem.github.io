@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useContent } from '@/hooks/useContent'
 import Section from '../components/Section'
 import SeigaihaField from '../assets/SeigaihaField'
@@ -39,6 +40,13 @@ export default function Footer() {
                 {l.label}
               </a>
             ))}
+          </div>
+          <div style={styles.column}>
+            <p style={styles.columnLabel}>{footer.exploration.label}</p>
+            <p style={styles.explorationCopy}>{footer.exploration.description}</p>
+            <Link to={footer.exploration.href} data-cursor="hover" style={styles.explorationCta}>
+              {footer.exploration.cta}
+            </Link>
           </div>
         </div>
 
@@ -103,6 +111,22 @@ const styles = {
     color: 'var(--accent)',
     margin: '0 0 4px',
   },
+  explorationCopy: {
+    fontFamily: 'var(--font-body)',
+    fontSize: '0.85rem',
+    color: 'var(--ink-soft)',
+    margin: '0 0 2px',
+  },
+  explorationCta: {
+    fontFamily: 'var(--font-body)',
+    fontSize: '0.9rem',
+    fontWeight: 600,
+    color: 'var(--accent)',
+    textDecoration: 'none',
+    display: 'inline-block',
+    borderRadius: '999px',
+    width: 'fit-content',
+  },
   link: {
     fontFamily: 'var(--font-body)',
     fontSize: '0.9rem',
@@ -110,7 +134,6 @@ const styles = {
     textDecoration: 'none',
     display: 'inline-block',
     borderRadius: '999px',
-    padding: '0px 10px',
     width: 'fit-content',
   },
   hanko: {

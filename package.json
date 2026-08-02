@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "prerender": "node scripts/prerender.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",

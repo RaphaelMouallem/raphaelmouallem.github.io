@@ -80,6 +80,24 @@ export default function FooterCard({ visible, isMobile }) {
               </a>
             ))}
           </div>
+          <a
+            href={footer.backTo2D.href}
+            style={{
+              display: 'inline-block',
+              fontFamily: MONO,
+              fontSize: 11,
+              color: '#ffcc66',
+              textDecoration: 'none',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              borderBottom: '1px solid rgba(255,204,102,0.4)',
+              paddingBottom: 2,
+              marginBottom: 20,
+              pointerEvents: 'all',
+            }}
+          >
+            {footer.backTo2D.label}
+          </a>
           <p
             style={{
               fontFamily: MONO,

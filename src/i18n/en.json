@@ -7,9 +7,19 @@
 
   "about": {
     "bio": "I'm a software engineer based in Lebanon, currently pursuing a Master's in Web Development. I build things across the stack — from React frontends and Spring Boot backends to PyTorch models trained from scratch. I like working on problems that sit at the intersection of systems, AI, and good design.",
+    "experience": [
+      {
+        "role": "FinTech Intern — SoftManagement",
+        "period": "2025 (Jun - Jul)"
+      },
+      {
+        "role": "Software Engineer — Everteam Intalio",
+        "period": "2026 - present"
+      }
+    ],
     "education": [
-      { "degree": "Master's 2 — Web Development", "period": "2025 - present" },
-      { "degree": "Master's 1 — Computer Science", "period": "2024 - 2026" },
+      { "degree": "Master's 2 — Web Development", "period": "2025 - 2026" },
+      { "degree": "Master's 1 — Computer Science", "period": "2024 - 2025" },
       { "degree": "Bachelor's — Computer Science", "period": "2021 - 2024" }
     ],
     "skills": {
@@ -94,6 +104,16 @@
   "footer": {
     "heading": "You made it!",
     "subheading": "That's everything — thanks for scrolling all the way down.",
+    "backTo2D": {
+      "label": "Back to 2D",
+      "href": "/"
+    },
+    "exploration": {
+      "label": "Explore",
+      "description": "Prefer the full experience?",
+      "cta": "Enter exploration mode",
+      "href": "/3d"
+    },
     "sections": [
       { "label": "Home", "href": "#hero" },
       { "label": "About", "href": "#about" },

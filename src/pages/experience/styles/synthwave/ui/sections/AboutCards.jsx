@@ -14,6 +14,11 @@ import { useScrollLock } from '@/ui/components/utils'
 const variants = {
   bio: { hidden: { x: -60, opacity: 0 }, show: { x: 0, opacity: 1 }, exit: { x: -40, opacity: 0 } },
   edu: { hidden: { x: 60, opacity: 0 }, show: { x: 0, opacity: 1 }, exit: { x: 40, opacity: 0 } },
+  exp: {
+    hidden: { y: -40, opacity: 0 },
+    show: { x: 0, y: 0, opacity: 1 },
+    exit: { y: -30, opacity: 0 },
+  },
   stack: {
     hidden: { y: 50, opacity: 0 },
     show: { x: 0, y: 0, opacity: 1 },
@@ -28,7 +33,7 @@ const variants = {
 
 const t = (delay = 0) => ({ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] })
 
-function Card({ v, delay, accent, children }) {
+function Card({ v, delay, accent, full, children }) {
   return (
     <motion.div
       variants={variants[v]}
@@ -36,7 +41,7 @@ function Card({ v, delay, accent, children }) {
       animate="show"
       exit="exit"
       transition={t(delay)}
-      style={{ ...glass(accent), padding: '20px' }}
+      style={{ ...glass(accent), padding: '20px', ...(full ? { gridColumn: '1 / -1' } : {}) }}
     >
       {children}
     </motion.div>
@@ -56,6 +61,45 @@ function BioContent({ about }) {
     >
       {about.bio}
     </p>
+  )
+}
+
+function ExpContent({ about }) {
+  return (
+    <div style={{ display: 'flex', gap: 18 }}>
+      {about.experience.map((e, i) => (
+        <div
+          key={e.role}
+          style={{
+            flex: 1,
+            paddingLeft: i === 0 ? 0 : 14,
+            borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.15)',
+          }}
+        >
+          <span
+            style={{
+              display: 'block',
+              fontFamily: MONO,
+              fontSize: 10,
+              color: 'rgba(255,255,255,0.35)',
+              marginBottom: 4,
+            }}
+          >
+            {e.period}
+          </span>
+          <span
+            style={{
+              fontFamily: MONO,
+              fontSize: 11,
+              color: 'rgba(255,255,255,0.85)',
+              lineHeight: 1.5,
+            }}
+          >
+            {e.role}
+          </span>
+        </div>
+      ))}
+    </div>
   )
 }
 
@@ -211,56 +255,69 @@ export default function AboutCards({ visible, isMobile, scrollCard }) {
             <>
               <CollapsibleCard
                 id={0}
-                label="whoami"
-                accent={ac(0)}
+                label="experience"
+                accent={ac(3)}
                 open={openCard === 0}
                 onToggle={() => setOpenCard((o) => (o === 0 ? null : 0))}
+              >
+                <ExpContent about={about} />
+              </CollapsibleCard>
+              <CollapsibleCard
+                id={1}
+                label="whoami"
+                accent={ac(0)}
+                open={openCard === 1}
+                onToggle={() => setOpenCard((o) => (o === 1 ? null : 1))}
               >
                 <BioContent about={about} />
               </CollapsibleCard>
               <CollapsibleCard
-                id={1}
+                id={2}
                 label="education"
                 accent={ac(1)}
-                open={openCard === 1}
-                onToggle={() => setOpenCard((o) => (o === 1 ? null : 1))}
+                open={openCard === 2}
+                onToggle={() => setOpenCard((o) => (o === 2 ? null : 2))}
               >
                 <EduContent about={about} />
               </CollapsibleCard>
               <CollapsibleCard
-                id={2}
+                id={3}
                 label="stack"
                 accent={ac(2)}
-                open={openCard === 2}
-                onToggle={() => setOpenCard((o) => (o === 2 ? null : 2))}
+                open={openCard === 3}
+                onToggle={() => setOpenCard((o) => (o === 3 ? null : 3))}
               >
                 <StackContent about={about} />
               </CollapsibleCard>
               <CollapsibleCard
-                id={3}
+                id={4}
                 label="this site"
                 accent={ac(3)}
-                open={openCard === 3}
-                onToggle={() => setOpenCard((o) => (o === 3 ? null : 3))}
+                open={openCard === 4}
+                onToggle={() => setOpenCard((o) => (o === 4 ? null : 4))}
               >
                 <SiteContent site={site} />
               </CollapsibleCard>
             </>
           ) : (
             <>
-              <Card key="bio" v="bio" delay={0} accent={ac(0)}>
+              <Card key="exp" v="exp" delay={0} accent={ac(3)} full>
+                <Eyebrow color={ac(3)}>experience</Eyebrow>
+                <ExpContent about={about} />
+              </Card>
+              <Card key="bio" v="bio" delay={0.08} accent={ac(0)}>
                 <Eyebrow color={ac(0)}>whoami</Eyebrow>
                 <BioContent about={about} />
               </Card>
-              <Card key="edu" v="edu" delay={0.1} accent={ac(1)}>
+              <Card key="edu" v="edu" delay={0.16} accent={ac(1)}>
                 <Eyebrow color={ac(1)}>education</Eyebrow>
                 <EduContent about={about} />
               </Card>
-              <Card key="stack" v="stack" delay={0.18} accent={ac(2)}>
+              <Card key="stack" v="stack" delay={0.24} accent={ac(2)}>
                 <Eyebrow color={ac(2)}>stack</Eyebrow>
                 <StackContent about={about} />
               </Card>
-              <Card key="site" v="site" delay={0.26} accent={ac(3)}>
+              <Card key="site" v="site" delay={0.32} accent={ac(3)}>
                 <Eyebrow color={ac(3)}>this site</Eyebrow>
                 <SiteContent site={site} />
               </Card>

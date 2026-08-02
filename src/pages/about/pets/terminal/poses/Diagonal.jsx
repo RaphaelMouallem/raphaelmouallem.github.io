@@ -67,6 +67,7 @@ export default function Diagonal({ variant = 'front', facing = 'left', face = '^
                 fontWeight="700"
                 fill="var(--ink)"
                 textAnchor="middle"
+                style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
               >
                 {face}
               </text>

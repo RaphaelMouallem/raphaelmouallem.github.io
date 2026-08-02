@@ -43,6 +43,8 @@ export default function Front({ face = '^_^', glitching = false }) {
           fontSize: '1.4rem',
           fontWeight: 700,
           letterSpacing: '0.05em',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
         }}
       >
         {face}

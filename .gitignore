@@ -36,3 +36,6 @@ playwright/.cache/
 
 # Build analysis
 stats.html
+
+# Design references (copyrighted source material, not for the repo)
+design/moodboards/

@@ -29,7 +29,48 @@ export default function Cursor() {
   const elRadius = useSpring(20, SPRING)
 
   useEffect(() => {
+    const hoverTargetRef = { current: null }
+    const pointerRef = { current: { x: -100, y: -100 } }
+    let rafId = null
+
+    const applyHoverTarget = (target, clientX, clientY) => {
+      const rect = target.getBoundingClientRect()
+      const cx = rect.left + rect.width / 2
+      const cy = rect.top + rect.height / 2
+
+      const PULL = 0.25
+      elX.set(cx + (clientX - cx) * PULL)
+      elY.set(cy + (clientY - cy) * PULL)
+
+      elW.set(rect.width + 12)
+      elH.set(rect.height + 12)
+      const style = window.getComputedStyle(target)
+      const parsedRadius = parseFloat(style.borderRadius) || 0
+      elRadius.set(parsedRadius > rect.height / 2 ? (rect.height + 12) / 2 : parsedRadius + 6)
+    }
+
+    const HOVER_TOLERANCE = 40
+    const withinTolerance = (rect, clientX, clientY) => {
+      const cx = rect.left + rect.width / 2
+      const cy = rect.top + rect.height / 2
+      const dist = Math.hypot(clientX - cx, clientY - cy)
+      const radius = Math.max(rect.width, rect.height) / 2
+      return dist <= radius + HOVER_TOLERANCE
+    }
+
+    const releaseHover = (clientX, clientY) => {
+      hoverTargetRef.current = null
+      setHovering(false)
+      setLabel(null)
+      elX.set(clientX)
+      elY.set(clientY)
+      elW.set(40)
+      elH.set(40)
+      elRadius.set(20)
+    }
+
     const updateCursor = (clientX, clientY) => {
+      pointerRef.current = { x: clientX, y: clientY }
       x.set(clientX)
       y.set(clientY)
 
@@ -43,21 +84,10 @@ export default function Cursor() {
       setLabel(labelTarget ? labelTarget.getAttribute('data-cursor-label') : null)
       setHovering(!!hoverTarget)
       setGrabbing(!!grabTarget && !hoverTarget)
+      hoverTargetRef.current = hoverTarget || null
 
       if (hoverTarget) {
-        const rect = hoverTarget.getBoundingClientRect()
-        const cx = rect.left + rect.width / 2
-        const cy = rect.top + rect.height / 2
-
-        const PULL = 0.25
-        elX.set(cx + (clientX - cx) * PULL)
-        elY.set(cy + (clientY - cy) * PULL)
-
-        elW.set(rect.width + 12)
-        elH.set(rect.height + 12)
-        const style = window.getComputedStyle(hoverTarget)
-        const parsedRadius = parseFloat(style.borderRadius) || 0
-        elRadius.set(parsedRadius > rect.height / 2 ? (rect.height + 12) / 2 : parsedRadius + 6)
+        applyHoverTarget(hoverTarget, clientX, clientY)
       } else if (grabTarget) {
         elX.set(clientX)
         elY.set(clientY)
@@ -89,12 +119,28 @@ export default function Cursor() {
       updateCursor(clientX, clientY)
     }
 
+    const tick = () => {
+      const target = hoverTargetRef.current
+      if (target && document.body.contains(target)) {
+        const rect = target.getBoundingClientRect()
+        const { x: px, y: py } = pointerRef.current
+        if (withinTolerance(rect, px, py)) {
+          applyHoverTarget(target, px, py)
+        } else {
+          releaseHover(px, py)
+        }
+      }
+      rafId = requestAnimationFrame(tick)
+    }
+    rafId = requestAnimationFrame(tick)
+
     window.addEventListener('mousemove', handleMove)
     window.addEventListener('scroll', handleScroll, { passive: true })
 
     return () => {
       window.removeEventListener('mousemove', handleMove)
       window.removeEventListener('scroll', handleScroll)
+      cancelAnimationFrame(rafId)
     }
   }, [x, y, elX, elY, elW, elH, elRadius, mouseCoords])
 

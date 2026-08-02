@@ -100,7 +100,11 @@ export default function LoadingScreen({ progress, fade, ready, showSkip, onSkip,
         </div>
 
         <button
-          style={{ ...styles.skipBtn, opacity: showSkip ? 1 : 0, pointerEvents: showSkip ? 'auto' : 'none' }}
+          style={{
+            ...styles.skipBtn,
+            opacity: showSkip ? 1 : 0,
+            pointerEvents: showSkip ? 'auto' : 'none',
+          }}
           onClick={onSkip}
           tabIndex={showSkip ? 0 : -1}
           aria-hidden={!showSkip}

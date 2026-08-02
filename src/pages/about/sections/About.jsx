@@ -39,6 +39,29 @@ export default function About() {
         <div style={styles.mobileStack}>
           <CollapsibleCard
             mobile={true}
+            title="Experience"
+            glyph="職"
+            open={openCard === 'experience'}
+            onToggle={() => toggle('experience')}
+          >
+            <div style={styles.timeline}>
+              {about.experience.map((e, i) => (
+                <div key={i} style={styles.timelineEntry}>
+                  <div style={styles.timelineLeft}>
+                    <div style={styles.timelineDot} />
+                    {i < about.experience.length - 1 && <div style={styles.timelineLine} />}
+                  </div>
+                  <div style={styles.timelineContent}>
+                    <span style={styles.eduPeriod}>{e.period}</span>
+                    <span style={styles.eduDegree}>{e.role}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CollapsibleCard>
+
+          <CollapsibleCard
+            mobile={true}
             title="Education"
             glyph="学"
             open={openCard === 'education'}
@@ -121,6 +144,37 @@ export default function About() {
           whileInView="show"
           viewport={{ once: true, margin: '-60px' }}
         >
+          <motion.div variants={item} style={{ gridColumn: '1 / -1' }}>
+            <PaperCard style={styles.cardRaw}>
+              <CollapsibleCard mobile={false} title="Experience">
+                <div style={styles.hTimeline}>
+                  <div style={styles.hTimelineTrack}>
+                    <div style={styles.hTimelineLine} />
+                    {about.experience.map((e, i) => (
+                      <div key={i} style={styles.hTimelineDot} />
+                    ))}
+                  </div>
+                  <div style={styles.hTimelineLabels}>
+                    {about.experience.map((e, i) => {
+                      const last = about.experience.length - 1
+                      const align = i === 0 ? 'flex-start' : i === last ? 'flex-end' : 'center'
+                      const textAlign = i === 0 ? 'left' : i === last ? 'right' : 'center'
+                      return (
+                        <div
+                          key={i}
+                          style={{ ...styles.hTimelineEntry, alignItems: align, textAlign }}
+                        >
+                          <span style={styles.eduPeriod}>{e.period}</span>
+                          <span style={styles.eduDegree}>{e.role}</span>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              </CollapsibleCard>
+            </PaperCard>
+          </motion.div>
+
           <motion.div variants={item} style={styles.eduCol}>
             <PaperCard style={styles.cardRaw}>
               <CollapsibleCard mobile={false} title="Education">
@@ -429,5 +483,46 @@ const styles = {
     flexDirection: 'column',
     gap: 2,
     paddingBottom: 20,
+  },
+  hTimeline: {
+    paddingTop: '0.5em',
+  },
+  hTimelineTrack: {
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 8,
+  },
+  hTimelineLine: {
+    position: 'absolute',
+    left: 4,
+    right: 4,
+    top: '50%',
+    height: 1,
+    background: 'var(--accent)',
+    opacity: 0.2,
+    transform: 'translateY(-50%)',
+  },
+  hTimelineDot: {
+    width: 8,
+    height: 8,
+    borderRadius: '50%',
+    border: '1.5px solid var(--accent)',
+    background: 'var(--paper-soft)',
+    position: 'relative',
+    zIndex: 1,
+  },
+  hTimelineLabels: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: 10,
+    gap: 12,
+  },
+  hTimelineEntry: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 2,
+    maxWidth: '45%',
   },
 }

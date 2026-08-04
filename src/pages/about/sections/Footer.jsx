@@ -44,7 +44,12 @@ export default function Footer() {
           <div style={styles.column}>
             <p style={styles.columnLabel}>{footer.exploration.label}</p>
             <p style={styles.explorationCopy}>{footer.exploration.description}</p>
-            <Link to={footer.exploration.href} data-cursor="hover" style={styles.explorationCta}>
+            <Link
+              to={footer.exploration.href}
+              data-cursor="hover"
+              className="press-tap"
+              style={styles.explorationCta}
+            >
               {footer.exploration.cta}
             </Link>
           </div>
@@ -124,8 +129,8 @@ const styles = {
     color: 'var(--accent)',
     textDecoration: 'none',
     display: 'inline-block',
-    borderRadius: '999px',
     width: 'fit-content',
+    borderRadius: '999px',
   },
   link: {
     fontFamily: 'var(--font-body)',
@@ -134,6 +139,7 @@ const styles = {
     textDecoration: 'none',
     display: 'inline-block',
     borderRadius: '999px',
+    padding: '0px 10px',
     width: 'fit-content',
   },
   hanko: {

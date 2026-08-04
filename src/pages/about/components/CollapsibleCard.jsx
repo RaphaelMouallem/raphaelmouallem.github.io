@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
+import { easeOut } from '../motion'
 
 export default function CollapsibleCard({ mobile, title, glyph, open, onToggle, children }) {
   if (!mobile) {
@@ -12,7 +13,13 @@ export default function CollapsibleCard({ mobile, title, glyph, open, onToggle, 
 
   return (
     <div style={styles.wrapper}>
-      <button onClick={onToggle} style={styles.header} data-cursor="hover">
+      <motion.button
+        onClick={onToggle}
+        style={styles.header}
+        data-cursor="hover"
+        whileTap={{ scale: 0.98 }}
+        transition={{ duration: 0.15, ease: easeOut }}
+      >
         <span style={styles.glyphRow}>
           {glyph && <span style={styles.glyphCircle}>{glyph}</span>}
           <span style={styles.cardTag}>{title}</span>
@@ -24,7 +31,7 @@ export default function CollapsibleCard({ mobile, title, glyph, open, onToggle, 
         >
           +
         </motion.span>
-      </button>
+      </motion.button>
       <AnimatePresence initial={false}>
         {open && (
           <motion.div

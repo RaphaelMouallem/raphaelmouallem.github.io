@@ -23,10 +23,10 @@ export default function NotFoundPage() {
             There's nothing at this address. It may have moved, or never existed.
           </p>
           <div style={styles.links}>
-            <Link to="/" style={styles.link}>
+            <Link to="/" className="press-tap" style={styles.link}>
               Back home
             </Link>
-            <Link to="/3d" style={styles.link}>
+            <Link to="/3d" className="press-tap" style={styles.link}>
               Enter exploration mode
             </Link>
           </div>

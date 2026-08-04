@@ -5,6 +5,7 @@ function hash(x, y) {
   return n - Math.floor(n)
 }
 
+const SEED = Math.random() * 10000
 
 const RADII = [11, 12, 13]
 const COL_STEP = 20
@@ -18,12 +19,12 @@ const CRATERS = []
   for (let y = MOON_CY - MOON_R; y <= MOON_CY + MOON_R; y += ROW_STEP) {
     const offset = row % 2 === 0 ? 0 : COL_STEP / 2
     for (let x = MOON_CX - MOON_R + offset; x <= MOON_CX + MOON_R; x += COL_STEP) {
-      if (hash(x, y) < 0.5) continue
-
-      const roll = hash(x + 5, y + 5)
+      if (hash(x + SEED, y + SEED) < 0.4) continue
+ 
+      const roll = hash(x + SEED + 5, y + SEED + 5)
       const variant = roll < 0.3 ? 'star' : roll < 0.45 ? 'stripe' : 'plain'
-      const r = RADII[Math.floor(hash(x + 3, y + 3) * RADII.length)]
-      const opacity = 0.5 + hash(x + 9, y + 9) * 0.5
+      const r = RADII[Math.floor(hash(x + SEED + 3, y + SEED + 3) * RADII.length)]
+      const opacity = 0.5 + hash(x + SEED + 9, y + SEED + 9) * 0.5
       CRATERS.push({ x, y, r, variant, opacity })
     }
     row++

@@ -34,7 +34,12 @@ export default function Projects() {
           const isOpen = openId === p.id
           return (
             <motion.div key={p.id} variants={rowVariants} style={styles.row}>
-              <button onClick={() => setOpenId(isOpen ? null : p.id)} style={styles.header}>
+              <motion.button
+                onClick={() => setOpenId(isOpen ? null : p.id)}
+                style={styles.header}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.15, ease: easeOut }}
+              >
                 <span style={{ ...styles.stamp, ...(isOpen ? styles.stampOpen : {}) }}>
                   {String(i + 1).padStart(2, '0')}
                 </span>
@@ -51,7 +56,7 @@ export default function Projects() {
                     +
                   </motion.span>
                 </span>
-              </button>
+              </motion.button>
 
               <AnimatePresence initial={false}>
                 {isOpen && (

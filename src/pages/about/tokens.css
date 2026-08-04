@@ -189,11 +189,28 @@ body::before {
   border-radius: 999px;
   padding: 0 10px;
   width: fit-content;
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .footer-link:hover {
   color: var(--ink);
+}
+
+.footer-link:active {
+  transform: scale(0.97);
+}
+
+/* Global press-feedback for plain anchors that shouldn't inherit
+   footer-link's pill padding/border-radius. */
+.press-tap {
+  display: inline-block;
+  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.press-tap:active {
+  transform: scale(0.97);
 }
 
 .terminal-body::-webkit-scrollbar {

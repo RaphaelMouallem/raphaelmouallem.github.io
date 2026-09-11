@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { createMoodEngine } from './moodEngine'
 
 const FLICKER_MOODS = ['glitch', 'loading']
@@ -6,11 +6,10 @@ const IDLE_RANGE = [5000, 10000]
 const FLICKER_DURATION = 400
 
 export function useMoodEngine(config) {
-  const engineRef = useRef(null)
-  if (!engineRef.current) engineRef.current = createMoodEngine(config)
-  const [state, setState] = useState(engineRef.current.getState())
+  const [engine] = useState(() => createMoodEngine(config))
+  const [state, setState] = useState(() => engine.getState())
 
-  const trigger = (mood) => setState(engineRef.current.trigger(mood))
+  const trigger = (mood) => setState(engine.trigger(mood))
 
   useEffect(() => {
     let idleTimer, revertTimer
@@ -18,9 +17,9 @@ export function useMoodEngine(config) {
       const [min, max] = IDLE_RANGE
       idleTimer = setTimeout(
         () => {
-          setState(engineRef.current.flicker(FLICKER_MOODS))
+          setState(engine.flicker(FLICKER_MOODS))
           revertTimer = setTimeout(() => {
-            setState(engineRef.current.revert())
+            setState(engine.revert())
             scheduleIdle()
           }, FLICKER_DURATION)
         },
@@ -32,7 +31,7 @@ export function useMoodEngine(config) {
       clearTimeout(idleTimer)
       clearTimeout(revertTimer)
     }
-  }, [])
+  }, [engine])
 
   return { ...state, trigger }
 }

@@ -8,7 +8,6 @@ import Projects from './sections/Projects'
 import Contact from './sections/Contact'
 import Footer from './sections/Footer'
 import WindField from './assets/WindField'
-import TerminalPet from './pets/terminal/TerminalPet'
 import TerminalPetInstance from './pets/terminal/TerminalPetInstance'
 
 export default function AboutPage() {

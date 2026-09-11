@@ -23,7 +23,7 @@ export default function TerminalPetInstance({ size = 80, spawnRef, style }) {
       onMoodTrigger={trigger}
       style={style}
     >
-      {({ facing, phase }) => (
+      {({ facing }) => (
         <div data-cursor="hover" data-cursor-label="> poke">
           <TerminalPet facing={facing} mood={mood} size={size} />
         </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useIsMobile } from '@/ui/components/utils'
 import { motion } from 'framer-motion'
 import { useContent } from '@/hooks/useContent'
@@ -23,9 +23,11 @@ export default function About() {
   const [openCard, setOpenCard] = useState(null)
   const toggle = (id) => setOpenCard((cur) => (cur === id ? null : id))
 
-  useEffect(() => {
+  const [prevMobile, setPrevMobile] = useState(mobile)
+  if (mobile !== prevMobile) {
+    setPrevMobile(mobile)
     if (!mobile) setOpenCard(null)
-  }, [mobile])
+  }
 
   return (
     <Section id="about" style={styles.section} data-cursor-label="about">

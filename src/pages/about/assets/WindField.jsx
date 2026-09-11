@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useIsMobile } from '@/ui/components/utils'
 
@@ -55,9 +55,8 @@ function generateWindArt() {
 }
 
 function WindStreak({ top, left, width, flip, opacity = 0.3, delay = 0, strokeWidth = 1.5 }) {
-  const artRef = useRef(null)
-  if (!artRef.current) artRef.current = generateWindArt()
-  const { paths, width: vw, height: vh, offsetX } = artRef.current
+  const [art] = useState(() => generateWindArt())
+  const { paths, width: vw, height: vh, offsetX } = art
 
   return (
     <motion.div

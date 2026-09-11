@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../about/tokens.css'
 import ThemeToggle from '../about/components/ThemeToggle'
-import PaperCard from '../about/components/PaperCard'
+import CharacterRain, { WATER_LINE_VH } from '../../assets/CharacterRain'
 
 export default function NotFoundPage() {
   return (
@@ -11,26 +11,28 @@ export default function NotFoundPage() {
         href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;800&family=Inter:wght@400;500;600&display=swap"
       />
 
+      <CharacterRain />
+
       <header style={styles.header}>
         <ThemeToggle />
       </header>
 
       <main style={styles.main}>
-        <PaperCard style={styles.card}>
-          <span style={styles.eyebrow}>404</span>
-          <h1 style={styles.heading}>Page not found</h1>
+        <div style={styles.content}>
+          <h1 style={styles.heading}>404</h1>
           <p style={styles.copy}>
             There's nothing at this address. It may have moved, or never existed.
           </p>
-          <div style={styles.links}>
-            <Link to="/" className="press-tap" style={styles.link}>
-              Back home
-            </Link>
-            <Link to="/3d" className="press-tap" style={styles.link}>
-              Enter exploration mode
-            </Link>
-          </div>
-        </PaperCard>
+        </div>
+
+        <div style={styles.actions}>
+          <Link to="/" className="press-tap" style={styles.link}>
+            Back home
+          </Link>
+          <Link to="/3d" className="press-tap" style={styles.link}>
+            Enter exploration mode
+          </Link>
+        </div>
       </main>
     </div>
   )
@@ -38,7 +40,9 @@ export default function NotFoundPage() {
 
 const styles = {
   page: {
+    position: 'relative',
     minHeight: '100vh',
+    overflow: 'hidden',
     background: 'var(--paper)',
     color: 'var(--ink)',
     fontFamily: 'var(--font-body)',
@@ -51,49 +55,53 @@ const styles = {
     zIndex: 10,
   },
   main: {
+    position: 'relative',
+    zIndex: 1,
     minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 24,
+    pointerEvents: 'none',
   },
-  card: {
-    maxWidth: 420,
-    textAlign: 'center',
-  },
-  eyebrow: {
-    display: 'block',
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.8rem',
-    letterSpacing: '0.14em',
-    textTransform: 'uppercase',
-    color: 'var(--accent)',
-    marginBottom: 10,
+  content: {
+    position: 'absolute',
+    left: '8%',
+    right: '8%',
+    top: '28vh',
+    maxWidth: 560,
+    pointerEvents: 'auto',
   },
   heading: {
     fontFamily: 'var(--font-display)',
-    fontSize: '1.8rem',
+    fontSize: 'clamp(3.5rem, 9vw, 6rem)',
     fontWeight: 800,
-    margin: '0 0 12px',
+    margin: '0 0 20px',
+    lineHeight: 1,
   },
   copy: {
     fontFamily: 'var(--font-body)',
-    fontSize: '0.95rem',
+    fontSize: '1rem',
     color: 'var(--ink-soft)',
-    margin: '0 0 28px',
-    lineHeight: 1.6,
+    margin: 0,
+    lineHeight: 1.7,
+    maxWidth: 460,
   },
-  links: {
+  actions: {
+    position: 'absolute',
+    left: '8%',
+    top: `calc(${WATER_LINE_VH}vh + 36px)`,
     display: 'flex',
-    gap: 20,
-    justifyContent: 'center',
+    gap: 24,
     flexWrap: 'wrap',
+    pointerEvents: 'auto',
   },
   link: {
     fontFamily: 'var(--font-body)',
-    fontSize: '0.9rem',
+    fontSize: '0.85rem',
     fontWeight: 600,
-    color: 'var(--accent)',
+    letterSpacing: '0.02em',
+    color: 'var(--ink)',
     textDecoration: 'none',
+    padding: '14px 26px',
+    borderRadius: 999,
+    border: '1px solid var(--border)',
+    background: 'var(--paper-raised)',
   },
 }

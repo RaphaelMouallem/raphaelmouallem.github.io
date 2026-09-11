@@ -38,19 +38,19 @@ function YinYangIcon({ theme }) {
 
 export default function ThemeToggle() {
   const { theme, toggle } = useTheme()
-  const magnetic = useMagnetic(8)
+    const { ref, x, y, onMouseMove, onMouseLeave } = useMagnetic(8)
 
   return (
     <motion.button
-      ref={magnetic.ref}
-      onMouseMove={magnetic.onMouseMove}
-      onMouseLeave={magnetic.onMouseLeave}
+      ref={ref}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
       onClick={toggle}
       data-cursor="hover"
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
       whileTap={{ scale: 0.92 }}
       transition={{ duration: 0.15, ease: easeOut }}
-      style={{ ...styles.button, x: magnetic.x, y: magnetic.y }}
+      style={{ ...styles.button, x, y }}
     >
       <YinYangIcon theme={theme} />
     </motion.button>

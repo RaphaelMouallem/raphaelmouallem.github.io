@@ -145,7 +145,7 @@ function validateEmail(v) {
 }
 
 export function useTerminal({ prompt, bootLines, onSend, onTheme }) {
-  const [booted, setBooted] = useState(false)
+  const [, setBooted] = useState(false)
   const [phase, setPhase] = useState('boot')
   const [step, setStep] = useState(0)
   const [values, setValues] = useState({ name: '', message: '', email: '' })
@@ -164,7 +164,7 @@ export function useTerminal({ prompt, bootLines, onSend, onTheme }) {
       setTimeout(() => setPhase('form'), 100)
     }, 120)
     return () => clearTimeout(t)
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps -- boot sequence intentionally runs once on mount only
 
   useEffect(() => {
     if (phase === 'form' || phase === 'parser') {

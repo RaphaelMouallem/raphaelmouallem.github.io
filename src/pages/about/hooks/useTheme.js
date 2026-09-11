@@ -22,21 +22,18 @@ export function useTheme() {
     }
   }, [theme])
 
-  const [resolved, setResolved] = useState(() =>
+  const [systemTheme, setSystemTheme] = useState(() =>
     window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   )
 
   useEffect(() => {
-    if (theme) {
-      setResolved(theme)
-      return
-    }
     const mq = window.matchMedia('(prefers-color-scheme: dark)')
-    const update = () => setResolved(mq.matches ? 'dark' : 'light')
-    update()
+    const update = () => setSystemTheme(mq.matches ? 'dark' : 'light')
     mq.addEventListener('change', update)
     return () => mq.removeEventListener('change', update)
-  }, [theme])
+  }, [])
+
+  const resolved = theme ?? systemTheme
 
   const toggle = () => {
     setTheme((current) => {

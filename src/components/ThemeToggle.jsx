@@ -1,7 +1,7 @@
 import { useTheme } from '../hooks/useTheme'
 import { useMagnetic } from '../hooks/useMagnetic'
 import { motion } from 'framer-motion'
-import { easeOut } from '../motion'
+import { easeOut } from '@/styles/motion'
 
 const DAY = 'var(--paper-soft)'
 const NIGHT = 'var(--ink)'

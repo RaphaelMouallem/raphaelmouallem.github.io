@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { useIsMobile } from '@/ui/components/utils'
+import { useIsMobile } from '@/features/terminal-pet/utils'
 import { motion } from 'framer-motion'
 import { useContent } from '@/hooks/useContent'
-import Section from '../components/Section'
-import PaperCard from '../components/PaperCard'
-import { JAPANDI } from '../motion'
-import CollapsibleCard from '../components/CollapsibleCard'
+import Section from '@/components/Section'
+import PaperCard from '@/components/PaperCard'
+import { JAPANDI } from '@/styles/motion'
+import CollapsibleCard from '@/components/CollapsibleCard'
 
 const stagger = {
   hidden: {},

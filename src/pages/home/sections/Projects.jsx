@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useContent } from '@/hooks/useContent'
-import Section from '../components/Section'
-import { easeOut, JAPANDI } from '../motion'
+import Section from '@/components/Section'
+import { easeOut, JAPANDI } from '@/styles/motion'
 
 const containerVariants = {
   hidden: {},

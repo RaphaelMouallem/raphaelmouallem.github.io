@@ -1,9 +1,9 @@
-import Section from '../components/Section'
-import { useTerminal } from '@/ui/components/useTerminal'
+import Section from '@/components/Section'
+import { useTerminal } from '@/features/terminal-pet/useTerminal'
 import { useRef, useEffect } from 'react'
-import { useTheme } from '../hooks/useTheme'
+import { useTheme } from '@/hooks/useTheme'
 import { sendMessage } from '@/lib/sendMessage'
-import { PROMPT, BOOT_LINES } from '@/ui/components/contactBoot'
+import { PROMPT, BOOT_LINES } from '@/features/terminal-pet/contactBoot'
 
 const MONO = "'Menlo', 'Monaco', 'Courier New', monospace"
 const FS = '0.82rem'

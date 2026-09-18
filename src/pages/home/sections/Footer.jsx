@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useContent } from '@/hooks/useContent'
-import Section from '../components/Section'
-import SeigaihaField from '../assets/SeigaihaField'
-import { useIsMobile } from '@/ui/components/utils'
+import Section from '@/components/Section'
+import SeigaihaField from '@/assets/motifs/SeigaihaField'
+import { useIsMobile } from '@/features/terminal-pet/utils'
 
 export default function Footer() {
   const { footer } = useContent()

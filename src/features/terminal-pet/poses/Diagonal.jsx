@@ -1,7 +1,7 @@
-import { quadMatrix } from '../../shared/quadMatrix'
-import { SeigaihaFanCutout } from '../../shared/SeigaihaFanCutout'
-import { SpeakerCluster } from '../../shared/SpeakerCluster'
-import { VentPanel } from '../../shared/VentPanel'
+import { quadMatrix } from '../shared/quadMatrix'
+import { SeigaihaFanCutout } from '../shared/SeigaihaFanCutout'
+import { SpeakerCluster } from '../shared/SpeakerCluster'
+import { VentPanel } from '../shared/VentPanel'
 
 const LOCAL_W = 140
 const LOCAL_H = 154

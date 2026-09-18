@@ -1,14 +1,14 @@
 import { useRef } from 'react'
-import './tokens.css'
-import ThemeToggle from './components/ThemeToggle'
-import Cursor from './components/Cursor'
+import '@/styles/tokens.css'
+import ThemeToggle from '@/components/ThemeToggle'
+import Cursor from '@/components/Cursor'
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Projects from './sections/Projects'
 import Contact from './sections/Contact'
 import Footer from './sections/Footer'
-import WindField from './assets/WindField'
-import TerminalPetInstance from './pets/terminal/TerminalPetInstance'
+import WindField from '@/assets/motifs/WindField'
+import TerminalPetInstance from '@/features/terminal-pet/TerminalPetInstance'
 
 export default function AboutPage() {
   const windZoneRef = useRef(null)

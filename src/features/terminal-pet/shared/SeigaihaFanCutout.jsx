@@ -1,4 +1,4 @@
-import { FAN_PATHS } from '../../assets/seigaihaMotif'
+import { FAN_PATHS } from '@/assets/motifs/seigaihaMotif'
 
 export function SeigaihaFanCutout({ x, y, scale = 0.7, open = 'right' }) {
   const rot = open === 'right' ? 90 : -90

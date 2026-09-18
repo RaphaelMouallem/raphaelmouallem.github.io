@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { easeOut } from '../motion'
+import { easeOut } from '@/styles/motion'
 
 export default function Section({ children, style, delay = 0, ...props }) {
   return (

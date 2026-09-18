@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { easeOut } from '../motion'
+import { easeOut } from '@/styles/motion'
 
 export default function CollapsibleCard({ mobile, title, glyph, open, onToggle, children }) {
   if (!mobile) {

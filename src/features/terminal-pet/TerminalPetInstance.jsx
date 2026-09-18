@@ -1,10 +1,10 @@
 import { useId } from 'react'
-import Hopper from '../behaviors/Hopper'
+import Hopper from './behaviors/Hopper'
 import TerminalPet from './TerminalPet'
-import { useMoodEngine } from '../engines/useMoodEngine'
-import { usePageBounds } from '../engines/usePageBounds'
+import { useMoodEngine } from './engines/useMoodEngine'
+import { usePageBounds } from './engines/usePageBounds'
 import { FACES } from './faces'
-import { useIsMobile } from '@/ui/components/utils'
+import { useIsMobile } from '@/features/terminal-pet/utils'
 
 export default function TerminalPetInstance({ size = 80, spawnRef, style }) {
   const id = useId()

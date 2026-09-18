@@ -1,5 +1,5 @@
-import { SeigaihaFanCutout } from '../../shared/SeigaihaFanCutout'
-import { SpeakerCluster } from '../../shared/SpeakerCluster'
+import { SeigaihaFanCutout } from '../shared/SeigaihaFanCutout'
+import { SpeakerCluster } from '../shared/SpeakerCluster'
 
 export default function Back() {
   return (

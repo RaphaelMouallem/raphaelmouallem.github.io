@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import '../about/tokens.css'
-import ThemeToggle from '../about/components/ThemeToggle'
+import '@/styles/tokens.css'
+import ThemeToggle from '@/components/ThemeToggle'
 import CharacterRain, { WATER_LINE_VH } from '../../assets/CharacterRain'
 
 export default function NotFoundPage() {

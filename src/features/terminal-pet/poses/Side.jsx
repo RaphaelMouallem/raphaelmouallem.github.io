@@ -1,4 +1,4 @@
-import { VentPanel } from '../../shared/VentPanel'
+import { VentPanel } from '../shared/VentPanel'
 
 export default function Side() {
   return (

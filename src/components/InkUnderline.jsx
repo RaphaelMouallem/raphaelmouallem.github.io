@@ -6,7 +6,7 @@ export default function InkUnderline({ width = 140, delay = 0 }) {
       width={width}
       height="8"
       viewBox={`0 0 ${width} 8`}
-      style={{ display: 'block', marginTop: 6 }}
+      className="block mt-1.5"
     >
       <motion.path
         d={`M1 4 Q ${width / 2} 7 ${width - 1} 4`}

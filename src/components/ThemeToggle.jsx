@@ -50,24 +50,10 @@ export default function ThemeToggle() {
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
       whileTap={{ scale: 0.92 }}
       transition={{ duration: 0.15, ease: easeOut }}
-      style={{ ...styles.button, x, y }}
+      className="w-10 h-10 rounded-full border-none bg-transparent p-0 cursor-pointer flex items-center justify-center"
+      style={{ x, y }}
     >
       <YinYangIcon theme={theme} />
     </motion.button>
   )
-}
-
-const styles = {
-  button: {
-    width: 40,
-    height: 40,
-    borderRadius: '50%',
-    border: 'none',
-    background: 'none',
-    padding: 0,
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 }

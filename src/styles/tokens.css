@@ -1,6 +1,5 @@
-/* Japandi paper-cut design tokens — light/dark */
-
-:root {
+:root,
+html[data-theme='light'] {
   --paper: #f4efe4;
   --paper-soft: #e9e1d2;
   --paper-raised: #ede6d8;
@@ -23,9 +22,9 @@
   --theme-transition-ease: ease;
 }
 
-/* System preference */
+/* System preference — only applies before the user makes an explicit choice */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --paper: #16151a;
     --paper-soft: #1f1e24;
     --paper-raised: #1c1b21;
@@ -91,34 +90,7 @@ html[data-theme='dark'] .celestial-moon {
   opacity: 1;
 }
 
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-/* Manual overrides — take precedence over system preference */
-html[data-theme='light'] {
-  --paper: #f4efe4;
-  --paper-soft: #e9e1d2;
-  --paper-raised: #ede6d8;
-  --paper-sunken: #ddd5c4;
-  --ink: #1f1d1a;
-  --ink-soft: rgba(31, 29, 26, 0.62);
-  --ink-faint: rgba(31, 29, 26, 0.32);
-  --accent: #c8492f;
-  --accent-soft: rgba(200, 73, 47, 0.12);
-  --border: rgba(31, 29, 26, 0.12);
-  --mullion: rgba(31, 29, 26, 0.08);
-  --shadow: rgba(90, 70, 50, 0.16);
-  --crease: rgba(90, 70, 50, 0.09);
-  --crease-dark: rgba(0, 0, 0, 0.18);
-}
-
+/* Manual dark override — takes precedence over system preference */
 html[data-theme='dark'] {
   --paper: #16151a;
   --paper-soft: #1f1e24;
@@ -170,49 +142,6 @@ body::before {
   background-size: 256px 256px;
 }
 
-.about-page ::selection,
-.about-page::selection {
-  background-color: var(--accent);
-  color: #ffffff;
-}
-
-.about-page ::-moz-selection,
-.about-page::-moz-selection {
-  background-color: var(--accent);
-  color: #ffffff;
-}
-
-.footer-link {
-  color: var(--ink-soft);
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 999px;
-  padding: 0 10px;
-  width: fit-content;
-  transition:
-    color 0.2s ease,
-    transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.footer-link:hover {
-  color: var(--ink);
-}
-
-.footer-link:active {
-  transform: scale(0.97);
-}
-
-/* Global press-feedback for plain anchors that shouldn't inherit
-   footer-link's pill padding/border-radius. */
-.press-tap {
-  display: inline-block;
-  transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.press-tap:active {
-  transform: scale(0.97);
-}
-
 .terminal-body::-webkit-scrollbar {
   width: 4px;
 }
@@ -224,15 +153,6 @@ body::before {
 .terminal-body::-webkit-scrollbar-thumb {
   background: var(--accent);
   border-radius: 0;
-}
-
-.terminal-input {
-  caret-color: var(--accent);
-}
-
-.terminal-input:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
 }
 
 @keyframes scanline-drift {

@@ -6,9 +6,9 @@
 // The original <script> tags stay in place, so the page still hydrates into
 // the full interactive app once JS loads for real visitors.
 //
-// /3d is intentionally skipped: it's a WebGL scene, so headless rendering
-// gives no meaningful content, and / (the default 2D route) already carries
-// all the crawlable bio/experience/education/project text.
+// Only / is prerendered: it's the sole real route (/about redirects to it,
+// everything else is a 404) and already carries all the crawlable
+// bio/experience/education/project text.
 
 import { preview } from 'vite'
 import { chromium } from 'playwright'

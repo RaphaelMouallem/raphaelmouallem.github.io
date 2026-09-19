@@ -5,14 +5,13 @@ import { useTheme } from '@/hooks/useTheme'
 import { sendMessage } from '@/lib/sendMessage'
 import { PROMPT, BOOT_LINES } from '@/features/terminal-pet/contactBoot'
 
-const MONO = "'Menlo', 'Monaco', 'Courier New', monospace"
-const FS = '0.82rem'
+const LINE = 'font-mono text-[0.82rem] leading-[1.55] whitespace-pre-wrap break-words'
 
-const lineColor = (t) => {
-  if (t === 'faint') return 'var(--ink-soft)'
-  if (t === 'ok') return '#28c840'
-  if (t === 'err') return '#c0392b'
-  return 'var(--ink)'
+const lineColorClass = (t) => {
+  if (t === 'faint') return 'text-ink-soft'
+  if (t === 'ok') return 'text-[#28c840]'
+  if (t === 'err') return 'text-[#c0392b]'
+  return 'text-ink'
 }
 
 export default function Contact() {
@@ -45,8 +44,8 @@ export default function Contact() {
       onChange={(e) => setCurrent(e.target.value)}
       onKeyDown={onKey}
       aria-label={promptLabel()}
-      style={s.input}
-      className="terminal-input"
+      style={{ WebkitTextFillColor: 'var(--accent)' }}
+      className={`${LINE} caret-accent text-accent bg-transparent border-none outline-none flex-1 p-0 min-w-0 resize-none overflow-hidden h-auto block`}
       autoComplete="off"
       autoCorrect="off"
       autoCapitalize="off"
@@ -68,69 +67,70 @@ export default function Contact() {
   }, [history, error, status])
 
   return (
-    <Section id="contact" style={s.section} data-cursor-label="contact">
-      <div style={s.headRow}>
-        <span style={s.eyebrow}>Contact</span>
-        <div style={s.sep} />
-        <span style={s.sub}>Get in touch</span>
+    <Section id="contact" className="max-w-[900px] mx-auto py-[12vh] px-6" data-cursor-label="contact">
+      <div className="flex items-center gap-2.5 mb-10">
+        <span className="font-display text-2xl font-extrabold tracking-[0.12em] uppercase text-accent shrink-0">
+          Contact
+        </span>
+        <div className="w-[1.5px] h-[1.4rem] bg-accent opacity-40 shrink-0" />
+        <span className="font-body text-[0.85rem] text-ink-soft tracking-[0.04em]">Get in touch</span>
       </div>
 
-      <div style={s.window}>
-        <div style={s.bar}>
-          <div style={s.dots}>
-            <span style={{ ...s.dot, background: '#ff5f57' }} />
-            <span style={{ ...s.dot, background: '#febc2e' }} />
-            <span style={{ ...s.dot, background: '#28c840' }} />
+      <div className="border border-border overflow-hidden">
+        <div className="bg-paper-soft border-b border-border px-3.5 py-[9px] flex items-center justify-between">
+          <div className="flex gap-1.5">
+            <span className="w-[11px] h-[11px] rounded-full inline-block bg-[#ff5f57]" />
+            <span className="w-[11px] h-[11px] rounded-full inline-block bg-[#febc2e]" />
+            <span className="w-[11px] h-[11px] rounded-full inline-block bg-[#28c840]" />
           </div>
-          <span style={s.barTitle}>contact -- raphaelm ~ zsh</span>
-          <div style={{ width: 52 }} />
+          <span className="font-mono text-[0.72rem] text-ink-soft">contact -- raphaelm ~ zsh</span>
+          <div className="w-[52px]" />
         </div>
 
         <div
           ref={bodyRef}
-          style={s.body}
-          className="terminal-body"
+          className="bg-paper cursor-text h-[420px] overflow-y-auto pt-3.5 px-[18px] pb-5 terminal-body"
           onClick={() => inputRef.current?.focus()}
         >
           {history.map((l, i) =>
             l.t === 'gap' ? (
-              <div key={i} style={s.gap} />
+              <div key={i} className="h-[0.55em]" />
             ) : l.t === 'reply' ? (
-              <div key={i} style={s.line}>
-                <span style={{ color: 'var(--ink)' }}>{'> '}</span>
-                <span style={{ color: 'var(--accent)' }}>{l.text.slice(2)}</span>
+              <div key={i} className={LINE}>
+                <span className="text-ink">{'> '}</span>
+                <span className="text-accent">{l.text.slice(2)}</span>
               </div>
             ) : l.t === 'cmd' ? (
-              <div key={i} style={s.line}>
-                <span style={{ color: 'var(--ink)' }}>{PROMPT} </span>
-                <span style={{ color: 'var(--accent)' }}>{l.text.slice(PROMPT.length + 1)}</span>
+              <div key={i} className={LINE}>
+                <span className="text-ink">{PROMPT} </span>
+                <span className="text-accent">{l.text.slice(PROMPT.length + 1)}</span>
               </div>
             ) : (
-              <div key={i} style={{ ...s.line, color: lineColor(l.t) }}>
+              <div key={i} className={`${LINE} ${lineColorClass(l.t)}`}>
                 {l.text}
               </div>
             )
           )}
 
-          {error && <div style={{ ...s.line, color: '#c0392b' }}>{error}</div>}
+          {error && <div className={`${LINE} text-[#c0392b]`}>{error}</div>}
 
           {status === 'sending' && (
-            <div style={{ ...s.line, color: 'var(--ink-soft)' }}>{PROMPT} sending...</div>
+            <div className={`${LINE} text-ink-soft`}>{PROMPT} sending...</div>
           )}
 
           {showInput && phase === 'form' && (
             <>
-              <div style={s.line}>{promptLabel()}</div>
-              <div style={s.inputRow}>
-                <span style={s.line}>&gt;</span>
+              <div className={LINE}>{promptLabel()}</div>
+              <div className="flex items-start gap-[1ch] font-mono">
+                <span className={LINE}>&gt;</span>
                 {inputEl}
               </div>
             </>
           )}
 
           {showInput && phase === 'parser' && (
-            <div style={s.inputRow}>
-              <span style={s.line}>{PROMPT}</span>
+            <div className="flex items-start gap-[1ch] font-mono">
+              <span className={LINE}>{PROMPT}</span>
               {inputEl}
             </div>
           )}
@@ -138,74 +138,4 @@ export default function Contact() {
       </div>
     </Section>
   )
-}
-
-const s = {
-  section: { maxWidth: 900, margin: '0 auto', padding: '12vh 24px' },
-  headRow: { display: 'flex', alignItems: 'center', gap: 10, marginBottom: 40 },
-  eyebrow: {
-    fontFamily: 'var(--font-display)',
-    fontSize: '1.5rem',
-    fontWeight: 800,
-    letterSpacing: '0.12em',
-    textTransform: 'uppercase',
-    color: 'var(--accent)',
-    flexShrink: 0,
-  },
-  sep: { width: 1.5, height: '1.4rem', background: 'var(--accent)', opacity: 0.4, flexShrink: 0 },
-  sub: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.85rem',
-    color: 'var(--ink-soft)',
-    letterSpacing: '0.04em',
-  },
-  window: { border: '1px solid var(--border)', overflow: 'hidden' },
-  bar: {
-    background: 'var(--paper-soft)',
-    borderBottom: '1px solid var(--border)',
-    padding: '9px 14px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  dots: { display: 'flex', gap: 6 },
-  dot: { width: 11, height: 11, borderRadius: '50%', display: 'inline-block' },
-  barTitle: { fontFamily: MONO, fontSize: '0.72rem', color: 'var(--ink-soft)' },
-  body: {
-    background: 'var(--paper)',
-    padding: '14px 18px 20px',
-    cursor: 'text',
-    height: 420,
-    overflowY: 'auto',
-  },
-  line: {
-    fontFamily: MONO,
-    fontSize: FS,
-    lineHeight: 1.55,
-    color: 'var(--ink)',
-    whiteSpace: 'pre-wrap',
-    wordBreak: 'break-word',
-  },
-  gap: { height: '0.55em' },
-  inputRow: { display: 'flex', alignItems: 'flex-start', gap: '1ch', fontFamily: MONO },
-  input: {
-    fontFamily: MONO,
-    fontSize: FS,
-    color: 'var(--accent)',
-    WebkitTextFillColor: 'var(--accent)',
-    background: 'transparent',
-    border: 'none',
-    outline: 'none',
-    caretColor: 'var(--accent)',
-    lineHeight: 1.55,
-    flex: 1,
-    padding: 0,
-    minWidth: 0,
-    resize: 'none',
-    overflow: 'hidden',
-    whiteSpace: 'pre-wrap',
-    wordBreak: 'break-word',
-    height: 'auto',
-    display: 'block',
-  },
 }

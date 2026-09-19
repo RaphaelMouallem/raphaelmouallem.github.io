@@ -16,30 +16,30 @@ export default function AboutPage() {
   const contactRef = useRef(null)
 
   return (
-    <div className="about-page" style={styles.page}>
+    <div className="about-page min-h-screen bg-paper relative text-ink font-body selection:bg-accent selection:text-white">
       <Cursor />
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;800&family=Inter:wght@400;500;600&display=swap"
       />
 
-      <header style={styles.header}>
+      <header className="fixed top-6 right-6 z-10">
         <ThemeToggle />
       </header>
 
       <main>
-        <div style={styles.windZone} ref={windZoneRef}>
-          <div style={{ position: 'relative', zIndex: -1 }}>
+        <div className="relative z-0 overflow-hidden" ref={windZoneRef}>
+          <div className="relative -z-[1]">
             <Hero />
           </div>
           <WindField containerRef={windZoneRef} />
           <About />
           <Projects />
-          <div style={{ position: 'relative' }} ref={contactRef}>
+          <div className="relative" ref={contactRef}>
             <Contact />
           </div>
         </div>
-        <div style={{ position: 'relative' }} ref={footerRef}>
+        <div className="relative" ref={footerRef}>
           <Footer />
         </div>
       </main>
@@ -49,26 +49,4 @@ export default function AboutPage() {
       <TerminalPetInstance size={80} spawnRef={footerRef} />
     </div>
   )
-}
-
-const styles = {
-  page: {
-    minHeight: '100vh',
-    background: 'var(--paper)',
-    position: 'relative',
-    color: 'var(--ink)',
-    fontFamily: 'var(--font-body)',
-    transition: 'background 0.3s ease, color 0.3s ease',
-  },
-  header: {
-    position: 'fixed',
-    top: 24,
-    right: 24,
-    zIndex: 10,
-  },
-  windZone: {
-    position: 'relative',
-    zIndex: 0,
-    overflow: 'hidden',
-  },
 }

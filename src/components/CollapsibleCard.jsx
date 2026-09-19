@@ -5,29 +5,33 @@ export default function CollapsibleCard({ mobile, title, glyph, open, onToggle, 
   if (!mobile) {
     return (
       <>
-        <p style={styles.cardTag}>{title}</p>
+        <p className={cardTagClass}>{title}</p>
         {children}
       </>
     )
   }
 
   return (
-    <div style={styles.wrapper}>
+    <div className="border-b border-border bg-paper-soft">
       <motion.button
         onClick={onToggle}
-        style={styles.header}
+        className="flex items-center justify-between w-full bg-transparent border-none px-5 py-4 cursor-pointer font-[inherit] gap-3"
         data-cursor="hover"
         whileTap={{ scale: 0.98 }}
         transition={{ duration: 0.15, ease: easeOut }}
       >
-        <span style={styles.glyphRow}>
-          {glyph && <span style={styles.glyphCircle}>{glyph}</span>}
-          <span style={styles.cardTag}>{title}</span>
+        <span className="flex items-center gap-3.5">
+          {glyph && (
+            <span className="w-9 h-9 flex-shrink-0 rounded-full border-[1.5px] border-accent flex items-center justify-center font-display text-[1.6rem] text-accent opacity-[0.85]">
+              {glyph}
+            </span>
+          )}
+          <span className={cardTagClass}>{title}</span>
         </span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.3 }}
-          style={styles.icon}
+          className="text-accent text-[1.3rem] leading-none flex-shrink-0"
         >
           +
         </motion.span>
@@ -40,9 +44,9 @@ export default function CollapsibleCard({ mobile, title, glyph, open, onToggle, 
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.25, 1, 0.25, 1] }}
-            style={{ overflow: 'hidden' }}
+            className="overflow-hidden"
           >
-            <div style={styles.body}>{children}</div>
+            <div className="px-5 pb-5">{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -50,58 +54,5 @@ export default function CollapsibleCard({ mobile, title, glyph, open, onToggle, 
   )
 }
 
-const styles = {
-  wrapper: {
-    borderBottom: '1px solid var(--border)',
-    background: 'var(--paper-soft)',
-  },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
-    background: 'none',
-    border: 'none',
-    padding: '16px 20px',
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    gap: 12,
-  },
-  cardTag: {
-    fontFamily: 'var(--font-display)',
-    fontSize: '1rem',
-    fontWeight: 600,
-    letterSpacing: '0.08em',
-    textTransform: 'uppercase',
-    color: 'var(--ink)',
-    margin: 0,
-  },
-  icon: {
-    color: 'var(--accent)',
-    fontSize: '1.3rem',
-    lineHeight: 1,
-    flexShrink: 0,
-  },
-  body: {
-    padding: '0 20px 20px',
-  },
-  glyphRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 14,
-  },
-  glyphCircle: {
-    width: 36,
-    height: 36,
-    flexShrink: 0,
-    borderRadius: '50%',
-    border: '1.5px solid var(--accent)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: 'var(--font-display)',
-    fontSize: '1.6rem',
-    color: 'var(--accent)',
-    opacity: 0.85,
-  },
-}
+const cardTagClass =
+  'font-display text-base font-semibold tracking-[0.08em] uppercase text-ink m-0'

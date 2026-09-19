@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
 
-const routes = ['/', '/3d', '/about']
+const routes = ['/']
 
 for (const route of routes) {
   test(`${route} loads with no console errors`, async ({ page }) => {

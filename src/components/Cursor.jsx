@@ -8,11 +8,8 @@ const isTouch = window.matchMedia('(pointer: coarse)').matches
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 export default function Cursor() {
-  if (isTouch || reduced) return null
-
   const [hovering, setHovering] = useState(false)
   const [label, setLabel] = useState(null)
-  const [grabbing, setGrabbing] = useState(false)
 
   const mouseCoords = useMotionValue({ clientX: -100, clientY: -100 })
 
@@ -29,6 +26,8 @@ export default function Cursor() {
   const elRadius = useSpring(20, SPRING)
 
   useEffect(() => {
+    if (isTouch || reduced) return
+
     const hoverTargetRef = { current: null }
     const pointerRef = { current: { x: -100, y: -100 } }
     let rafId = null
@@ -83,7 +82,6 @@ export default function Cursor() {
 
       setLabel(labelTarget ? labelTarget.getAttribute('data-cursor-label') : null)
       setHovering(!!hoverTarget)
-      setGrabbing(!!grabTarget && !hoverTarget)
       hoverTargetRef.current = hoverTarget || null
 
       if (hoverTarget) {
@@ -144,16 +142,16 @@ export default function Cursor() {
     }
   }, [x, y, elX, elY, elW, elH, elRadius, mouseCoords])
 
+  if (isTouch || reduced) return null
+
   const isLabel = !!label && !hovering
   const hoverTag = !!label && hovering
 
   return (
     <>
       <motion.div
+        className="fixed top-0 left-0 pointer-events-none z-[9998] flex items-center justify-center"
         style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
           translateX: elX,
           translateY: elY,
           width: elW,
@@ -161,11 +159,6 @@ export default function Cursor() {
           x: '-50%',
           y: '-50%',
           borderRadius: elRadius,
-          pointerEvents: 'none',
-          zIndex: 9998,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
         }}
         animate={{
           backgroundColor: isLabel ? 'var(--accent)' : 'transparent',
@@ -177,7 +170,7 @@ export default function Cursor() {
       >
         {isLabel && (
           <motion.span
-            style={styles.label}
+            className="font-body text-[0.5rem] font-semibold tracking-[0.1em] uppercase text-paper whitespace-nowrap"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.2, delay: 0.1 }}
@@ -189,64 +182,25 @@ export default function Cursor() {
 
       {hoverTag && (
         <motion.div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            translateX: elX,
-            translateY: elY,
-            x: '-10%',
-            y: '80%',
-            pointerEvents: 'none',
-            zIndex: 9998,
-          }}
+          className="fixed top-0 left-0 pointer-events-none z-[9998]"
+          style={{ translateX: elX, translateY: elY, x: '-10%', y: '80%' }}
         >
           <motion.span
             initial={{ opacity: 0, x: -4 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.15 }}
-            style={{
-              display: 'inline-block',
-              background: 'var(--accent)',
-              color: 'var(--paper)',
-              fontFamily: 'var(--font-mono, monospace)',
-              fontSize: '0.6rem',
-              fontWeight: 600,
-              letterSpacing: '0.05em',
-              padding: '2px 8px 2px 10px',
-              clipPath: 'polygon(8px 0, 100% 0, 100% 100%, 0 100%)',
-            }}
+            className="inline-block bg-accent text-paper text-[0.6rem] font-semibold tracking-[0.05em] p-[2px_8px_2px_10px] font-[var(--font-mono,monospace)] [clip-path:polygon(8px_0,100%_0,100%_100%,0_100%)]"
           >
             {label}
           </motion.span>
         </motion.div>
       )}
-      {!isLabel && !hovering && <motion.div style={{ ...styles.dot, x: dotX, y: dotY }} />}
+      {!isLabel && !hovering && (
+        <motion.div
+          className="fixed top-0 left-0 w-1 h-1 -ml-0.5 -mt-0.5 rounded-full bg-accent pointer-events-none z-[9999]"
+          style={{ x: dotX, y: dotY }}
+        />
+      )}
     </>
   )
-}
-
-const styles = {
-  dot: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: 4,
-    height: 4,
-    marginLeft: -2,
-    marginTop: -2,
-    borderRadius: '50%',
-    background: 'var(--accent)',
-    pointerEvents: 'none',
-    zIndex: 9999,
-  },
-  label: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.5rem',
-    fontWeight: 600,
-    letterSpacing: '0.1em',
-    textTransform: 'uppercase',
-    color: 'var(--paper)',
-    whiteSpace: 'nowrap',
-  },
 }

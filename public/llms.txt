@@ -4,7 +4,7 @@
 
 Raphael builds across the stack — React frontends, Spring Boot backends, and PyTorch models trained from scratch. He works on problems at the intersection of systems, AI, and design.
 
-This site (raphaelmouallem.github.io) is a handbuilt 3D portfolio experience built with React Three Fiber. Visitors scroll through a procedurally generated sky and underwater scene; content is presented in cards along the way.
+This site (raphaelmouallem.github.io) is a single-page portfolio: hero, about, projects, and contact sections, built with React and Tailwind.
 
 ## Background
 

@@ -5,7 +5,7 @@ import CharacterRain, { WATER_LINE_VH } from '../../assets/CharacterRain'
 
 export default function NotFoundPage() {
   return (
-    <div className="about-page" style={styles.page}>
+    <div className="about-page relative min-h-screen overflow-hidden bg-paper text-ink font-body selection:bg-accent selection:text-white">
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;800&family=Inter:wght@400;500;600&display=swap"
@@ -13,95 +13,32 @@ export default function NotFoundPage() {
 
       <CharacterRain />
 
-      <header style={styles.header}>
+      <header className="fixed top-6 right-6 z-10">
         <ThemeToggle />
       </header>
 
-      <main style={styles.main}>
-        <div style={styles.content}>
-          <h1 style={styles.heading}>404</h1>
-          <p style={styles.copy}>
+      <main className="relative z-[1] min-h-screen pointer-events-none">
+        <div className="absolute left-[8%] right-[8%] top-[28vh] max-w-[560px] pointer-events-auto">
+          <h1 className="font-display text-[clamp(3.5rem,9vw,6rem)] font-extrabold mb-5 leading-none">
+            404
+          </h1>
+          <p className="font-body text-base text-ink-soft m-0 leading-[1.7] max-w-[460px]">
             There's nothing at this address. It may have moved, or never existed.
           </p>
         </div>
 
-        <div style={styles.actions}>
-          <Link to="/" className="press-tap" style={styles.link}>
+        <div
+          className="absolute left-[8%] flex gap-6 flex-wrap pointer-events-auto"
+          style={{ top: `calc(${WATER_LINE_VH}vh + 36px)` }}
+        >
+          <Link
+            to="/"
+            className="inline-block [transition:transform_150ms_cubic-bezier(0.16,1,0.3,1)] active:scale-[0.97] font-body text-[0.85rem] font-semibold tracking-[0.02em] text-ink no-underline px-[26px] py-3.5 rounded-full border border-border bg-paper-raised"
+          >
             Back home
-          </Link>
-          <Link to="/3d" className="press-tap" style={styles.link}>
-            Enter exploration mode
           </Link>
         </div>
       </main>
     </div>
   )
-}
-
-const styles = {
-  page: {
-    position: 'relative',
-    minHeight: '100vh',
-    overflow: 'hidden',
-    background: 'var(--paper)',
-    color: 'var(--ink)',
-    fontFamily: 'var(--font-body)',
-    transition: 'background 0.3s ease, color 0.3s ease',
-  },
-  header: {
-    position: 'fixed',
-    top: 24,
-    right: 24,
-    zIndex: 10,
-  },
-  main: {
-    position: 'relative',
-    zIndex: 1,
-    minHeight: '100vh',
-    pointerEvents: 'none',
-  },
-  content: {
-    position: 'absolute',
-    left: '8%',
-    right: '8%',
-    top: '28vh',
-    maxWidth: 560,
-    pointerEvents: 'auto',
-  },
-  heading: {
-    fontFamily: 'var(--font-display)',
-    fontSize: 'clamp(3.5rem, 9vw, 6rem)',
-    fontWeight: 800,
-    margin: '0 0 20px',
-    lineHeight: 1,
-  },
-  copy: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '1rem',
-    color: 'var(--ink-soft)',
-    margin: 0,
-    lineHeight: 1.7,
-    maxWidth: 460,
-  },
-  actions: {
-    position: 'absolute',
-    left: '8%',
-    top: `calc(${WATER_LINE_VH}vh + 36px)`,
-    display: 'flex',
-    gap: 24,
-    flexWrap: 'wrap',
-    pointerEvents: 'auto',
-  },
-  link: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.85rem',
-    fontWeight: 600,
-    letterSpacing: '0.02em',
-    color: 'var(--ink)',
-    textDecoration: 'none',
-    padding: '14px 26px',
-    borderRadius: 999,
-    border: '1px solid var(--border)',
-    background: 'var(--paper-raised)',
-  },
 }

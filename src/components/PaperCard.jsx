@@ -1,16 +1,12 @@
-export default function PaperCard({ children, style, ...props }) {
+import { twMerge } from 'tailwind-merge'
+
+export default function PaperCard({ children, className = '', ...props }) {
   return (
-    <div style={{ ...styles.card, ...style }} {...props}>
+    <div
+      className={twMerge('bg-paper-soft border border-border rounded-[2px] px-[30px] py-7', className)}
+      {...props}
+    >
       {children}
     </div>
   )
-}
-
-const styles = {
-  card: {
-    background: 'var(--paper-soft)',
-    border: '1px solid var(--border)',
-    borderRadius: 2,
-    padding: '28px 30px',
-  },
 }

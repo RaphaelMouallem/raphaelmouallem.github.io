@@ -1,33 +1,41 @@
-import { Link } from 'react-router-dom'
 import { useContent } from '@/hooks/useContent'
 import Section from '@/components/Section'
 import SeigaihaField from '@/assets/motifs/SeigaihaField'
 import { useIsMobile } from '@/features/terminal-pet/utils'
+
+const FOOTER_LINK =
+  'text-ink-soft no-underline inline-block rounded-full px-2.5 w-fit [transition:color_0.2s_ease,transform_150ms_cubic-bezier(0.16,1,0.3,1)] hover:text-ink active:scale-[0.97]'
 
 export default function Footer() {
   const { footer } = useContent()
   const footerBottom = useIsMobile(641)
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className="relative">
       <SeigaihaField />
-      <Section id="footer" style={styles.section}>
-        <div style={styles.top}>
-          <h2 style={styles.heading}>{footer.heading}</h2>
-          <p style={styles.subheading}>{footer.subheading}</p>
+      <Section id="footer" className="mx-auto pt-[8vh] px-[9vh] pb-[5vh]">
+        <div className="mb-5">
+          <h2 className="font-display text-[1.8rem] font-extrabold mb-2 uppercase text-accent">
+            {footer.heading}
+          </h2>
+          <p className="font-body text-[0.95rem] text-ink-soft m-0">{footer.subheading}</p>
         </div>
 
-        <div style={styles.columns}>
-          <div style={styles.column}>
-            <p style={styles.columnLabel}>Sections</p>
+        <div className="flex flex-wrap gap-16 mb-12">
+          <div className="flex flex-col gap-2.5">
+            <p className="font-body text-[0.7rem] tracking-[0.14em] uppercase text-accent mb-1">
+              Sections
+            </p>
             {footer.sections.map((l) => (
-              <a key={l.label} href={l.href} data-cursor="hover" className="footer-link">
+              <a key={l.label} href={l.href} data-cursor="hover" className={FOOTER_LINK}>
                 {l.label}
               </a>
             ))}
           </div>
-          <div style={styles.column}>
-            <p style={styles.columnLabel}>Connect</p>
+          <div className="flex flex-col gap-2.5">
+            <p className="font-body text-[0.7rem] tracking-[0.14em] uppercase text-accent mb-1">
+              Connect
+            </p>
             {footer.social.map((l) => (
               <a
                 key={l.label}
@@ -35,135 +43,27 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 data-cursor="hover"
-                className="footer-link"
+                className={FOOTER_LINK}
               >
                 {l.label}
               </a>
             ))}
           </div>
-          <div style={styles.column}>
-            <p style={styles.columnLabel}>{footer.exploration.label}</p>
-            <p style={styles.explorationCopy}>{footer.exploration.description}</p>
-            <Link
-              to={footer.exploration.href}
-              data-cursor="hover"
-              className="press-tap"
-              style={styles.explorationCta}
-            >
-              {footer.exploration.cta}
-            </Link>
-          </div>
         </div>
 
         <div
-          style={{
-            display: 'flex',
-            flexDirection: footerBottom ? 'column' : 'row',
-            alignItems: footerBottom ? 'center' : 'flex-start',
-            justifyContent: footerBottom ? 'center' : 'space-between',
-            textAlign: footerBottom ? 'center' : 'left',
-            gap: 16,
-            paddingTop: 24,
-            borderTop: '1px solid var(--ink-faint)',
-          }}
+          className={`flex gap-4 pt-6 border-t border-ink-faint ${
+            footerBottom
+              ? 'flex-col items-center justify-center text-center'
+              : 'flex-row items-start justify-between text-left'
+          }`}
         >
-          <p style={styles.copyright}>{footer.footer}</p>
-          <span style={styles.hanko}>RM</span>
+          <p className="font-body text-[0.8rem] text-ink-soft m-0">{footer.footer}</p>
+          <span className="w-[46px] h-[46px] shrink-0 border-[1.5px] border-accent rounded text-accent bg-accent-soft font-display text-[0.85rem] font-medium flex items-center justify-center [writing-mode:vertical-rl] rotate-[-6deg] leading-none">
+            RM
+          </span>
         </div>
       </Section>
     </div>
   )
-}
-
-const styles = {
-  section: {
-    margin: '0 auto',
-    padding: '8vh 9vh 5vh',
-  },
-  top: {
-    marginBottom: 20,
-  },
-  heading: {
-    fontFamily: 'var(--font-display)',
-    fontSize: '1.8rem',
-    fontWeight: 800,
-    margin: '0 0 8px',
-    textTransform: 'uppercase',
-    color: 'var(--accent)',
-  },
-  subheading: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.95rem',
-    color: 'var(--ink-soft)',
-    margin: 0,
-  },
-  columns: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: 64,
-    marginBottom: 48,
-  },
-  column: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 10,
-  },
-  columnLabel: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.7rem',
-    letterSpacing: '0.14em',
-    textTransform: 'uppercase',
-    color: 'var(--accent)',
-    margin: '0 0 4px',
-  },
-  explorationCopy: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.85rem',
-    color: 'var(--ink-soft)',
-    margin: '0 0 2px',
-  },
-  explorationCta: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.9rem',
-    fontWeight: 600,
-    color: 'var(--accent)',
-    textDecoration: 'none',
-    display: 'inline-block',
-    width: 'fit-content',
-    borderRadius: '999px',
-  },
-  link: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.9rem',
-    color: 'var(--ink-soft)',
-    textDecoration: 'none',
-    display: 'inline-block',
-    borderRadius: '999px',
-    padding: '0px 10px',
-    width: 'fit-content',
-  },
-  hanko: {
-    width: 46,
-    height: 46,
-    flexShrink: 0,
-    border: '1.5px solid var(--accent)',
-    borderRadius: 4,
-    background: 'var(--accent-soft)',
-    color: 'var(--accent)',
-    fontFamily: 'var(--font-display)',
-    fontSize: '0.85rem',
-    fontWeight: 500,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    writingMode: 'vertical-rl',
-    transform: 'rotate(-6deg)',
-    lineHeight: 1,
-  },
-  copyright: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.8rem',
-    color: 'var(--ink-soft)',
-    margin: 0,
-  },
 }

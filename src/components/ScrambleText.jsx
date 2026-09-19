@@ -14,6 +14,11 @@ export default function ScrambleText({ text, onDone, style }) {
     text.split('').map((c) => (c === ' ' ? ' ' : randomChar()))
   )
   const timers = useRef([])
+  const onDoneRef = useRef(onDone)
+
+  useEffect(() => {
+    onDoneRef.current = onDone
+  }, [onDone])
 
   useEffect(() => {
     timers.current.forEach(clearTimeout)
@@ -32,7 +37,7 @@ export default function ScrambleText({ text, onDone, style }) {
               return next
             })
             if (step === STEPS_PER_CHAR - 1 && i === chars.length - 1) {
-              onDone?.()
+              onDoneRef.current?.()
             }
           },
           startDelay + step * STEP_INTERVAL

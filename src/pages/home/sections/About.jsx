@@ -16,9 +16,17 @@ const item = {
   show: { opacity: 1, y: 0, transition: JAPANDI },
 }
 
+const PILL = 'font-body text-[0.82rem] text-ink-soft bg-paper border border-border rounded-[2px] px-2.5 py-[3px]'
+const EDU_PERIOD = 'font-body text-[0.75rem] text-accent tracking-[0.06em]'
+const EDU_DEGREE = 'font-body text-[0.92rem] text-ink leading-[1.4]'
+const SITE_TEXT = 'font-body text-[0.95rem] leading-[1.75] text-ink-soft m-0'
+const TIMELINE_DOT = 'w-2 h-2 rounded-full border-[1.5px] border-accent bg-paper-soft'
+
+const hAlignClass = (i, last) =>
+  i === 0 ? 'items-start text-left' : i === last ? 'items-end text-right' : 'items-center text-center'
+
 export default function About() {
-  const { about, pages } = useContent()
-  const site = pages.about.site
+  const { about } = useContent()
   const mobile = useIsMobile()
   const [openCard, setOpenCard] = useState(null)
   const toggle = (id) => setOpenCard((cur) => (cur === id ? null : id))
@@ -30,15 +38,29 @@ export default function About() {
   }
 
   return (
-    <Section id="about" style={styles.section} data-cursor-label="about">
-      <div style={{ ...styles.bioRow, ...(mobile ? styles.bioRowMobile : {}) }}>
-        <span style={{ ...styles.eyebrow, ...(mobile ? styles.eyebrowMobile : {}) }}>About</span>
-        <div style={{ ...(mobile ? styles.eyebrowSepH : styles.eyebrowSep) }} />
-        <p style={styles.bio}>{about.bio}</p>
+    <Section id="about" className="max-w-225 mx-auto py-[12vh] px-6" data-cursor-label="about">
+      <div className={`flex items-start gap-2.5 mb-12 ${mobile ? 'flex-col gap-4' : 'flex-row'}`}>
+        <span
+          className={`font-display text-2xl font-extrabold uppercase text-accent shrink-0 ${
+            mobile
+              ? '[writing-mode:horizontal-tb] tracking-[0.18em] pt-0'
+              : '[writing-mode:vertical-rl] rotate-180 tracking-[0.12em] pt-1'
+          }`}
+        >
+          About
+        </span>
+        <div
+          className={
+            mobile
+              ? 'h-px w-full bg-accent opacity-40'
+              : 'w-[1.5px] self-stretch bg-accent opacity-40 shrink-0'
+          }
+        />
+        <p className="font-body text-[1.05rem] leading-[1.85] text-ink m-0 max-w-170">{about.bio}</p>
       </div>
 
       {mobile ? (
-        <div style={styles.mobileStack}>
+        <div className="flex flex-col border border-border overflow-hidden">
           <CollapsibleCard
             mobile={true}
             title="Experience"
@@ -46,16 +68,18 @@ export default function About() {
             open={openCard === 'experience'}
             onToggle={() => toggle('experience')}
           >
-            <div style={styles.timeline}>
+            <div className="flex flex-col pt-[1em]">
               {about.experience.map((e, i) => (
-                <div key={i} style={styles.timelineEntry}>
-                  <div style={styles.timelineLeft}>
-                    <div style={styles.timelineDot} />
-                    {i < about.experience.length - 1 && <div style={styles.timelineLine} />}
+                <div key={i} className="flex flex-row gap-4">
+                  <div className="flex flex-col items-center shrink-0 w-3">
+                    <div className={`${TIMELINE_DOT} shrink-0 mt-1`} />
+                    {i < about.experience.length - 1 && (
+                      <div className="w-px flex-1 bg-accent opacity-20 my-1" />
+                    )}
                   </div>
-                  <div style={styles.timelineContent}>
-                    <span style={styles.eduPeriod}>{e.period}</span>
-                    <span style={styles.eduDegree}>{e.role}</span>
+                  <div className="flex flex-col gap-0.5 pb-5">
+                    <span className={EDU_PERIOD}>{e.period}</span>
+                    <span className={EDU_DEGREE}>{e.role}</span>
                   </div>
                 </div>
               ))}
@@ -69,29 +93,33 @@ export default function About() {
             open={openCard === 'education'}
             onToggle={() => toggle('education')}
           >
-            <div style={styles.timeline}>
+            <div className="flex flex-col pt-[1em]">
               {about.education.map((e, i) => (
-                <div key={i} style={styles.timelineEntry}>
-                  <div style={styles.timelineLeft}>
-                    <div style={styles.timelineDot} />
-                    {i < about.education.length - 1 && <div style={styles.timelineLine} />}
+                <div key={i} className="flex flex-row gap-4">
+                  <div className="flex flex-col items-center shrink-0 w-3">
+                    <div className={`${TIMELINE_DOT} shrink-0 mt-1`} />
+                    {i < about.education.length - 1 && (
+                      <div className="w-px flex-1 bg-accent opacity-20 my-1" />
+                    )}
                   </div>
-                  <div style={styles.timelineContent}>
-                    <span style={styles.eduPeriod}>{e.period}</span>
-                    <span style={styles.eduDegree}>{e.degree}</span>
+                  <div className="flex flex-col gap-0.5 pb-5">
+                    <span className={EDU_PERIOD}>{e.period}</span>
+                    <span className={EDU_DEGREE}>{e.degree}</span>
                   </div>
                 </div>
               ))}
             </div>
-            <div style={styles.cardDivider} />
-            <p style={styles.langLabel}>Languages</p>
-            <div style={styles.langList}>
+            <div className="h-px bg-border mb-4" />
+            <p className="font-body text-[0.68rem] tracking-[0.16em] uppercase text-ink-soft mb-4">
+              Languages
+            </p>
+            <div className="flex flex-col gap-1">
               {about.spoken.map((s, i) => {
                 const [lang, ...rest] = s.split(' — ')
                 return (
-                  <div key={i} style={styles.langRow}>
-                    <span style={styles.langName}>{lang}</span>
-                    <span style={styles.langLevel}>{rest.join(' — ')}</span>
+                  <div key={i} className="flex gap-2 text-[0.88rem] leading-[1.6]">
+                    <span className="text-accent font-medium">{lang}</span>
+                    <span className="text-ink-soft">{rest.join(' — ')}</span>
                   </div>
                 )
               })}
@@ -105,13 +133,15 @@ export default function About() {
             open={openCard === 'skills'}
             onToggle={() => toggle('skills')}
           >
-            <div style={styles.skillsGrid}>
+            <div className="pt-[1em] flex flex-col gap-3.5">
               {Object.entries(about.skills).map(([group, items]) => (
-                <div key={group} style={styles.skillGroup}>
-                  <span style={styles.skillGroupLabel}>{group}</span>
-                  <div style={styles.pillRow}>
+                <div key={group} className="flex flex-col gap-1.5">
+                  <span className="font-body text-[0.65rem] tracking-[0.14em] uppercase text-accent">
+                    {group}
+                  </span>
+                  <div className="flex flex-wrap gap-1.25">
                     {items.map((item, i) => (
-                      <span key={i} style={styles.pill}>
+                      <span key={i} className={PILL}>
                         {item}
                       </span>
                     ))}
@@ -128,10 +158,10 @@ export default function About() {
             open={openCard === 'site'}
             onToggle={() => toggle('site')}
           >
-            <p style={styles.siteText}>{site.description}</p>
-            <div style={styles.pillRow}>
-              {site.stack.map((s, i) => (
-                <span key={i} style={styles.pill}>
+            <p className={SITE_TEXT}>{about.description}</p>
+            <div className="flex flex-wrap gap-1.25">
+              {about.stack.map((s, i) => (
+                <span key={i} className={PILL}>
                   {s}
                 </span>
               ))}
@@ -140,34 +170,32 @@ export default function About() {
         </div>
       ) : (
         <motion.div
-          style={styles.grid}
+          className="grid grid-cols-[1fr_1.6fr] gap-px mb-px"
           variants={stagger}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-60px' }}
         >
-          <motion.div variants={item} style={{ gridColumn: '1 / -1' }}>
-            <PaperCard style={styles.cardRaw}>
+          <motion.div variants={item} className="col-span-full">
+            <PaperCard className="h-full">
               <CollapsibleCard mobile={false} title="Experience">
-                <div style={styles.hTimeline}>
-                  <div style={styles.hTimelineTrack}>
-                    <div style={styles.hTimelineLine} />
+                <div className="pt-[0.5em]">
+                  <div className="relative flex justify-between items-center h-2">
+                    <div className="absolute left-1 right-1 top-1/2 h-px bg-accent opacity-20 -translate-y-1/2" />
                     {about.experience.map((e, i) => (
-                      <div key={i} style={styles.hTimelineDot} />
+                      <div key={i} className={`${TIMELINE_DOT} relative z-1`} />
                     ))}
                   </div>
-                  <div style={styles.hTimelineLabels}>
+                  <div className="flex justify-between mt-2.5 gap-3">
                     {about.experience.map((e, i) => {
                       const last = about.experience.length - 1
-                      const align = i === 0 ? 'flex-start' : i === last ? 'flex-end' : 'center'
-                      const textAlign = i === 0 ? 'left' : i === last ? 'right' : 'center'
                       return (
                         <div
                           key={i}
-                          style={{ ...styles.hTimelineEntry, alignItems: align, textAlign }}
+                          className={`flex flex-col gap-0.5 max-w-[45%] ${hAlignClass(i, last)}`}
                         >
-                          <span style={styles.eduPeriod}>{e.period}</span>
-                          <span style={styles.eduDegree}>{e.role}</span>
+                          <span className={EDU_PERIOD}>{e.period}</span>
+                          <span className={EDU_DEGREE}>{e.role}</span>
                         </div>
                       )
                     })}
@@ -177,32 +205,36 @@ export default function About() {
             </PaperCard>
           </motion.div>
 
-          <motion.div variants={item} style={styles.eduCol}>
-            <PaperCard style={styles.cardRaw}>
+          <motion.div variants={item} className="flex flex-col">
+            <PaperCard className="h-full">
               <CollapsibleCard mobile={false} title="Education">
-                <div style={styles.timeline}>
+                <div className="flex flex-col pt-[1em]">
                   {about.education.map((e, i) => (
-                    <div key={i} style={styles.timelineEntry}>
-                      <div style={styles.timelineLeft}>
-                        <div style={styles.timelineDot} />
-                        {i < about.education.length - 1 && <div style={styles.timelineLine} />}
+                    <div key={i} className="flex flex-row gap-4">
+                      <div className="flex flex-col items-center shrink-0 w-3">
+                        <div className={`${TIMELINE_DOT} shrink-0 mt-1`} />
+                        {i < about.education.length - 1 && (
+                          <div className="w-px flex-1 bg-accent opacity-20 my-1" />
+                        )}
                       </div>
-                      <div style={styles.timelineContent}>
-                        <span style={styles.eduPeriod}>{e.period}</span>
-                        <span style={styles.eduDegree}>{e.degree}</span>
+                      <div className="flex flex-col gap-0.5 pb-5">
+                        <span className={EDU_PERIOD}>{e.period}</span>
+                        <span className={EDU_DEGREE}>{e.degree}</span>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div style={styles.cardDivider} />
-                <p style={styles.langLabel}>Languages</p>
-                <div style={styles.langList}>
+                <div className="h-px bg-border mb-4" />
+                <p className="font-body text-[0.68rem] tracking-[0.16em] uppercase text-ink-soft mb-4">
+                  Languages
+                </p>
+                <div className="flex flex-col gap-1">
                   {about.spoken.map((s, i) => {
                     const [lang, ...rest] = s.split(' — ')
                     return (
-                      <div key={i} style={styles.langRow}>
-                        <span style={styles.langName}>{lang}</span>
-                        <span style={styles.langLevel}>{rest.join(' — ')}</span>
+                      <div key={i} className="flex gap-2 text-[0.88rem] leading-[1.6]">
+                        <span className="text-accent font-medium">{lang}</span>
+                        <span className="text-ink-soft">{rest.join(' — ')}</span>
                       </div>
                     )
                   })}
@@ -211,16 +243,18 @@ export default function About() {
             </PaperCard>
           </motion.div>
 
-          <motion.div variants={item} style={styles.skillsCol}>
-            <PaperCard style={styles.cardRaw}>
+          <motion.div variants={item} className="flex flex-col">
+            <PaperCard className="h-full">
               <CollapsibleCard mobile={false} title="Skills">
-                <div style={styles.skillsGrid}>
+                <div className="pt-[1em] flex flex-col gap-3.5">
                   {Object.entries(about.skills).map(([group, items]) => (
-                    <div key={group} style={styles.skillGroup}>
-                      <span style={styles.skillGroupLabel}>{group}</span>
-                      <div style={styles.pillRow}>
+                    <div key={group} className="flex flex-col gap-1.5">
+                      <span className="font-body text-[0.65rem] tracking-[0.14em] uppercase text-accent">
+                        {group}
+                      </span>
+                      <div className="flex flex-wrap gap-1.25">
                         {items.map((item, i) => (
-                          <span key={i} style={styles.pill}>
+                          <span key={i} className={PILL}>
                             {item}
                           </span>
                         ))}
@@ -232,22 +266,22 @@ export default function About() {
             </PaperCard>
           </motion.div>
 
-          <motion.div variants={item} style={{ gridColumn: '1 / -1' }}>
-            <PaperCard style={styles.cardRaw}>
+          <motion.div variants={item} className="col-span-full">
+            <PaperCard className="h-full">
               <CollapsibleCard mobile={false} title="This Site">
-                <div style={styles.siteInner}>
-                  <div style={styles.siteTitleCol}>
-                    <div style={styles.siteDisplayTitle}>
+                <div className="flex flex-row gap-10 items-start">
+                  <div className="shrink-0 w-40">
+                    <div className="font-display text-[clamp(1.4rem,3vw,2rem)] font-semibold leading-[1.2] text-accent mt-2 tracking-[-0.01em]">
                       How it
                       <br />
                       was built
                     </div>
                   </div>
-                  <div style={styles.siteBodyCol}>
-                    <p style={styles.siteText}>{site.description}</p>
-                    <div style={styles.pillRow}>
-                      {site.stack.map((s, i) => (
-                        <span key={i} style={styles.pill}>
+                  <div className="flex-1 flex flex-col gap-4">
+                    <p className={SITE_TEXT}>{about.description}</p>
+                    <div className="flex flex-wrap gap-1.25">
+                      {about.stack.map((s, i) => (
+                        <span key={i} className={PILL}>
                           {s}
                         </span>
                       ))}
@@ -261,270 +295,4 @@ export default function About() {
       )}
     </Section>
   )
-}
-
-const styles = {
-  section: {
-    maxWidth: 900,
-    margin: '0 auto',
-    padding: '12vh 24px',
-  },
-  bioRow: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: 10,
-    marginBottom: 48,
-  },
-  bioRowMobile: {
-    flexDirection: 'column',
-    gap: 16,
-  },
-  eyebrow: {
-    fontFamily: 'var(--font-display)',
-    fontSize: '1.5rem',
-    letterSpacing: '0.12em',
-    textTransform: 'uppercase',
-    color: 'var(--accent)',
-    fontWeight: 800,
-    writingMode: 'vertical-rl',
-    transform: 'rotate(180deg)',
-    flexShrink: 0,
-    paddingTop: 4,
-  },
-  eyebrowMobile: {
-    writingMode: 'horizontal-tb',
-    transform: 'none',
-    fontSize: '1.5rem',
-    letterSpacing: '0.18em',
-    paddingTop: 0,
-  },
-  eyebrowSep: {
-    width: 1.5,
-    alignSelf: 'stretch',
-    background: 'var(--accent)',
-    opacity: 0.4,
-    flexShrink: 0,
-  },
-  eyebrowSepH: {
-    height: 1,
-    width: '100%',
-    background: 'var(--accent)',
-    opacity: 0.4,
-  },
-  bio: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '1.05rem',
-    lineHeight: 1.85,
-    color: 'var(--ink)',
-    margin: 0,
-    maxWidth: 680,
-  },
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1.6fr',
-    gap: 1,
-    marginBottom: 1,
-  },
-  eduCol: { display: 'flex', flexDirection: 'column' },
-  skillsCol: { display: 'flex', flexDirection: 'column' },
-  cardRaw: {
-    padding: '28px 28px',
-    height: '100%',
-    boxSizing: 'border-box',
-  },
-  eduPeriod: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.75rem',
-    color: 'var(--accent)',
-    letterSpacing: '0.06em',
-  },
-  eduDegree: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.92rem',
-    color: 'var(--ink)',
-    lineHeight: 1.4,
-  },
-  cardDivider: {
-    height: 1,
-    background: 'var(--border)',
-    margin: '0 0 16px',
-  },
-  skillsGrid: {
-    paddingTop: '1em',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 14,
-  },
-  skillGroup: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 6,
-  },
-  skillGroupLabel: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.65rem',
-    letterSpacing: '0.14em',
-    textTransform: 'uppercase',
-    color: 'var(--accent)',
-  },
-  pillRow: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: 5,
-  },
-  pill: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.82rem',
-    color: 'var(--ink-soft)',
-    background: 'var(--paper)',
-    border: '1px solid var(--border)',
-    borderRadius: 2,
-    padding: '3px 10px',
-  },
-  siteInner: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: 40,
-    alignItems: 'flex-start',
-  },
-  siteTitleCol: {
-    flexShrink: 0,
-    width: 160,
-  },
-  siteDisplayTitle: {
-    fontFamily: 'var(--font-display)',
-    fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-    fontWeight: 600,
-    lineHeight: 1.2,
-    color: 'var(--accent)',
-    margin: '8px 0 0',
-    letterSpacing: '-0.01em',
-  },
-  siteBodyCol: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 16,
-  },
-  siteText: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.95rem',
-    lineHeight: 1.75,
-    color: 'var(--ink-soft)',
-    margin: 0,
-  },
-  langList: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 4,
-  },
-  langRow: {
-    display: 'flex',
-    gap: 8,
-    fontSize: '0.88rem',
-    lineHeight: 1.6,
-  },
-  langName: {
-    color: 'var(--accent)',
-    fontWeight: 500,
-  },
-  langLevel: {
-    color: 'var(--ink-soft)',
-  },
-  langLabel: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.68rem',
-    letterSpacing: '0.16em',
-    textTransform: 'uppercase',
-    color: 'var(--ink-soft)',
-    margin: '0 0 16px',
-  },
-  mobileStack: {
-    display: 'flex',
-    flexDirection: 'column',
-    border: '1px solid var(--border)',
-    overflow: 'hidden',
-  },
-  timeline: {
-    display: 'flex',
-    flexDirection: 'column',
-    paddingTop: '1em',
-  },
-  timelineEntry: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: 16,
-  },
-  timelineLeft: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    flexShrink: 0,
-    width: 12,
-  },
-  timelineDot: {
-    width: 8,
-    height: 8,
-    borderRadius: '50%',
-    border: '1.5px solid var(--accent)',
-    background: 'var(--paper-soft)',
-    flexShrink: 0,
-    marginTop: 4,
-  },
-  timelineLine: {
-    width: 1,
-    flex: 1,
-    background: 'var(--accent)',
-    opacity: 0.2,
-    marginTop: 4,
-    marginBottom: 4,
-  },
-  timelineContent: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 2,
-    paddingBottom: 20,
-  },
-  hTimeline: {
-    paddingTop: '0.5em',
-  },
-  hTimelineTrack: {
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: 8,
-  },
-  hTimelineLine: {
-    position: 'absolute',
-    left: 4,
-    right: 4,
-    top: '50%',
-    height: 1,
-    background: 'var(--accent)',
-    opacity: 0.2,
-    transform: 'translateY(-50%)',
-  },
-  hTimelineDot: {
-    width: 8,
-    height: 8,
-    borderRadius: '50%',
-    border: '1.5px solid var(--accent)',
-    background: 'var(--paper-soft)',
-    position: 'relative',
-    zIndex: 1,
-  },
-  hTimelineLabels: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    marginTop: 10,
-    gap: 12,
-  },
-  hTimelineEntry: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 2,
-    maxWidth: '45%',
-  },
 }

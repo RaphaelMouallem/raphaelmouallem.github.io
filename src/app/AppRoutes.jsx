@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { usePageViews } from '@/hooks/usePageViews'
 
 const HomePage = lazy(() => import('../pages/home/HomePage'))
@@ -11,7 +11,7 @@ export default function AppRoutes() {
     <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<HomePage />} />
+        <Route path="/about" element={<Navigate to="/" replace />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>

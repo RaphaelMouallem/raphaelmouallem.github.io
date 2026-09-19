@@ -14,9 +14,9 @@ export default function Hero() {
   const [nameSettled, setNameSettled] = useState(false)
 
   return (
-    <section id="hero" style={styles.hero}>
+    <section id="hero" className="relative min-h-[85vh] flex items-center overflow-hidden">
       <motion.div
-        style={styles.shapes}
+        className="absolute -top-[5%] -left-[8%] -right-[8%] -bottom-[5%] z-0"
         aria-hidden="true"
         animate={{ x: drift.x * 10, y: drift.y * 6 }}
         transition={{ type: 'spring', stiffness: 40, damping: 20 }}
@@ -24,9 +24,9 @@ export default function Hero() {
         <HeroLandscape drift={drift} />
       </motion.div>
 
-      <div style={styles.content}>
+      <div className="relative z-[2] max-w-[900px] m-0 px-[5vw] w-full">
         <motion.p
-          style={styles.eyebrow}
+          className="font-body text-[0.8rem] tracking-[0.15em] uppercase text-accent mb-3"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: easeOut }}
@@ -36,7 +36,7 @@ export default function Hero() {
         <InkUnderline delay={nameSettled ? 0.1 : 999} />
 
         <motion.h1
-          style={styles.name}
+          className="font-display text-[clamp(3rem,9vw,6.5rem)] font-semibold mb-3 leading-[1.1] tracking-[-0.01em]"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: easeOut, delay: 0.1 }}
@@ -45,7 +45,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          style={styles.title}
+          className="font-body text-[1.05rem] text-ink-soft mt-2 relative z-[2]"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: easeOut, delay: 0.2 }}
@@ -55,7 +55,7 @@ export default function Hero() {
       </div>
 
       <motion.div
-        style={styles.scrollIndicator}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[1]"
         aria-hidden="true"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.5, y: [0, 6, 0] }}
@@ -68,61 +68,4 @@ export default function Hero() {
       </motion.div>
     </section>
   )
-}
-
-const styles = {
-  hero: {
-    position: 'relative',
-    minHeight: '85vh',
-    display: 'flex',
-    alignItems: 'center',
-    overflow: 'hidden',
-  },
-  content: {
-    position: 'relative',
-    zIndex: 2,
-    maxWidth: 900,
-    margin: '0',
-    padding: '0 5vw',
-    width: '100%',
-  },
-  eyebrow: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.8rem',
-    letterSpacing: '0.15em',
-    textTransform: 'uppercase',
-    color: 'var(--accent)',
-    margin: '0 0 12px',
-  },
-  name: {
-    fontFamily: 'var(--font-display)',
-    fontSize: 'clamp(3rem, 9vw, 6.5rem)',
-    fontWeight: 600,
-    margin: '0 0 12px',
-    lineHeight: 1.1,
-    letterSpacing: '-0.01em',
-  },
-  title: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '1.05rem',
-    color: 'var(--ink-soft)',
-    margin: '8px 0 0',
-    position: 'relative',
-    zIndex: 2,
-  },
-  scrollIndicator: {
-    position: 'absolute',
-    bottom: 32,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    zIndex: 1,
-  },
-  shapes: {
-    position: 'absolute',
-    top: '-5%',
-    left: '-8%',
-    right: '-8%',
-    bottom: '-5%',
-    zIndex: 0,
-  },
 }

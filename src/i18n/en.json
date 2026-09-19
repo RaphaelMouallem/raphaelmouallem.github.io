@@ -1,12 +1,14 @@
 {
   "intro": {
     "name": "Raphael El Mouallem",
-    "title": "Software Engineer · Full Stack & AI Developer",
-    "hint": "scroll to fall ↓"
+    "title": "Software Engineer · Full Stack & AI Developer"
   },
 
   "about": {
     "bio": "I'm a software engineer based in Lebanon, currently pursuing a Master's in Web Development. I build things across the stack — from React frontends and Spring Boot backends to PyTorch models trained from scratch. I like working on problems that sit at the intersection of systems, AI, and good design.",
+    "title": "About This Site",
+    "description": "A lightweight Japandi-aesthetic portfolio page — paper textures, ink tokens, procedural SVG motifs. Pure React, no 3D. Framer Motion for transitions, custom cursor, wind-streak generative art.",
+    "stack": ["React", "Framer Motion", "Vite", "GitHub Pages"],
     "experience": [
       {
         "role": "FinTech Intern — SoftManagement",
@@ -32,23 +34,6 @@
       "Tools": ["Git", "Docker", "AWS", "Anaconda"]
     },
     "spoken": ["Arabic — native", "English — fluent", "French — proficient"]
-  },
-
-  "pages": {
-    "synthwave": {
-      "site": {
-        "title": "About This Site",
-        "description": "This portfolio is a handbuilt 3D experience in React Three Fiber. You scroll, you fall. The sky is procedurally generated — stars, galaxies, cloud banks, and an underwater scene at the bottom, all in real time. No templates. Just scroll depth, geometry, and physics.",
-        "stack": ["React", "R3F", "Drei", "Framer Motion", "Vite", "GitHub Pages"]
-      }
-    },
-    "about": {
-      "site": {
-        "title": "About This Site",
-        "description": "A lightweight Japandi-aesthetic portfolio page — paper textures, ink tokens, procedural SVG motifs. Pure React, no 3D. Framer Motion for transitions, custom cursor, wind-streak generative art.",
-        "stack": ["React", "Framer Motion", "Vite", "GitHub Pages"]
-      }
-    }
   },
 
   "projects": [
@@ -104,16 +89,6 @@
   "footer": {
     "heading": "You made it!",
     "subheading": "That's everything — thanks for scrolling all the way down.",
-    "backTo2D": {
-      "label": "Back to 2D",
-      "href": "/"
-    },
-    "exploration": {
-      "label": "Explore",
-      "description": "Prefer the full experience?",
-      "cta": "Enter exploration mode",
-      "href": "/3d"
-    },
     "sections": [
       { "label": "Home", "href": "#hero" },
       { "label": "About", "href": "#about" },
@@ -121,10 +96,6 @@
       { "label": "Contact", "href": "#contact" }
     ],
     "social": [
-      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/raphael-el-mouallem-1qw/" },
-      { "label": "GitHub", "href": "https://github.com/RaphaelMouallem" }
-    ],
-    "links": [
       { "label": "LinkedIn", "href": "https://www.linkedin.com/in/raphael-el-mouallem-1qw/" },
       { "label": "GitHub", "href": "https://github.com/RaphaelMouallem" }
     ],

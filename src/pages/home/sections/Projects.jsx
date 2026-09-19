@@ -18,38 +18,44 @@ export default function Projects() {
   const [openId, setOpenId] = useState(null)
 
   return (
-    <Section id="projects" style={styles.section} data-cursor-label="projects">
+    <Section id="projects" className="max-w-[900px] mx-auto py-[12vh] px-6" data-cursor-label="projects">
       <motion.div
-        style={styles.frame}
+        className="border border-border bg-paper-soft overflow-hidden"
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-60px' }}
       >
-        <div style={styles.tableHeader}>
-          <span style={styles.tableHeaderText}>Projects</span>
+        <div className="bg-accent px-7 py-3.5">
+          <span className="font-display text-2xl font-extrabold tracking-[0.12em] uppercase text-paper">
+            Projects
+          </span>
         </div>
 
         {projects.map((p, i) => {
           const isOpen = openId === p.id
           return (
-            <motion.div key={p.id} variants={rowVariants} style={styles.row}>
+            <motion.div key={p.id} variants={rowVariants} className="border-b border-border">
               <motion.button
                 onClick={() => setOpenId(isOpen ? null : p.id)}
-                style={styles.header}
+                className="w-full flex items-center gap-6 px-7 py-5 bg-transparent border-none text-left font-[inherit]"
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.15, ease: easeOut }}
               >
-                <span style={{ ...styles.stamp, ...(isOpen ? styles.stampOpen : {}) }}>
+                <span
+                  className={`w-[34px] h-[34px] shrink-0 rounded-full border-[1.5px] border-accent flex items-center justify-center font-display text-[0.78rem] transition-colors duration-200 ease-[ease] ${
+                    isOpen ? 'bg-accent text-paper' : 'text-accent'
+                  }`}
+                >
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span style={styles.titleGroup}>
-                  <span style={styles.title}>{p.title}</span>
-                  <span style={styles.subtitle}>{p.subtitle}</span>
+                <span className="flex-1 flex flex-col gap-1">
+                  <span className="font-display text-[1.15rem] font-semibold text-ink">{p.title}</span>
+                  <span className="font-body text-[0.85rem] text-ink-soft">{p.subtitle}</span>
                 </span>
-                <span data-cursor="hover" style={styles.chevronWrap}>
+                <span data-cursor="hover" className="flex items-center justify-center w-8 h-8 rounded-full">
                   <motion.span
-                    style={styles.chevron}
+                    className="font-body text-[1.3rem] text-accent leading-none"
                     animate={{ rotate: isOpen ? 90 : 0 }}
                     transition={{ duration: 0.3, ease: easeOut }}
                   >
@@ -65,14 +71,16 @@ export default function Projects() {
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.4, ease: easeOut }}
-                    style={styles.bodyWrap}
+                    className="overflow-hidden"
                   >
-                    <div style={styles.body}>
-                      <p style={styles.description}>{p.description}</p>
-                      <p style={styles.tags}>
+                    <div className="pt-0 pr-7 pb-7 pl-[86px]">
+                      <p className="font-body text-[0.95rem] leading-[1.75] text-ink-soft mb-4 max-w-[680px]">
+                        {p.description}
+                      </p>
+                      <p className="text-[0.85rem] text-ink-soft mb-4">
                         {p.tags.map((t, j) => (
                           <span key={j}>
-                            {j > 0 && <span style={styles.sep}>·</span>}
+                            {j > 0 && <span className="mx-2">·</span>}
                             {t}
                           </span>
                         ))}
@@ -83,7 +91,7 @@ export default function Projects() {
                           target="_blank"
                           rel="noreferrer"
                           data-cursor="hover"
-                          style={styles.link}
+                          className="font-body text-[0.9rem] text-accent no-underline border-b border-accent pb-0.5"
                         >
                           View on GitHub →
                         </a>
@@ -98,122 +106,4 @@ export default function Projects() {
       </motion.div>
     </Section>
   )
-}
-
-const styles = {
-  section: {
-    maxWidth: 900,
-    margin: '0 auto',
-    padding: '12vh 24px',
-  },
-  frame: {
-    border: '1px solid var(--border)',
-    background: 'var(--paper-soft)',
-    overflow: 'hidden',
-  },
-  tableHeader: {
-    background: 'var(--accent)',
-    padding: '14px 28px',
-  },
-  tableHeaderText: {
-    fontFamily: 'var(--font-display)',
-    fontSize: '1.5rem',
-    fontWeight: 800,
-    letterSpacing: '0.12em',
-    textTransform: 'uppercase',
-    color: 'var(--paper)',
-  },
-  row: {
-    borderBottom: '1px solid var(--border)',
-  },
-  header: {
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    gap: 24,
-    padding: '20px 28px',
-    background: 'transparent',
-    border: 'none',
-    textAlign: 'left',
-    fontFamily: 'inherit',
-  },
-  stamp: {
-    width: 34,
-    height: 34,
-    flexShrink: 0,
-    borderRadius: '50%',
-    border: '1.5px solid var(--accent)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: 'var(--font-display)',
-    fontSize: '0.78rem',
-    color: 'var(--accent)',
-    transition: 'background-color 200ms ease, color 200ms ease',
-  },
-  stampOpen: {
-    backgroundColor: 'var(--accent)',
-    color: 'var(--paper)',
-  },
-  titleGroup: {
-    flex: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 4,
-  },
-  title: {
-    fontFamily: 'var(--font-display)',
-    fontSize: '1.15rem',
-    fontWeight: 600,
-    color: 'var(--ink)',
-  },
-  subtitle: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.85rem',
-    color: 'var(--ink-soft)',
-  },
-  chevronWrap: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 32,
-    height: 32,
-    borderRadius: '50%',
-  },
-  chevron: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '1.3rem',
-    color: 'var(--accent)',
-    lineHeight: 1,
-  },
-  bodyWrap: {
-    overflow: 'hidden',
-  },
-  body: {
-    padding: '0 28px 28px 86px',
-  },
-  description: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.95rem',
-    lineHeight: 1.75,
-    color: 'var(--ink-soft)',
-    margin: '0 0 16px',
-    maxWidth: 680,
-  },
-  tags: {
-    fontSize: '0.85rem',
-    color: 'var(--ink-soft)',
-    margin: '0 0 16px',
-  },
-  sep: {
-    margin: '0 8px',
-  },
-  link: {
-    fontFamily: 'var(--font-body)',
-    fontSize: '0.9rem',
-    color: 'var(--accent)',
-    textDecoration: 'none',
-    borderBottom: '1px solid var(--accent)',
-    paddingBottom: 2,
-  },
 }

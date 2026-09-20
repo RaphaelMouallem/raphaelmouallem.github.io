@@ -1,14 +1,14 @@
 # Raphael El Mouallem
 
-> Software Engineer — Full Stack & AI Developer, based in Lebanon.
+> Software Engineer, Full Stack & AI Developer, based in Lebanon.
 
-Raphael builds across the stack — React frontends, Spring Boot backends, and PyTorch models trained from scratch. He works on problems at the intersection of systems, AI, and design.
+Raphael builds across the stack: React frontends, Spring Boot backends, and PyTorch models trained from scratch, with a focus on systems and AI.
 
 This site (raphaelmouallem.github.io) is a single-page portfolio: hero, about, projects, and contact sections, built with React and Tailwind.
 
 ## Background
 
-- Pursuing a Master's in Web Development (2025–present), preceded by a Master's in Computer Science and a Bachelor's in Computer Science.
+- Master's in Web Development (2025-2026), preceded by a Master's in Computer Science and a Bachelor's in Computer Science.
 - Languages spoken: Arabic (native), English (fluent), French (proficient).
 
 ## Projects

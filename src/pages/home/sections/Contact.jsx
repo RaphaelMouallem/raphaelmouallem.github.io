@@ -5,6 +5,8 @@ import { useRef, useEffect } from 'react'
 import { useTheme } from '@/hooks/useTheme'
 import { sendMessage } from '@/lib/sendMessage'
 import { PROMPT, BOOT_LINES } from '@/features/contact-terminal/contactBoot'
+import GithubIcon from '@/assets/icons/GithubIcon'
+import LinkedinIcon from '@/assets/icons/LinkedinIcon'
 
 const LINE = 'font-mono text-[0.82rem] leading-[1.55] whitespace-pre-wrap break-words'
 
@@ -76,6 +78,28 @@ export default function Contact() {
         </h2>
         <div className="w-[1.5px] h-[1.4rem] bg-accent opacity-40 shrink-0" />
         <span className="font-body text-[0.85rem] text-ink-soft tracking-[0.04em]">{contact.getInTouch}</span>
+        <div className="flex items-center gap-3.5 ml-auto">
+          <a
+            href={contact.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            data-cursor="hover"
+            className="text-ink-soft hover:text-accent transition-colors"
+          >
+            <LinkedinIcon className="w-4.5 h-4.5" />
+          </a>
+          <a
+            href={contact.github}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            data-cursor="hover"
+            className="text-ink-soft hover:text-accent transition-colors"
+          >
+            <GithubIcon className="w-4.5 h-4.5" />
+          </a>
+        </div>
       </div>
 
       <div className="border border-border overflow-hidden">

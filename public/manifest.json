@@ -1,0 +1,15 @@
+{
+  "name": "Raphael El Mouallem",
+  "short_name": "Raphael",
+  "description": "Software engineer in Lebanon with a Master's in Web Development, building across the stack: React, Spring Boot, PyTorch.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#f4efe4",
+  "theme_color": "#af4029",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import '@/styles/tokens.css'
 import ThemeToggle from '@/components/ThemeToggle'
 import { useContent } from '@/hooks/useContent'
 import CharacterRain, { WATER_LINE_VH } from '@/assets/motifs/CharacterRain'
+import ReceiptBackground from '@/assets/motifs/ReceiptBackground'
 
 export default function NotFoundPage() {
   const { notFound } = useContent()
+  const [variant] = useState(() => (Math.random() < 0.5 ? 'rain' : 'receipt'))
   return (
     <div className="about-page relative min-h-screen overflow-hidden bg-paper text-ink font-body selection:bg-accent selection:text-white">
       <link
@@ -13,7 +16,7 @@ export default function NotFoundPage() {
         href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;800&family=Inter:wght@400;500;600&display=swap"
       />
 
-      <CharacterRain />
+      {variant === 'rain' ? <CharacterRain /> : <ReceiptBackground content={notFound.receipt} />}
 
       <header className="fixed top-6 right-6 z-10">
         <ThemeToggle />
@@ -31,7 +34,7 @@ export default function NotFoundPage() {
 
         <div
           className="absolute left-[8%] flex gap-6 flex-wrap pointer-events-auto"
-          style={{ top: `calc(${WATER_LINE_VH}vh + 36px)` }}
+          style={{ top: variant === 'rain' ? `calc(${WATER_LINE_VH}vh + 36px)` : 'calc(28vh + 220px)' }}
         >
           <Link
             to="/"

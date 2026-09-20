@@ -14,7 +14,7 @@ const NEOFETCH = [
   '  ╭──────────────────────────────╮',
   '  │  OS       raphaelm     1.0   │',
   '  │  Shell    zsh                │',
-  '  │  WM       React Three Fiber  │',
+  '  │  WM       React DOM          │',
   '  │  Theme    Japandi            │',
   '  │  Font     Shippori Mincho    │',
   '  │  Palette  terracotta + ink   │',
@@ -122,7 +122,7 @@ export function parseCommand(raw, { onClear, onRestart, onTheme } = {}) {
         'zsh: permission denied — you are not in the sudoers file. this incident will be reported.',
       ]
     case 'uname':
-      return ['raphaelm Darwin 1.0.0 — React Three Fiber / Vite / GitHub Pages']
+      return ['raphaelm Darwin 1.0.0 — React / Vite / GitHub Pages']
     case 'man': {
       if (!rest) return ['usage: man <command>']
       return [`man: no manual entry for ${rest}`, '  have you tried: help']

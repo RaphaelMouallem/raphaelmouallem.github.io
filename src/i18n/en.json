@@ -12,7 +12,7 @@
   },
 
   "about": {
-    "bio": "I'm a software engineer based in Lebanon, currently finishing a Master's in Web Development. I build across the whole stack, from React frontends and Spring Boot backends to PyTorch models I train from scratch. Mostly I gravitate toward problems where systems, AI, and design all have to come together.",
+    "bio": "I'm a software engineer based in Lebanon, with a Master's in Web Development. I build across the whole stack, from React frontends and Spring Boot backends to PyTorch models I train from scratch. Lately I've been into projects that mix systems work with AI.",
     "title": "About This Site",
     "description": "A lightweight Japandi-style portfolio: paper textures, ink-toned colors, procedural SVG motifs. Plain React, no 3D. Framer Motion handles transitions, plus a custom cursor and generative wind-streak art.",
     "stack": ["React", "Framer Motion", "Vite", "GitHub Pages"],
@@ -109,7 +109,14 @@
   "notFound": {
     "code": "404",
     "message": "There's nothing at this address. It may have moved, or never existed.",
-    "backHome": "Back home"
+    "backHome": "Back home",
+    "receipt": {
+      "title": "RAPHAEL'S REPOS",
+      "total": "TOTAL",
+      "scanForMore": "SCAN FOR MORE",
+      "thanks": "thanks!",
+      "offline": "register offline, try again later"
+    }
   },
 
   "footer": {

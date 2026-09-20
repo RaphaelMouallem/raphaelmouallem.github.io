@@ -1,7 +1,14 @@
 import { useContent } from '@/hooks/useContent'
 import Section from '@/components/Section'
 import SeigaihaField from '@/assets/motifs/SeigaihaField'
+import GithubIcon from '@/assets/icons/GithubIcon'
+import LinkedinIcon from '@/assets/icons/LinkedinIcon'
 import { useIsMobile } from '@/features/terminal-pet/utils'
+
+const SOCIAL_ICONS = {
+  github: GithubIcon,
+  linkedin: LinkedinIcon,
+}
 
 const FOOTER_LINK =
   'text-ink-soft no-underline inline-block rounded-full px-2.5 w-fit [transition:color_0.2s_ease,transform_150ms_cubic-bezier(0.16,1,0.3,1)] hover:text-ink active:scale-[0.97]'
@@ -24,7 +31,7 @@ export default function Footer() {
         <div className="flex flex-wrap gap-16 mb-12">
           <div className="flex flex-col gap-2.5">
             <p className="font-body text-[0.7rem] tracking-[0.14em] uppercase text-accent mb-1">
-              Sections
+              {footer.sectionsLabel}
             </p>
             {footer.sections.map((l) => (
               <a key={l.label} href={l.href} data-cursor="hover" className={FOOTER_LINK}>
@@ -34,20 +41,24 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-2.5">
             <p className="font-body text-[0.7rem] tracking-[0.14em] uppercase text-accent mb-1">
-              Connect
+              {footer.connectLabel}
             </p>
-            {footer.social.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="hover"
-                className={FOOTER_LINK}
-              >
-                {l.label}
-              </a>
-            ))}
+            {footer.social.map((l) => {
+              const Icon = SOCIAL_ICONS[l.label.toLowerCase()]
+              return (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="hover"
+                  className={`inline-flex items-center gap-2 ${FOOTER_LINK}`}
+                >
+                  {Icon && <Icon className="w-4 h-4 shrink-0 text-accent" />}
+                  {l.label}
+                </a>
+              )
+            })}
           </div>
         </div>
 
@@ -59,7 +70,7 @@ export default function Footer() {
           }`}
         >
           <p className="font-body text-[0.8rem] text-ink-soft m-0">{footer.footer}</p>
-          <span className="w-[46px] h-[46px] shrink-0 border-[1.5px] border-accent rounded text-accent bg-accent-soft font-display text-[0.85rem] font-medium flex items-center justify-center [writing-mode:vertical-rl] rotate-[-6deg] leading-none">
+          <span className="w-11.5 h-11.5 shrink-0 border-[1.5px] border-accent rounded text-accent bg-accent-soft font-display text-[0.85rem] font-medium flex items-center justify-center [writing-mode:vertical-rl] rotate-[-6deg] leading-none">
             RM
           </span>
         </div>

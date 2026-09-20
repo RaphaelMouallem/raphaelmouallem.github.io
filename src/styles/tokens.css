@@ -7,8 +7,8 @@ html[data-theme='light'] {
   --ink: #1f1d1a;
   --ink-soft: rgba(31, 29, 26, 0.62);
   --ink-faint: rgba(31, 29, 26, 0.32);
-  --accent: #c8492f;
-  --accent-soft: rgba(200, 73, 47, 0.12);
+  --accent: #af4029;
+  --accent-soft: rgba(175, 64, 41, 0.12);
   --border: rgba(31, 29, 26, 0.12);
   --mullion: rgba(31, 29, 26, 0.08);
   --shadow: rgba(90, 70, 50, 0.16);

@@ -43,6 +43,7 @@ const HELP_LINES = [
   '  ping <host>        — ping a host',
   '  man <cmd>          — manual (good luck)',
   '  history            — shows all previous commands',
+  '  open <section>     - open targeted section',
 ]
 
 export function parseCommand(raw, { onClear, onRestart, onTheme } = {}) {

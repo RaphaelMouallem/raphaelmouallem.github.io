@@ -26,7 +26,9 @@ const hAlignClass = (i, last) =>
   i === 0 ? 'items-start text-left' : i === last ? 'items-end text-right' : 'items-center text-center'
 
 export default function About() {
-  const { about } = useContent()
+  const { about, sectionLabels } = useContent()
+  const { experience: L_EXP, education: L_EDU, skills: L_SKILLS, site: L_SITE, languages: L_LANG } =
+    about.labels
   const mobile = useIsMobile()
   const [openCard, setOpenCard] = useState(null)
   const toggle = (id) => setOpenCard((cur) => (cur === id ? null : id))
@@ -40,15 +42,15 @@ export default function About() {
   return (
     <Section id="about" className="max-w-225 mx-auto py-[12vh] px-6" data-cursor-label="about">
       <div className={`flex items-start gap-2.5 mb-12 ${mobile ? 'flex-col gap-4' : 'flex-row'}`}>
-        <span
-          className={`font-display text-2xl font-extrabold uppercase text-accent shrink-0 ${
+        <h2
+          className={`font-display text-2xl font-extrabold uppercase text-accent shrink-0 m-0 ${
             mobile
               ? '[writing-mode:horizontal-tb] tracking-[0.18em] pt-0'
               : '[writing-mode:vertical-rl] rotate-180 tracking-[0.12em] pt-1'
           }`}
         >
-          About
-        </span>
+          {sectionLabels.about}
+        </h2>
         <div
           className={
             mobile
@@ -63,7 +65,7 @@ export default function About() {
         <div className="flex flex-col border border-border overflow-hidden">
           <CollapsibleCard
             mobile={true}
-            title="Experience"
+            title={L_EXP}
             glyph="職"
             open={openCard === 'experience'}
             onToggle={() => toggle('experience')}
@@ -88,7 +90,7 @@ export default function About() {
 
           <CollapsibleCard
             mobile={true}
-            title="Education"
+            title={L_EDU}
             glyph="学"
             open={openCard === 'education'}
             onToggle={() => toggle('education')}
@@ -111,7 +113,7 @@ export default function About() {
             </div>
             <div className="h-px bg-border mb-4" />
             <p className="font-body text-[0.68rem] tracking-[0.16em] uppercase text-ink-soft mb-4">
-              Languages
+              {L_LANG}
             </p>
             <div className="flex flex-col gap-1">
               {about.spoken.map((s, i) => {
@@ -128,7 +130,7 @@ export default function About() {
 
           <CollapsibleCard
             mobile={true}
-            title="Skills"
+            title={L_SKILLS}
             glyph="技"
             open={openCard === 'skills'}
             onToggle={() => toggle('skills')}
@@ -153,7 +155,7 @@ export default function About() {
 
           <CollapsibleCard
             mobile={true}
-            title="This Site"
+            title={L_SITE}
             glyph="作"
             open={openCard === 'site'}
             onToggle={() => toggle('site')}
@@ -178,7 +180,7 @@ export default function About() {
         >
           <motion.div variants={item} className="col-span-full">
             <PaperCard className="h-full">
-              <CollapsibleCard mobile={false} title="Experience">
+              <CollapsibleCard mobile={false} title={L_EXP}>
                 <div className="pt-[0.5em]">
                   <div className="relative flex justify-between items-center h-2">
                     <div className="absolute left-1 right-1 top-1/2 h-px bg-accent opacity-20 -translate-y-1/2" />
@@ -207,7 +209,7 @@ export default function About() {
 
           <motion.div variants={item} className="flex flex-col">
             <PaperCard className="h-full">
-              <CollapsibleCard mobile={false} title="Education">
+              <CollapsibleCard mobile={false} title={L_EDU}>
                 <div className="flex flex-col pt-[1em]">
                   {about.education.map((e, i) => (
                     <div key={i} className="flex flex-row gap-4">
@@ -226,7 +228,7 @@ export default function About() {
                 </div>
                 <div className="h-px bg-border mb-4" />
                 <p className="font-body text-[0.68rem] tracking-[0.16em] uppercase text-ink-soft mb-4">
-                  Languages
+                  {L_LANG}
                 </p>
                 <div className="flex flex-col gap-1">
                   {about.spoken.map((s, i) => {
@@ -245,7 +247,7 @@ export default function About() {
 
           <motion.div variants={item} className="flex flex-col">
             <PaperCard className="h-full">
-              <CollapsibleCard mobile={false} title="Skills">
+              <CollapsibleCard mobile={false} title={L_SKILLS}>
                 <div className="pt-[1em] flex flex-col gap-3.5">
                   {Object.entries(about.skills).map(([group, items]) => (
                     <div key={group} className="flex flex-col gap-1.5">
@@ -268,13 +270,13 @@ export default function About() {
 
           <motion.div variants={item} className="col-span-full">
             <PaperCard className="h-full">
-              <CollapsibleCard mobile={false} title="This Site">
+              <CollapsibleCard mobile={false} title={L_SITE}>
                 <div className="flex flex-row gap-10 items-start">
                   <div className="shrink-0 w-40">
                     <div className="font-display text-[clamp(1.4rem,3vw,2rem)] font-semibold leading-[1.2] text-accent mt-2 tracking-[-0.01em]">
-                      How it
+                      {about.siteHeading[0]}
                       <br />
-                      was built
+                      {about.siteHeading[1]}
                     </div>
                   </div>
                   <div className="flex-1 flex flex-col gap-4">

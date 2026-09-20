@@ -1,14 +1,29 @@
 {
+  "sectionLabels": {
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+
   "intro": {
     "name": "Raphael El Mouallem",
-    "title": "Software Engineer · Full Stack & AI Developer"
+    "title": "Software Engineer · Full Stack & AI Developer",
+    "handle": "raphaelmouallem.github.io"
   },
 
   "about": {
-    "bio": "I'm a software engineer based in Lebanon, currently pursuing a Master's in Web Development. I build things across the stack — from React frontends and Spring Boot backends to PyTorch models trained from scratch. I like working on problems that sit at the intersection of systems, AI, and good design.",
+    "bio": "I'm a software engineer based in Lebanon, currently finishing a Master's in Web Development. I build across the whole stack, from React frontends and Spring Boot backends to PyTorch models I train from scratch. Mostly I gravitate toward problems where systems, AI, and design all have to come together.",
     "title": "About This Site",
-    "description": "A lightweight Japandi-aesthetic portfolio page — paper textures, ink tokens, procedural SVG motifs. Pure React, no 3D. Framer Motion for transitions, custom cursor, wind-streak generative art.",
+    "description": "A lightweight Japandi-style portfolio: paper textures, ink-toned colors, procedural SVG motifs. Plain React, no 3D. Framer Motion handles transitions, plus a custom cursor and generative wind-streak art.",
     "stack": ["React", "Framer Motion", "Vite", "GitHub Pages"],
+    "labels": {
+      "experience": "Experience",
+      "education": "Education",
+      "skills": "Skills",
+      "site": "This Site",
+      "languages": "Languages"
+    },
+    "siteHeading": ["How it", "was built"],
     "experience": [
       {
         "role": "FinTech Intern — SoftManagement",
@@ -42,7 +57,7 @@
       "title": "Nexus",
       "subtitle": "Enterprise RAG Knowledge System",
       "tags": ["RAG", "AI", "Angular", "Flutter", "Docker", "Qdrant", "PostgreSQL"],
-      "description": "A RAG platform for AI-powered search across document repositories. Hybrid pipeline combining semantic vector search and lexical search, with local (Ollama) and cloud (Gemini) inference. Cross-platform — Angular web, Flutter mobile. Containerized with Docker.",
+      "description": "A RAG platform for AI-powered search across document repositories. It combines semantic vector search with lexical search, running inference locally via Ollama or in the cloud via Gemini. Cross-platform: Angular web, Flutter mobile, containerized with Docker.",
       "github": null
     },
     {
@@ -50,7 +65,7 @@
       "title": "Custom GPT-2 mini",
       "subtitle": "LLM from scratch in PyTorch",
       "tags": ["PyTorch", "NLP", "Deep Learning", "MPS", "Quantization"],
-      "description": "Decoder-based LLM rebuilt from scratch — 12 self-attention heads, RoPE positional encoding. Optimised for Apple MPS via matrix fusion and bfloat16. Trained incrementally (6→8→12 heads). Fine-tuned on dialog datasets, quantized (PQT) for inference.",
+      "description": "Decoder-based LLM built from scratch: 12 self-attention heads, RoPE positional encoding. Optimized for Apple MPS with matrix fusion and bfloat16, trained incrementally from 6 to 8 to 12 heads. Fine-tuned on dialog data, quantized (PQT) for inference.",
       "github": null
     },
     {
@@ -58,7 +73,7 @@
       "title": "E-Commerce",
       "subtitle": "Full Stack Web App",
       "tags": ["React", "TailwindCSS", "Spring Boot", "PostgreSQL", "Flyway"],
-      "description": "Full-stack e-commerce with React + Tailwind frontend, Spring Boot backend with auth and clean architecture, PostgreSQL/Flyway database. User profiles, product ratings.",
+      "description": "Full-stack e-commerce: React + Tailwind frontend, Spring Boot backend with auth and clean architecture, PostgreSQL/Flyway storage. User profiles, product ratings.",
       "github": null
     },
     {
@@ -66,7 +81,7 @@
       "title": "Fitness App",
       "subtitle": "Cross-Platform Mobile App",
       "tags": ["Flutter", "SQLite", "Cross-Platform", "TTS"],
-      "description": "Cross-platform fitness app in Flutter (web compatible). Multi-user support, anonymous mode, TTS workout guidance. Encrypted SQLite local storage. Dedicated pages for workouts, nutrition, and statistics.",
+      "description": "Cross-platform fitness app in Flutter, web compatible. Multi-user support, anonymous mode, and TTS workout guidance, backed by encrypted SQLite storage. Separate pages for workouts, nutrition, and stats.",
       "github": null
     },
     {
@@ -74,7 +89,7 @@
       "title": "Finance Tracker",
       "subtitle": "Budget & Expense Manager",
       "tags": ["Angular", "Django", "PostgreSQL", "XLSX"],
-      "description": "Responsive Angular app for expense tracking and budget categorization. Statistical dashboards, .xlsx transaction import. Django MVC backend, PostgreSQL storage.",
+      "description": "A responsive Angular app for tracking expenses and categorizing budgets, with statistical dashboards and .xlsx transaction import. Django MVC backend, PostgreSQL storage.",
       "github": null
     }
   ],
@@ -83,12 +98,25 @@
     "heading": "Let's talk.",
     "subheading": "Open to opportunities, collaborations, and interesting problems.",
     "linkedin": "https://www.linkedin.com/in/raphael-el-mouallem-1qw/",
-    "github": "https://github.com/RaphaelMouallem"
+    "github": "https://github.com/RaphaelMouallem",
+    "getInTouch": "Get in touch"
+  },
+
+  "projectsUi": {
+    "viewOnGithub": "View on GitHub →"
+  },
+
+  "notFound": {
+    "code": "404",
+    "message": "There's nothing at this address. It may have moved, or never existed.",
+    "backHome": "Back home"
   },
 
   "footer": {
     "heading": "You made it!",
     "subheading": "That's everything — thanks for scrolling all the way down.",
+    "sectionsLabel": "Sections",
+    "connectLabel": "Connect",
     "sections": [
       { "label": "Home", "href": "#hero" },
       { "label": "About", "href": "#about" },

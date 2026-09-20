@@ -1,4 +1,5 @@
 import Section from '@/components/Section'
+import { useContent } from '@/hooks/useContent'
 import { useTerminal } from '@/features/terminal-pet/useTerminal'
 import { useRef, useEffect } from 'react'
 import { useTheme } from '@/hooks/useTheme'
@@ -15,6 +16,7 @@ const lineColorClass = (t) => {
 }
 
 export default function Contact() {
+  const { sectionLabels, contact } = useContent()
   const { toggle, theme } = useTheme()
 
   const {
@@ -67,29 +69,29 @@ export default function Contact() {
   }, [history, error, status])
 
   return (
-    <Section id="contact" className="max-w-[900px] mx-auto py-[12vh] px-6" data-cursor-label="contact">
+    <Section id="contact" className="max-w-225 mx-auto py-[12vh] px-6" data-cursor-label="contact">
       <div className="flex items-center gap-2.5 mb-10">
-        <span className="font-display text-2xl font-extrabold tracking-[0.12em] uppercase text-accent shrink-0">
-          Contact
-        </span>
+        <h2 className="font-display text-2xl font-extrabold tracking-[0.12em] uppercase text-accent shrink-0 m-0">
+          {sectionLabels.contact}
+        </h2>
         <div className="w-[1.5px] h-[1.4rem] bg-accent opacity-40 shrink-0" />
-        <span className="font-body text-[0.85rem] text-ink-soft tracking-[0.04em]">Get in touch</span>
+        <span className="font-body text-[0.85rem] text-ink-soft tracking-[0.04em]">{contact.getInTouch}</span>
       </div>
 
       <div className="border border-border overflow-hidden">
-        <div className="bg-paper-soft border-b border-border px-3.5 py-[9px] flex items-center justify-between">
+        <div className="bg-paper-soft border-b border-border px-3.5 py-2.25 flex items-center justify-between">
           <div className="flex gap-1.5">
-            <span className="w-[11px] h-[11px] rounded-full inline-block bg-[#ff5f57]" />
-            <span className="w-[11px] h-[11px] rounded-full inline-block bg-[#febc2e]" />
-            <span className="w-[11px] h-[11px] rounded-full inline-block bg-[#28c840]" />
+            <span className="w-2.75 h-2.75 rounded-full inline-block bg-[#ff5f57]" />
+            <span className="w-2.75 h-2.75 rounded-full inline-block bg-[#febc2e]" />
+            <span className="w-2.75 h-2.75 rounded-full inline-block bg-[#28c840]" />
           </div>
           <span className="font-mono text-[0.72rem] text-ink-soft">contact -- raphaelm ~ zsh</span>
-          <div className="w-[52px]" />
+          <div className="w-13" />
         </div>
 
         <div
           ref={bodyRef}
-          className="bg-paper cursor-text h-[420px] overflow-y-auto pt-3.5 px-[18px] pb-5 terminal-body"
+          className="bg-paper cursor-text h-105 overflow-y-auto pt-3.5 px-4.5 pb-5 terminal-body"
           onClick={() => inputRef.current?.focus()}
         >
           {history.map((l, i) =>

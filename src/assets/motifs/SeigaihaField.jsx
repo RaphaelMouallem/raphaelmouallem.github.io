@@ -55,7 +55,7 @@ export default function SeigaihaField() {
               x={t.x}
               y={t.y}
               fill={t.accent ? 'var(--accent)' : 'var(--ink-faint)'}
-              opacity={t.accent ? 0.6 : 0.2}
+              opacity={t.accent ? 0.45 : 0.2}
             />
           ))}
         </pattern>

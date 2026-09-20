@@ -1,10 +1,10 @@
 import Section from '@/components/Section'
 import { useContent } from '@/hooks/useContent'
-import { useTerminal } from '@/features/terminal-pet/useTerminal'
+import { useTerminal } from '@/features/contact-terminal/useTerminal'
 import { useRef, useEffect } from 'react'
 import { useTheme } from '@/hooks/useTheme'
 import { sendMessage } from '@/lib/sendMessage'
-import { PROMPT, BOOT_LINES } from '@/features/terminal-pet/contactBoot'
+import { PROMPT, BOOT_LINES } from '@/features/contact-terminal/contactBoot'
 
 const LINE = 'font-mono text-[0.82rem] leading-[1.55] whitespace-pre-wrap break-words'
 

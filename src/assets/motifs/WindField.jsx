@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { useIsMobile } from '@/features/terminal-pet/utils'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 function generateWindArt() {
   const numLevels = 12 + Math.floor(Math.random() * 3)

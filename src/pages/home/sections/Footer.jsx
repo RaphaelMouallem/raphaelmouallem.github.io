@@ -3,7 +3,7 @@ import Section from '@/components/Section'
 import SeigaihaField from '@/assets/motifs/SeigaihaField'
 import GithubIcon from '@/assets/icons/GithubIcon'
 import LinkedinIcon from '@/assets/icons/LinkedinIcon'
-import { useIsMobile } from '@/features/terminal-pet/utils'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 const SOCIAL_ICONS = {
   github: GithubIcon,

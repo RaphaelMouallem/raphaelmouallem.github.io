@@ -4,7 +4,7 @@ import TerminalPet from './TerminalPet'
 import { useMoodEngine } from './engines/useMoodEngine'
 import { usePageBounds } from './engines/usePageBounds'
 import { FACES } from './faces'
-import { useIsMobile } from '@/features/terminal-pet/utils'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 export default function TerminalPetInstance({ size = 80, spawnRef, style }) {
   const id = useId()

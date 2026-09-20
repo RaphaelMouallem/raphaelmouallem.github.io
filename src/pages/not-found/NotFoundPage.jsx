@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import '@/styles/tokens.css'
 import ThemeToggle from '@/components/ThemeToggle'
 import { useContent } from '@/hooks/useContent'
-import CharacterRain, { WATER_LINE_VH } from '../../assets/CharacterRain'
+import CharacterRain, { WATER_LINE_VH } from '@/assets/motifs/CharacterRain'
 
 export default function NotFoundPage() {
   const { notFound } = useContent()

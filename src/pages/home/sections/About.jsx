@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useIsMobile } from '@/features/terminal-pet/utils'
+import { useIsMobile } from '@/hooks/useIsMobile'
 import { motion } from 'framer-motion'
 import { useContent } from '@/hooks/useContent'
 import Section from '@/components/Section'

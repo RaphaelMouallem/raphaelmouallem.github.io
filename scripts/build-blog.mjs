@@ -177,9 +177,14 @@ async function main() {
   await rm(DOWNLOADS_DIR, { recursive: true, force: true })
   await mkdir(GENERATED_DIR, { recursive: true })
 
-  const slugs = (await readdir(CONTENT_DIR, { withFileTypes: true }))
-    .filter((e) => e.isDirectory())
-    .map((e) => e.name)
+  let slugs = []
+  try {
+    slugs = (await readdir(CONTENT_DIR, { withFileTypes: true }))
+      .filter((e) => e.isDirectory())
+      .map((e) => e.name)
+  } catch (err) {
+    if (err.code !== 'ENOENT') throw err
+  }
 
   if (slugs.length === 0) {
     console.warn('No posts found in content/blog/ — writing an empty index.')

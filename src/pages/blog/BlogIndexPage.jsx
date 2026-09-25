@@ -25,7 +25,7 @@ export default function BlogIndexPage() {
           </h1>
 
           {posts.length === 0 ? (
-            <StateMessage mood="sleepy" title="Nothing here yet" message="Comming Very Soon." />
+            <StateMessage mood="sleepy" title="Nothing here yet" message="Coming Very Soon." />
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
               {posts.map((post) => (

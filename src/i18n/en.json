@@ -4,18 +4,21 @@
     "projects": "Projects",
     "contact": "Contact"
   },
-
   "intro": {
     "name": "Raphael El Mouallem",
     "title": "Software Engineer · Full Stack & AI Developer",
     "handle": "raphaelmouallem.github.io"
   },
-
   "about": {
     "bio": "I'm a software engineer based in Lebanon, with a Master's in Web Development. I build across the whole stack, from React frontends and Spring Boot backends to PyTorch models I train from scratch. Lately I've been into projects that mix systems work with AI.",
     "title": "About This Site",
     "description": "A lightweight Japandi-style portfolio: paper textures, ink-toned colors, procedural SVG motifs. Plain React, no 3D. Framer Motion handles transitions, plus a custom cursor and generative wind-streak art.",
-    "stack": ["React", "Framer Motion", "Vite", "GitHub Pages"],
+    "stack": [
+      "React",
+      "Framer Motion",
+      "Vite",
+      "GitHub Pages"
+    ],
     "labels": {
       "experience": "Experience",
       "education": "Education",
@@ -23,7 +26,10 @@
       "site": "This Site",
       "languages": "Languages"
     },
-    "siteHeading": ["How it", "was built"],
+    "siteHeading": [
+      "How it",
+      "was built"
+    ],
     "experience": [
       {
         "role": "FinTech Intern — SoftManagement",
@@ -35,9 +41,18 @@
       }
     ],
     "education": [
-      { "degree": "Master's 2 — Web Development", "period": "2025 - 2026" },
-      { "degree": "Master's 1 — Computer Science", "period": "2024 - 2025" },
-      { "degree": "Bachelor's — Computer Science", "period": "2021 - 2024" }
+      {
+        "degree": "Master's 2 — Web Development",
+        "period": "2025 - 2026"
+      },
+      {
+        "degree": "Master's 1 — Computer Science",
+        "period": "2024 - 2025"
+      },
+      {
+        "degree": "Bachelor's — Computer Science",
+        "period": "2021 - 2024"
+      }
     ],
     "skills": {
       "Languages": ["C", "C++", "C#", "Java", "JavaScript", "Python", "SQL"],
@@ -48,9 +63,12 @@
       "Mobile": ["Flutter", "Android Studio"],
       "Tools": ["Git", "Docker", "AWS", "Anaconda"]
     },
-    "spoken": ["Arabic — native", "English — fluent", "French — proficient"]
+    "spoken": [
+      "Arabic — native",
+      "English — fluent",
+      "French — proficient"
+    ]
   },
-
   "projects": [
     {
       "id": "nexus",
@@ -93,7 +111,6 @@
       "github": null
     }
   ],
-
   "contact": {
     "heading": "Let's talk.",
     "subheading": "Open to opportunities, collaborations, and interesting problems.",
@@ -101,11 +118,9 @@
     "github": "https://github.com/RaphaelMouallem",
     "getInTouch": "Get in touch"
   },
-
   "projectsUi": {
     "viewOnGithub": "View on GitHub →"
   },
-
   "notFound": {
     "code": "404",
     "message": "There's nothing at this address. It may have moved, or never existed.",
@@ -118,21 +133,49 @@
       "offline": "register offline, try again later"
     }
   },
-
   "footer": {
     "heading": "You made it!",
     "subheading": "That's everything — thanks for scrolling all the way down.",
     "sectionsLabel": "Sections",
-    "connectLabel": "Connect",
     "sections": [
-      { "label": "Home", "href": "#hero" },
-      { "label": "About", "href": "#about" },
-      { "label": "Projects", "href": "#projects" },
-      { "label": "Contact", "href": "#contact" }
+      {
+        "label": "Home",
+        "href": "#hero"
+      },
+      {
+        "label": "About",
+        "href": "#about"
+      },
+      {
+        "label": "Projects",
+        "href": "#projects"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      }
     ],
+    "pagesLabel": "Pages",
+    "pages": [
+      {
+        "label": "Blog",
+        "href": "/blog"
+      },
+      {
+        "label": "Projects",
+        "href": "/projects"
+      }
+    ],
+    "connectLabel": "Connect",
     "social": [
-      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/raphael-el-mouallem-1qw/" },
-      { "label": "GitHub", "href": "https://github.com/RaphaelMouallem" }
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/raphael-el-mouallem-1qw/"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/RaphaelMouallem"
+      }
     ],
     "footer": "© 2026 Raphael El Mouallem · Built from scratch · Hosted on GitHub Pages"
   }

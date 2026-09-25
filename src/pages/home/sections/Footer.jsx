@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useContent } from '@/hooks/useContent'
 import Section from '@/components/Section'
 import SeigaihaField from '@/assets/motifs/SeigaihaField'
@@ -41,6 +42,16 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-2.5">
             <p className="font-body text-[0.7rem] tracking-[0.14em] uppercase text-accent mb-1">
+              {footer.pagesLabel}
+            </p>
+            {footer.pages.map((l) => (
+              <Link key={l.label} to={l.href} data-cursor="hover" className={FOOTER_LINK}>
+                {l.label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-col gap-2.5">
+            <p className="font-body text-[0.7rem] tracking-[0.14em] uppercase text-accent mb-1">
               {footer.connectLabel}
             </p>
             {footer.social.map((l) => {
@@ -70,7 +81,7 @@ export default function Footer() {
           }`}
         >
           <p className="font-body text-[0.8rem] text-ink-soft m-0">{footer.footer}</p>
-          <span className="w-11.5 h-11.5 shrink-0 border-[1.5px] border-accent rounded text-accent bg-accent-soft font-display text-[0.85rem] font-medium flex items-center justify-center [writing-mode:vertical-rl] rotate-[-6deg] leading-none">
+          <span className="w-11.5 h-11.5 shrink-0 border-[1.5px] border-accent rounded text-accent bg-accent-soft font-display text-[0.85rem] font-medium flex items-center justify-center [writing-mode:vertical-rl] -rotate-6 leading-none">
             RM
           </span>
         </div>

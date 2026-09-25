@@ -11,11 +11,6 @@ export default function NotFoundPage() {
   const [variant] = useState(() => (Math.random() < 0.5 ? 'rain' : 'receipt'))
   return (
     <div className="about-page relative min-h-screen overflow-hidden bg-paper text-ink font-body selection:bg-accent selection:text-white">
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;800&family=Inter:wght@400;500;600&display=swap"
-      />
-
       {variant === 'rain' ? <CharacterRain /> : <ReceiptBackground content={notFound.receipt} />}
 
       <header className="fixed top-6 right-6 z-10">

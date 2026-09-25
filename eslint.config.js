@@ -20,12 +20,4 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
-  {
-    files: ['src/pages/experience/**/*.{js,jsx}'],
-    rules: {
-      'react-hooks/purity': 'off',
-      'react-hooks/immutability': 'off',
-      'react-hooks/refs': 'off',
-    },
-  },
 ])

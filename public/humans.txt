@@ -7,7 +7,7 @@ LinkedIn: https://www.linkedin.com/in/raphael-el-mouallem-1qw/
 From: Lebanon
 
 /* SITE */
-Last update: 2026/09/20
+Last update: 2026/09/25
 Standards: HTML5, ES Modules
 Components: React, Framer Motion, Tailwind CSS
 Software: Vite

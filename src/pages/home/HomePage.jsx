@@ -1,8 +1,8 @@
 import '@/styles/tokens.css'
 import { useRef } from 'react'
 import { useReducedMotion } from 'framer-motion'
-import ThemeToggle from '@/components/ThemeToggle'
 import Cursor from '@/components/Cursor'
+import PageMeta from '@/components/PageMeta'
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Projects from './sections/Projects'
@@ -19,12 +19,12 @@ export default function AboutPage() {
 
   return (
     <div className="about-page min-h-screen bg-paper relative text-ink font-body selection:bg-accent selection:text-white">
+      <PageMeta
+        title="Raphael El Mouallem · Software Engineer · Full Stack & AI Developer"
+        description="Software engineer in Lebanon with a Master's in Web Development, building across the stack: React, Spring Boot, PyTorch. Focused on where systems and AI meet."
+        path="/"
+      />
       <Cursor />
-
-      <header className="fixed top-6 right-6 z-10">
-        <ThemeToggle />
-      </header>
-
       <main>
         <div className="relative z-0 overflow-hidden" ref={windZoneRef}>
           <div className="relative z-[-1]">

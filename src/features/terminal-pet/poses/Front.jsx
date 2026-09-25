@@ -1,4 +1,4 @@
-export default function Front({ face = '^_^', glitching = false }) {
+export default function Front({ face = '^_^', glitching = false, fontSize = '1.4rem' }) {
   return (
     <>
       <svg
@@ -40,7 +40,7 @@ export default function Front({ face = '^_^', glitching = false }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: '1.4rem',
+          fontSize,
           fontWeight: 700,
           letterSpacing: '0.05em',
           userSelect: 'none',

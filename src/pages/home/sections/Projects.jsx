@@ -83,10 +83,10 @@ export default function Projects() {
                       <p className="font-body text-[0.95rem] leading-[1.75] text-ink-soft mb-4 max-w-170">
                         {p.description}
                       </p>
-                      <p className="text-[0.85rem] text-ink-soft mb-4">
+                      <p className="flex flex-wrap gap-x-2 gap-y-1 text-[0.85rem] text-ink-soft mb-4">
                         {p.tags.map((t, j) => (
-                          <span key={j}>
-                            {j > 0 && <span className="mx-2">·</span>}
+                          <span key={j} className="inline-flex items-center gap-2">
+                            {j > 0 && <span aria-hidden="true">·</span>}
                             {t}
                           </span>
                         ))}

@@ -4,7 +4,12 @@
 
 Raphael builds across the stack: React frontends, Spring Boot backends, and PyTorch models trained from scratch, with a focus on systems and AI.
 
-This site (raphaelmouallem.github.io) is a single-page portfolio: hero, about, projects, and contact sections, built with React and Tailwind.
+This site (raphaelmouallem.github.io) is a multi-page portfolio built with React and Tailwind:
+
+- `/` — hero, about, projects preview, and contact sections
+- `/projects` — full project index (cards with short blurbs, GitHub links, and write-up links where one exists)
+- `/blog` — archive of hand-authored long-form technical posts, math + code support
+- `/blog/<slug>` — individual post pages
 
 ## Background
 
@@ -18,6 +23,11 @@ This site (raphaelmouallem.github.io) is a single-page portfolio: hero, about, p
 - **E-Commerce** — Full-stack app: React + Tailwind frontend, Spring Boot backend, PostgreSQL/Flyway.
 - **Fitness App** — Cross-platform Flutter fitness app with TTS guidance and encrypted local storage.
 - **Finance Tracker** — Angular + Django budget/expense manager with statistical dashboards and XLSX import.
+
+## Blog
+
+Long-form write-ups on the systems and models above — check `/blog` for the
+current list, since posts are added over time and not enumerated here.
 
 ## Contact
 

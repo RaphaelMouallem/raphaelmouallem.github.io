@@ -1,23 +1,36 @@
-// Prerenders static HTML for crawler-facing routes.
-//
-// This is NOT server-side rendering. The app is React-CSR and stays that way —
-// this script just boots the already-built dist/ in a real headless browser,
-// lets it mount normally, and saves the resulting DOM as the route's HTML file.
-// The original <script> tags stay in place, so the page still hydrates into
-// the full interactive app once JS loads for real visitors.
-//
-// Only / is prerendered: it's the sole real route (/about redirects to it,
-// everything else is a 404) and already carries all the crawlable
-// bio/experience/education/project text.
-
 import { preview } from 'vite'
 import { chromium } from 'playwright'
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const ROUTES = [{ route: '/', outFile: 'index.html' }]
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const ROOT = path.resolve(__dirname, '..')
+const BLOG_INDEX = path.join(ROOT, 'public', 'content', 'blog', 'index.json')
+
+async function getRoutes() {
+  const routes = [
+    { route: '/', outFile: 'index.html' },
+    { route: '/blog', outFile: 'blog/index.html' },
+    { route: '/projects', outFile: 'projects/index.html' },
+  ]
+
+  let posts = []
+  try {
+    posts = JSON.parse(await fs.readFile(BLOG_INDEX, 'utf-8'))
+  } catch {
+    console.warn(`⚠ Could not read ${BLOG_INDEX} — no /blog/:slug routes will be prerendered.`)
+  }
+
+  for (const post of posts) {
+    routes.push({ route: `/blog/${post.slug}`, outFile: `blog/${post.slug}/index.html` })
+  }
+
+  return routes
+}
 
 async function main() {
+  const routes = await getRoutes()
   const server = await preview({ preview: { port: 4173, strictPort: true } })
   const baseUrl = server.resolvedUrls.local[0]
 
@@ -25,10 +38,9 @@ async function main() {
   const page = await browser.newPage()
 
   try {
-    for (const { route, outFile } of ROUTES) {
+    for (const { route, outFile } of routes) {
       const url = new URL(route, baseUrl).toString()
       await page.goto(url, { waitUntil: 'networkidle' })
-      // Let content settle (route-driven fetches, entrance animations, etc.)
       await page.waitForTimeout(1000)
 
       const html = await page.content()

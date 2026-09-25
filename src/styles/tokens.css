@@ -22,7 +22,6 @@ html[data-theme='light'] {
   --theme-transition-ease: ease;
 }
 
-/* System preference — only applies before the user makes an explicit choice */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     --paper: #16151a;
@@ -58,7 +57,6 @@ html[data-theme='light'] {
     stroke var(--theme-transition-duration) var(--theme-transition-ease);
 }
 
-/* Hero celestial body — sun by default, moon in dark mode */
 .celestial-sun {
   opacity: 1;
   transition: opacity var(--theme-transition-duration) var(--theme-transition-ease);
@@ -90,7 +88,6 @@ html[data-theme='dark'] .celestial-moon {
   opacity: 1;
 }
 
-/* Manual dark override — takes precedence over system preference */
 html[data-theme='dark'] {
   --paper: #16151a;
   --paper-soft: #1f1e24;
@@ -121,7 +118,6 @@ html:has(.about-page) ::-webkit-scrollbar-thumb {
   border-radius: 0;
 }
 
-/* Paper grain — layered noise for tactile paper feel */
 body {
   background-color: var(--paper);
   position: relative;
@@ -182,4 +178,83 @@ body::before {
 .pet-screen-flicker.intense {
   opacity: 0.32;
   animation-duration: 0.15s;
+}
+
+@keyframes state-pet-dance {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0) scale(1, 1);
+  }
+  25% {
+    transform: rotate(-6deg) translateY(-6px) scale(0.94, 1.08);
+  }
+  50% {
+    transform: rotate(0deg) translateY(0) scale(1, 1);
+  }
+  75% {
+    transform: rotate(6deg) translateY(-6px) scale(0.94, 1.08);
+  }
+}
+.state-pet-dance {
+  animation: state-pet-dance 0.9s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes state-pet-sleep {
+  0%,
+  100% {
+    transform: rotate(-8deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-8deg) translateY(4px);
+  }
+}
+.state-pet-sleep {
+  animation: state-pet-sleep 3s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes state-pet-zzz {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+}
+.state-pet-zzz {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--ink-faint);
+  animation: state-pet-zzz 3s ease-in-out infinite;
+}
+
+@keyframes state-pet-shake {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-2px, 1px);
+  }
+  40% {
+    transform: translate(2px, -1px);
+  }
+  60% {
+    transform: translate(-1px, -1px);
+  }
+  80% {
+    transform: translate(1px, 1px);
+  }
+}
+.state-pet-shake {
+  animation: state-pet-shake 0.25s steps(2) infinite;
 }

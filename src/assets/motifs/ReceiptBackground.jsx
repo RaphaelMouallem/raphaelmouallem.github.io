@@ -7,7 +7,7 @@ const GITHUB_USER = 'RaphaelMouallem'
 const GITHUB_URL = `https://github.com/${GITHUB_USER}`
 const API_URL = `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`
 const CACHE_KEY = 'gh-repos-receipt-cache'
-const CACHE_TTL_MS = 30 * 60 * 1000 // 30 minutes — avoid hammering the unauthenticated API rate limit
+const CACHE_TTL_MS = 30 * 60 * 1000
 
 function sizeInMB(sizeKB) {
   return sizeKB / 1024
@@ -17,7 +17,6 @@ function formatMB(mb) {
   return `${mb.toFixed(2)} MB`
 }
 
-// Jagged "torn receipt" bottom edge, computed once.
 function tornEdgeClipPath(teeth = 12) {
   const points = ['0% 0%', '100% 0%', '100% 96%']
   for (let i = 0; i <= teeth; i++) {
@@ -40,7 +39,7 @@ async function loadRepos() {
       if (Date.now() - at < CACHE_TTL_MS) return repos
     }
   } catch {
-    // sessionStorage unavailable or corrupt cache — fall through to a live fetch
+    // something
   }
 
   const res = await fetch(API_URL)
@@ -55,7 +54,7 @@ async function loadRepos() {
   try {
     sessionStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), repos }))
   } catch {
-    // storage full/unavailable — not fatal, just skip caching
+    // somethin
   }
 
   return repos
@@ -104,7 +103,6 @@ export default function ReceiptBackground({ content }) {
       transition={{ type: 'spring', stiffness: 140, damping: 16, delay: 0.15 }}
     >
       <div className="relative">
-        {/* Rubber-stamp badge */}
         <div className="absolute -right-4 -top-4 z-10 w-20 h-20 rounded-full border-[3px] border-accent flex items-center justify-center text-accent bg-paper-raised opacity-90">
           <span className="text-[0.7rem] font-extrabold tracking-[0.03em] text-center leading-tight uppercase">
             {content.thanks}
@@ -115,7 +113,6 @@ export default function ReceiptBackground({ content }) {
           className="relative bg-paper-raised border border-border shadow-[0_18px_40px_var(--shadow)] pb-12 font-mono text-ink overflow-hidden"
           style={{ clipPath: TORN_EDGE }}
         >
-          {/* Punch holes down each side */}
           <div className="absolute inset-y-0 left-1 w-3 flex flex-col justify-evenly py-6 z-10">
             {PUNCH_HOLES.map((i) => (
               <span key={i} className="w-2.5 h-2.5 rounded-full bg-paper shrink-0" />
@@ -127,9 +124,8 @@ export default function ReceiptBackground({ content }) {
             ))}
           </div>
 
-          {/* Accent header band */}
           <div className="bg-accent text-paper text-center py-4 px-8 mb-6">
-            <div className="text-[1.35rem] font-extrabold tracking-[0.1em]">{content.title}</div>
+            <div className="text-[1.35rem] font-extrabold tracking-widest">{content.title}</div>
             <div className="text-[0.85rem] opacity-85 mt-1">{GITHUB_URL.replace('https://', '')}</div>
           </div>
 

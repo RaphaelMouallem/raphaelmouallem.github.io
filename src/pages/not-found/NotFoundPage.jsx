@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import '@/styles/tokens.css'
-import ThemeToggle from "../ui/ThemeToggle";
+import ThemeToggle from "@/shared/ui/ThemeToggle";
 import { useContent } from '@/shared/hooks/useContent'
 import CharacterRain, { WATER_LINE_VH } from '@/shared/motifs/CharacterRain'
 import ReceiptBackground from '@/shared/motifs/ReceiptBackground'

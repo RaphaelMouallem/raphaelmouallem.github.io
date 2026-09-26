@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { easeOut } from '@/styles/motion'
 
 export default function Section({ children, style, delay = 0, ...props }) {
   return (
-    <motion.section
+    <m.section
       style={style}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -12,6 +12,6 @@ export default function Section({ children, style, delay = 0, ...props }) {
       {...props}
     >
       {children}
-    </motion.section>
+    </m.section>
   )
 }

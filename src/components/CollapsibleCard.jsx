@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { easeOut } from '@/styles/motion'
 
 export default function CollapsibleCard({ mobile, title, glyph, open, onToggle, children }) {
@@ -16,7 +16,7 @@ export default function CollapsibleCard({ mobile, title, glyph, open, onToggle, 
   return (
     <div className="border-b border-border bg-paper-soft">
       <h3 className="m-0">
-        <motion.button
+        <m.button
           onClick={onToggle}
           className="flex items-center justify-between w-full bg-transparent border-none px-5 py-4 cursor-pointer font-[inherit] gap-3"
           data-cursor="hover"
@@ -33,18 +33,18 @@ export default function CollapsibleCard({ mobile, title, glyph, open, onToggle, 
             )}
             <span className={cardTagClass}>{title}</span>
           </span>
-          <motion.span
+          <m.span
             animate={{ rotate: open ? 45 : 0 }}
             transition={{ duration: 0.3 }}
             className="text-accent text-[1.3rem] leading-none shrink-0"
           >
             +
-          </motion.span>
-        </motion.button>
+          </m.span>
+        </m.button>
       </h3>
       <AnimatePresence initial={false}>
         {open && (
-          <motion.div
+          <m.div
             key="content"
             id={panelId}
             role="region"
@@ -56,7 +56,7 @@ export default function CollapsibleCard({ mobile, title, glyph, open, onToggle, 
             className="overflow-hidden"
           >
             <div className="px-5 pb-5">{children}</div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

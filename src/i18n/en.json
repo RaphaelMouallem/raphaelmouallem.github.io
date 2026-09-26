@@ -133,6 +133,12 @@
       "offline": "register offline, try again later"
     }
   },
+  "errorBoundary": {
+    "title": "Something broke",
+    "message": "An unexpected error happened. Try reloading, or head back home.",
+    "reload": "Reload",
+    "backHome": "Back home"
+  },
   "footer": {
     "heading": "You made it!",
     "subheading": "That's everything — thanks for scrolling all the way down.",

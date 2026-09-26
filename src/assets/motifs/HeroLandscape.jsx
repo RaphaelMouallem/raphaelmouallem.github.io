@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 
 function hash(x, y) {
   const n = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453
@@ -66,7 +66,7 @@ export default function HeroLandscape({ drift }) {
         opacity="0.7"
       />
 
-      <motion.g
+      <m.g
         animate={{ x: drift.x * -20, y: drift.y * -16 }}
         transition={{ type: 'spring', stiffness: 40, damping: 20 }}
       >
@@ -141,7 +141,7 @@ export default function HeroLandscape({ drift }) {
             opacity="0.25"
           />
         </g>
-      </motion.g>
+      </m.g>
 
       <path
         d="M-100,750 L-100,520 Q200,438 460,520 Q740,428 1020,520 Q1140,478 1300,520 L1300,750 Z"

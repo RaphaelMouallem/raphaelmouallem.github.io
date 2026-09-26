@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 
 export default function InkUnderline({ width = 140, delay = 0 }) {
   return (
@@ -8,7 +8,7 @@ export default function InkUnderline({ width = 140, delay = 0 }) {
       viewBox={`0 0 ${width} 8`}
       className="block mt-1.5"
     >
-      <motion.path
+      <m.path
         d={`M1 4 Q ${width / 2} 7 ${width - 1} 4`}
         fill="none"
         stroke="var(--accent)"

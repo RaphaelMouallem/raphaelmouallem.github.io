@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { useContent } from '@/hooks/useContent'
 import Section from '@/components/Section'
 import { easeOut, JAPANDI } from '@/styles/motion'
@@ -19,7 +19,7 @@ export default function Projects() {
 
   return (
     <Section id="projects" className="max-w-225 mx-auto py-[12vh] px-6" data-cursor-label="projects">
-      <motion.div
+      <m.div
         className="border border-border bg-paper-soft overflow-hidden"
         variants={containerVariants}
         initial="hidden"
@@ -36,8 +36,8 @@ export default function Projects() {
           const isOpen = openId === p.id
           const panelId = `project-panel-${p.id}`
           return (
-            <motion.div key={p.id} variants={rowVariants} className="border-b border-border">
-              <motion.button
+            <m.div key={p.id} variants={rowVariants} className="border-b border-border">
+              <m.button
                 onClick={() => setOpenId(isOpen ? null : p.id)}
                 className="w-full flex items-center gap-6 px-7 py-5 bg-transparent border-none text-left font-[inherit]"
                 aria-expanded={isOpen}
@@ -57,19 +57,19 @@ export default function Projects() {
                   <span className="font-body text-[0.85rem] text-ink-soft">{p.subtitle}</span>
                 </span>
                 <span data-cursor="hover" className="flex items-center justify-center w-8 h-8 rounded-full">
-                  <motion.span
+                  <m.span
                     className="font-body text-[1.3rem] text-accent leading-none"
                     animate={{ rotate: isOpen ? 90 : 0 }}
                     transition={{ duration: 0.3, ease: easeOut }}
                   >
                     +
-                  </motion.span>
+                  </m.span>
                 </span>
-              </motion.button>
+              </m.button>
 
               <AnimatePresence initial={false}>
                 {isOpen && (
-                  <motion.div
+                  <m.div
                     id={panelId}
                     role="region"
                     aria-label={p.title}
@@ -103,13 +103,13 @@ export default function Projects() {
                         </a>
                       )}
                     </div>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
-            </motion.div>
+            </m.div>
           )
         })}
-      </motion.div>
+      </m.div>
     </Section>
   )
 }

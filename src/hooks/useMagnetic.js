@@ -1,11 +1,6 @@
 import { useRef } from 'react'
 import { useMotionValue, useSpring } from 'framer-motion'
 
-/**
- * Magnetic hover: element subtly translates toward the cursor on hover.
- * `strength` controls max pixel offset. Disabled on touch/reduced-motion
- * (handlers simply won't fire meaningfully, and offsets stay near 0).
- */
 export function useMagnetic(strength = 10) {
   const ref = useRef(null)
   const x = useMotionValue(0)

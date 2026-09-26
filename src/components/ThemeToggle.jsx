@@ -1,6 +1,6 @@
 import { useTheme } from '../hooks/useTheme'
 import { useMagnetic } from '../hooks/useMagnetic'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { easeOut } from '@/styles/motion'
 
 const DAY = 'var(--paper-soft)'
@@ -8,7 +8,7 @@ const NIGHT = 'var(--ink)'
 
 function YinYangIcon({ theme }) {
   return (
-    <motion.svg
+    <m.svg
       width="40"
       height="40"
       viewBox="0 0 24 24"
@@ -32,7 +32,7 @@ function YinYangIcon({ theme }) {
       <circle cx="12" cy="18" r="2.2" fill={DAY} />
       <circle cx="11.3" cy="17.4" r="0.5" fill={NIGHT} />
       <circle cx="12.6" cy="18.6" r="0.35" fill={NIGHT} />
-    </motion.svg>
+    </m.svg>
   )
 }
 
@@ -41,7 +41,7 @@ export default function ThemeToggle() {
     const { ref, x, y, onMouseMove, onMouseLeave } = useMagnetic(8)
 
   return (
-    <motion.button
+    <m.button
       ref={ref}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
@@ -54,6 +54,6 @@ export default function ThemeToggle() {
       style={{ x, y }}
     >
       <YinYangIcon theme={theme} />
-    </motion.button>
+    </m.button>
   )
 }

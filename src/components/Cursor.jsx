@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { m, useMotionValue, useSpring } from 'framer-motion'
 
 const easeOut = [0.16, 1, 0.3, 1]
 const SPRING = { stiffness: 200, damping: 24 }
@@ -149,8 +149,8 @@ export default function Cursor() {
 
   return (
     <>
-      <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9998] flex items-center justify-center"
+      <m.div
+        className="fixed top-0 left-0 pointer-events-none z-9998 flex items-center justify-center"
         style={{
           translateX: elX,
           translateY: elY,
@@ -169,35 +169,35 @@ export default function Cursor() {
         transition={{ duration: 0.3, ease: easeOut }}
       >
         {isLabel && (
-          <motion.span
-            className="font-body text-[0.5rem] font-semibold tracking-[0.1em] uppercase text-paper whitespace-nowrap"
+          <m.span
+            className="font-body text-[0.5rem] font-semibold tracking-widest uppercase text-paper whitespace-nowrap"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.2, delay: 0.1 }}
           >
             {label}
-          </motion.span>
+          </m.span>
         )}
-      </motion.div>
+      </m.div>
 
       {hoverTag && (
-        <motion.div
-          className="fixed top-0 left-0 pointer-events-none z-[9998]"
+        <m.div
+          className="fixed top-0 left-0 pointer-events-none z-9998"
           style={{ translateX: elX, translateY: elY, x: '-10%', y: '80%' }}
         >
-          <motion.span
+          <m.span
             initial={{ opacity: 0, x: -4 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.15 }}
-            className="inline-block bg-accent text-paper text-[0.6rem] font-semibold tracking-[0.05em] p-[2px_8px_2px_10px] font-[var(--font-mono,monospace)] [clip-path:polygon(8px_0,100%_0,100%_100%,0_100%)]"
+            className="inline-block bg-accent text-paper text-[0.6rem] font-semibold tracking-wider p-[2px_8px_2px_10px] [clip-path:polygon(8px_0,100%_0,100%_100%,0_100%)]"
           >
             {label}
-          </motion.span>
-        </motion.div>
+          </m.span>
+        </m.div>
       )}
       {!isLabel && !hovering && (
-        <motion.div
-          className="fixed top-0 left-0 w-1 h-1 -ml-0.5 -mt-0.5 rounded-full bg-accent pointer-events-none z-[9999]"
+        <m.div
+          className="fixed top-0 left-0 w-1 h-1 -ml-0.5 -mt-0.5 rounded-full bg-accent pointer-events-none z-9999"
           style={{ x: dotX, y: dotY }}
         />
       )}

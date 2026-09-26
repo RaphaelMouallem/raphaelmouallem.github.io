@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { QRCodeSVG } from 'qrcode.react'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
@@ -86,7 +86,7 @@ export default function ReceiptBackground({ content }) {
   })
 
   return (
-    <motion.div
+    <m.div
       aria-hidden="true"
       className="absolute pointer-events-none select-none"
       style={
@@ -178,6 +178,6 @@ export default function ReceiptBackground({ content }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   )
 }

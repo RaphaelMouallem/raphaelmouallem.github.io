@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
 function generateWindArt() {
@@ -59,7 +59,7 @@ function WindStreak({ top, left, width, flip, opacity = 0.3, delay = 0, strokeWi
   const { paths, width: vw, height: vh, offsetX } = art
 
   return (
-    <motion.div
+    <m.div
       style={{
         position: 'absolute',
         top,
@@ -92,7 +92,7 @@ function WindStreak({ top, left, width, flip, opacity = 0.3, delay = 0, strokeWi
           ))}
         </g>
       </svg>
-    </motion.div>
+    </m.div>
   )
 }
 

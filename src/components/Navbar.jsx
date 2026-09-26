@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { m, AnimatePresence, useReducedMotion } from 'framer-motion'
 import ThemeToggle from './ThemeToggle'
 import Front from '@/features/terminal-pet/poses/Front'
 import HamburgerIcon from '@/assets/icons/HamburgerIcon'
@@ -66,7 +66,7 @@ export default function Navbar() {
 
       <span className="flex items-center min-h-6">
         {revealed && (
-          <motion.span
+          <m.span
             initial={prefersReducedMotion ? false : { opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: easeOut }}
@@ -83,7 +83,7 @@ export default function Navbar() {
                 {intro.name}
               </span>
             </Link>
-          </motion.span>
+          </m.span>
         )}
       </span>
 
@@ -110,7 +110,7 @@ export default function Navbar() {
           <ThemeToggle />
         </span>
 
-        <motion.button
+        <m.button
           onClick={() => setMenuOpen((v) => !v)}
           data-cursor="hover"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -121,12 +121,12 @@ export default function Navbar() {
           className="sm:hidden w-10 h-10 rounded-full border-none bg-transparent p-0 cursor-pointer flex items-center justify-center"
         >
           <HamburgerIcon open={menuOpen} />
-        </motion.button>
+        </m.button>
       </div>
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.nav
+          <m.nav
             id="mobile-nav-panel"
             key="mobile-menu"
             initial={prefersReducedMotion ? false : { opacity: 0, y: -8 }}
@@ -155,7 +155,7 @@ export default function Navbar() {
               <span className="font-body text-[0.85rem] text-ink-soft">Theme</span>
               <ThemeToggle />
             </div>
-          </motion.nav>
+          </m.nav>
         )}
       </AnimatePresence>
     </header>

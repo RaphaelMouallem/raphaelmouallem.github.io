@@ -1,4 +1,4 @@
-import { ASYNC_STATUS } from '@/lib/asyncStatus'
+import { ASYNC_STATUS } from '@/shared/lib/asyncStatus'
 import LoadingState from './LoadingState'
 import StateMessage from './StateMessage'
 

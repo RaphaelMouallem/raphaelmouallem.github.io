@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { m } from 'framer-motion'
 import { QRCodeSVG } from 'qrcode.react'
-import { useIsMobile } from '@/hooks/useIsMobile'
+import { useIsMobile } from '@/shared/hooks/useIsMobile'
 
 const GITHUB_USER = 'RaphaelMouallem'
 const GITHUB_URL = `https://github.com/${GITHUB_USER}`

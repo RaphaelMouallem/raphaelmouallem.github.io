@@ -1,8 +1,8 @@
-import PageMeta from '@/components/PageMeta'
-import PageFooter from '@/components/PageFooter'
-import PaperCard from '@/components/PaperCard'
-import StateMessage from '@/components/StateMessage'
-import { useContent } from '@/hooks/useContent'
+import PageMeta from '@/shared/layout/PageMeta'
+import PageFooter from '@/shared/layout/PageFooter'
+import PaperCard from '@/shared/ui/PaperCard'
+import StateMessage from '@/shared/state/StateMessage'
+import { useContent } from '@/shared/hooks/useContent'
 import ApertureBadge from './components/ApertureBadge'
 
 export default function ProjectsPage() {

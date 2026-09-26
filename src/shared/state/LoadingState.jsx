@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import StatePet from './StatePet'
-import ScrambleText from './ScrambleText'
+import ScrambleText from '../ui/ScrambleText'
 
 const WORDS = ['loading', 'fetching', 'thinking']
 

@@ -1,12 +1,12 @@
-import Section from '@/components/Section'
-import { useContent } from '@/hooks/useContent'
+import Section from '@/shared/ui/Section'
+import { useContent } from '@/shared/hooks/useContent'
 import { useTerminal } from '@/features/contact-terminal/useTerminal'
 import { useRef, useEffect } from 'react'
-import { useTheme } from '@/hooks/useTheme'
-import { sendMessage } from '@/lib/sendMessage'
+import { useTheme } from '@/shared/hooks/useTheme'
+import { sendMessage } from '@/shared/lib/sendMessage'
 import { PROMPT, BOOT_LINES } from '@/features/contact-terminal/contactBoot'
-import GithubIcon from '@/assets/icons/GithubIcon'
-import LinkedinIcon from '@/assets/icons/LinkedinIcon'
+import GithubIcon from '@/shared/icons/GithubIcon'
+import LinkedinIcon from '@/shared/icons/LinkedinIcon'
 
 const LINE = 'font-mono text-[0.82rem] leading-[1.55] whitespace-pre-wrap break-words'
 

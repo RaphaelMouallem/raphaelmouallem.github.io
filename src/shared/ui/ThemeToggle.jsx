@@ -1,5 +1,5 @@
-import { useTheme } from '../hooks/useTheme'
-import { useMagnetic } from '../hooks/useMagnetic'
+import { useTheme } from '@/shared/hooks/useTheme'
+import { useMagnetic } from '@/shared/hooks/useMagnetic'
 import { m } from 'framer-motion'
 import { easeOut } from '@/styles/motion'
 

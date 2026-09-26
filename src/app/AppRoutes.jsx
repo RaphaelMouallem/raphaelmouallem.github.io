@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { usePageViews } from '@/hooks/usePageViews'
+import { usePageViews } from '@/shared/hooks/usePageViews'
 import RootLayout from './RootLayout'
 
 const HomePage = lazy(() => import('../pages/home/HomePage'))

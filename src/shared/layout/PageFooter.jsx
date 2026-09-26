@@ -1,7 +1,7 @@
-import { useContent } from '@/hooks/useContent'
-import SeigaihaField from '@/assets/motifs/SeigaihaField'
-import GithubIcon from '@/assets/icons/GithubIcon'
-import LinkedinIcon from '@/assets/icons/LinkedinIcon'
+import { useContent } from '@/shared/hooks/useContent'
+import SeigaihaField from '@/shared/motifs/SeigaihaField'
+import GithubIcon from '@/shared/icons/GithubIcon'
+import LinkedinIcon from '@/shared/icons/LinkedinIcon'
 
 const SOCIAL_ICONS = {
   github: GithubIcon,

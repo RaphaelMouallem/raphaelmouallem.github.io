@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import '@/styles/tokens.css'
-import ThemeToggle from '@/components/ThemeToggle'
-import { useContent } from '@/hooks/useContent'
-import CharacterRain, { WATER_LINE_VH } from '@/assets/motifs/CharacterRain'
-import ReceiptBackground from '@/assets/motifs/ReceiptBackground'
+import ThemeToggle from "../ui/ThemeToggle";
+import { useContent } from '@/shared/hooks/useContent'
+import CharacterRain, { WATER_LINE_VH } from '@/shared/motifs/CharacterRain'
+import ReceiptBackground from '@/shared/motifs/ReceiptBackground'
 
 export default function NotFoundPage() {
   const { notFound } = useContent()

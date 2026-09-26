@@ -1,11 +1,11 @@
 import { m } from 'framer-motion'
-import { useContent } from '@/hooks/useContent'
-import { useMouseDrift } from '@/hooks/useMouseDrift'
-import HeroLandscape from '@/assets/motifs/HeroLandscape'
-import ScrollArrow from '@/assets/icons/ScrollArrow'
+import { useContent } from '@/shared/hooks/useContent'
+import { useMouseDrift } from '@/shared/hooks/useMouseDrift'
+import HeroLandscape from '@/shared/motifs/HeroLandscape'
+import ScrollArrow from '@/shared/icons/ScrollArrow'
 import { easeOut } from '@/styles/motion'
-import ScrambleText from '@/components/ScrambleText'
-import InkUnderline from '@/components/InkUnderline'
+import ScrambleText from '@/shared/ui/ScrambleText'
+import InkUnderline from '@/shared/ui/InkUnderline'
 import { useState } from 'react'
 
 export default function Hero() {

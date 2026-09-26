@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { Link } from 'react-router-dom'
 import en from '@/i18n/en.json'
-import StateMessage from './StateMessage'
+import StateMessage from '../state/StateMessage'
 
 export default class ErrorBoundary extends Component {
   state = { hasError: false }

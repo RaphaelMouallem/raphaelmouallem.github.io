@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
-import AsyncState from '@/components/AsyncState'
-import StateMessage from '@/components/StateMessage'
-import PageMeta from '@/components/PageMeta'
-import PageFooter from '@/components/PageFooter'
-import PaperCard from '@/components/PaperCard'
-import { useBlogIndex } from '@/hooks/useBlogPost'
-import { formatDate } from '@/lib/format'
+import AsyncState from '@/shared/state/AsyncState'
+import StateMessage from '@/shared/state/StateMessage'
+import PageMeta from '@/shared/layout/PageMeta'
+import PageFooter from '@/shared/layout/PageFooter'
+import PaperCard from '@/shared/ui/PaperCard'
+import { useBlogIndex } from '@/shared/hooks/useBlogPost'
+import { formatDate } from '@/shared/lib/format'
 
 export default function BlogIndexPage() {
   const { posts, status } = useBlogIndex()

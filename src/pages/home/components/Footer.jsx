@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import { useContent } from '@/hooks/useContent'
-import Section from '@/components/Section'
-import SeigaihaField from '@/assets/motifs/SeigaihaField'
-import GithubIcon from '@/assets/icons/GithubIcon'
-import LinkedinIcon from '@/assets/icons/LinkedinIcon'
-import { useIsMobile } from '@/hooks/useIsMobile'
+import { useContent } from '@/shared/hooks/useContent'
+import Section from '@/shared/ui/Section'
+import SeigaihaField from '@/shared/motifs/SeigaihaField'
+import GithubIcon from '@/shared/icons/GithubIcon'
+import LinkedinIcon from '@/shared/icons/LinkedinIcon'
+import { useIsMobile } from '@/shared/hooks/useIsMobile'
 
 const SOCIAL_ICONS = {
   github: GithubIcon,

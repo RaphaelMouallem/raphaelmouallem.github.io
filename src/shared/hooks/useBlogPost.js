@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ASYNC_STATUS } from '@/lib/asyncStatus'
+import { ASYNC_STATUS } from '@/shared/lib/asyncStatus'
 
 export function useBlogPost(slug) {
   const [state, setState] = useState({ post: null, status: ASYNC_STATUS.LOADING, slug })

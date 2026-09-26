@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { m, AnimatePresence, useReducedMotion } from 'framer-motion'
-import ThemeToggle from './ThemeToggle'
+import ThemeToggle from "../ui/ThemeToggle";
 import Front from '@/features/terminal-pet/poses/Front'
-import HamburgerIcon from '@/assets/icons/HamburgerIcon'
-import { useContent } from '@/hooks/useContent'
+import HamburgerIcon from '@/shared/icons/HamburgerIcon'
+import { useContent } from '@/shared/hooks/useContent'
 import { easeOut } from '@/styles/motion'
 
 const LINKS = [

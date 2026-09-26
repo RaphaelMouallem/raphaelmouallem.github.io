@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { m, AnimatePresence } from 'framer-motion'
-import { useContent } from '@/hooks/useContent'
-import Section from '@/components/Section'
+import { useContent } from '@/shared/hooks/useContent'
+import Section from '@/shared/ui/Section'
 import { easeOut, JAPANDI } from '@/styles/motion'
 
 const containerVariants = {

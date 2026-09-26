@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { m } from 'framer-motion'
-import { useIsMobile } from '@/hooks/useIsMobile'
+import { useIsMobile } from '@/shared/hooks/useIsMobile'
 
 function generateWindArt() {
   const numLevels = 12 + Math.floor(Math.random() * 3)

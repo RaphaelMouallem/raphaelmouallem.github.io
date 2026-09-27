@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 export const SITE_URL = 'https://raphaelmouallem.github.io'
-const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`
+const DEFAULT_IMAGE = `${SITE_URL}/meta/og-image.png`
 const DEFAULT_IMAGE_WIDTH = '1200'
 const DEFAULT_IMAGE_HEIGHT = '630'
 const DYNAMIC_TAG_ATTR = 'data-page-meta-dynamic'
